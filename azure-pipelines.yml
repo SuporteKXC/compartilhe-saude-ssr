@@ -1,0 +1,95 @@
+# Node.js with Angular
+# Build a Node.js project that uses Angular.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
+
+trigger:
+- homologacao
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- task: NodeTool@0
+  inputs:
+    versionSource: 'spec'
+    versionSpec: '18.18.0'
+    checkLatest: true
+  displayName: 'Install Node.js'
+  continueOnError: false
+
+- script: |
+    npm install -g @angular/cli@16.2.5
+    npm install
+    ng build
+  displayName: 'npm install and build'
+  continueOnError: false
+
+- task: Npm@1
+  inputs:
+    command: 'custom'
+    customCommand: 'run lint'
+  displayName: 'Lint'
+  continueOnError: false
+
+- task: Npm@1
+  inputs:
+    command: 'custom'
+    customCommand: 'run test:ci'
+  displayName: 'Test'
+  continueOnError: false
+
+- task: Npm@1
+  displayName: npm install
+  inputs:
+    workingDir: ./
+    verbose: false
+
+- task: Npm@1
+  displayName: npm build
+  inputs:
+    command: custom
+    workingDir: ./
+    verbose: false
+    customCommand: run build -- --configuration homologacao
+
+- script: |
+    ng run compartilhe-saude-web:server:homologacao
+  displayName: 'Build Server'
+  continueOnError: false
+
+- task: CmdLine@2
+  displayName: Command Line Script
+  inputs:
+    script: env
+
+- script: |
+    set -x
+    pwd
+    ls -la
+    aws s3 sync dist/compartilhe-saude-web s3://hml-compartilhe-saude-build
+  displayName: 'Copy to S3' 
+  env:
+    AWS_ACCESS_KEY_ID: $(AWS_ACCESS_KEY_ID)
+    AWS_SECRET_ACCESS_KEY: $(AWS_SECRET_ACCESS_KEY)
+    AWS_DEFAULT_REGION: us-east-1
+  
+- script: |
+    mkdir Zip
+    cd Zip
+    aws s3 sync s3://hml-compartilhe-saude-build .
+    zip -r -s 2g hml-compartilhe-saude-amplify.zip *
+    aws s3 cp hml-compartilhe-saude-amplify.zip s3://hml-compartilhe-saude-amplify/hml-compartilhe-saude-amplify.zip
+  displayName: 'Zip files'
+  env:
+    AWS_ACCESS_KEY_ID: $(AWS_ACCESS_KEY_ID)
+    AWS_SECRET_ACCESS_KEY: $(AWS_SECRET_ACCESS_KEY)
+    AWS_DEFAULT_REGION: us-east-1
+
+- script: |
+    aws amplify start-deployment --app-id d2t71ru0mt6lxb --region us-east-1 --branch-name hml --source-url s3://hml-compartilhe-saude-amplify/hml-compartilhe-saude-amplify.zip
+  displayName: 'Deploy amplify'
+  env:
+    AWS_ACCESS_KEY_ID: $(AWS_ACCESS_KEY_ID)
+    AWS_SECRET_ACCESS_KEY: $(AWS_SECRET_ACCESS_KEY)
+    AWS_DEFAULT_REGION: us-east-1
