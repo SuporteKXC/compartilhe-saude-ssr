@@ -1,0 +1,51 @@
+<app-button-whatsapp></app-button-whatsapp>
+<main class="w-full flex flex-column gap-5 mb-5">
+  <app-chamada-principal></app-chamada-principal>
+
+  <div class="flex flex-column gap-5 lg:gap-7">
+    <div class="wrapper-nossos-produtos gap-7">
+      <app-nossos-produtos></app-nossos-produtos>
+
+      <app-destaque-produtos></app-destaque-produtos>
+    </div>
+
+    <div class="flex flex-column wrapper-nossos-parceiros">
+      <app-secao-nossos-parceiros
+        [listSize]="4"
+        [buttonTemplate]="buttonTemplate"
+        [home]="true"
+        (searchChange)="this.navigation.setState($event)">
+      </app-secao-nossos-parceiros>
+
+      <app-connect-saude></app-connect-saude>
+    </div>
+
+    <app-consultora></app-consultora>
+
+    <app-quem-somos></app-quem-somos>
+
+    <app-big-numbers></app-big-numbers>
+
+    <app-depoimentos></app-depoimentos>
+  </div>
+</main>
+
+<ng-template #buttonTemplate>
+  <app-button
+    class="hidden lg:inline-block"
+    label="Ver Rede Compartilhe"
+    dataTestid="btn-rede"
+    [outlined]="true"
+    size="large"
+    (handleClick)="navigateToParceiros()" >
+  </app-button>
+
+  <app-button
+    class="inline-block lg:hidden"
+    label="Ver Rede Compartilhe"
+    dataTestid="btn-rede"
+    [outlined]="true"
+    size="small"
+    (handleClick)="navigateToParceiros()" >
+  </app-button>
+</ng-template>

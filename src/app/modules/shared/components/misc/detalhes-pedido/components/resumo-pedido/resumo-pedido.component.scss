@@ -1,0 +1,89 @@
+@import 'variables';
+
+h3 {
+  color: $primary-darker;
+
+  font-size: 24px;
+  font-weight: 700;
+
+  line-height: 24px;
+  letter-spacing: 0em;
+
+  text-align: left;
+}
+
+h4 {
+  font-size: 20px;
+  font-weight: 600;
+
+  line-height: 20px;
+  letter-spacing: 0em;
+
+  text-align: left;
+}
+
+app-icon {
+  color: $base-light-2;
+}
+
+.texto {
+  font-size: 16px;
+
+  line-height: 16px;
+  letter-spacing: 0em;
+
+  text-align: left;
+
+  .valor {
+    color: $primary-darker;
+  }
+}
+
+.data {
+  font-size: 16px;
+  line-height: 16px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+.aviso {
+  background-color: $background-card;
+
+  border-radius: 10px;
+
+  @media (min-width: $xl) {
+    margin-right: 29px;
+  }
+
+  .contato {
+    &.texto {
+      color: $primary-darker;
+    }
+
+    &-banner {
+      background-color: $primary-darker;
+
+      width: 162px;
+
+      border-radius: 32px;
+      padding: 1px;
+
+      p {
+        color: $primaryTextColor;
+
+        font-family: 'Poppins', sans-serif;
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 16px;
+        letter-spacing: 0em;
+        text-align: left;
+
+        margin-left: 5px;
+      }
+    }
+  }
+}
+
+.pix-logo {
+  width: 16px;
+}

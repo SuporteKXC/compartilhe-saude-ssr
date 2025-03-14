@@ -1,0 +1,7 @@
+@import 'variables';
+
+::ng-deep main>app-secao-produtos {
+  display: block;
+  max-width: $max-main-width;
+  margin: auto;
+}

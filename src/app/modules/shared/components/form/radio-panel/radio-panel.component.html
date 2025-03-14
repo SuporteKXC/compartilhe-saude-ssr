@@ -1,0 +1,25 @@
+<div class="flex flex-column" id="radio-panel">
+  <label class="flex gap-2 wrapper-radio" *ngIf="group" [formGroup]="group" [for]="name">
+    <ng-container *ngIf="!disabled; else disabledComponent">
+      <p-radioButton
+        [ngStyle]="{ 'align-items': alignCheckbox }"
+        [formControl]="control"
+        [value]="option.value"
+        [disabled]="disabled"
+        [inputId]="name"
+        (onFocus)="onRadioClicked()"
+        (onBlur)="onTouched()"
+        class="xl:mr-1">
+      </p-radioButton>
+    </ng-container>
+    <ng-container [ngTemplateOutlet]="template" [ngTemplateOutletContext]="{ $implicit: option }" />
+  </label>
+</div>
+
+<ng-template #disabledComponent>
+  <p-radioButton
+      [ngStyle]="{ 'align-items': alignCheckbox }"
+      class="xl:mr-1 p-disabled"
+      [disabled]="disabled">
+    </p-radioButton>
+</ng-template>

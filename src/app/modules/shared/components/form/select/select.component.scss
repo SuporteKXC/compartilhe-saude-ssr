@@ -1,0 +1,25 @@
+@import 'variables';
+
+label {
+  margin-bottom: 8px;
+}
+
+::ng-deep {
+  .p-dropdown-clear-icon {
+    top: 32%;
+  }
+
+  .invalid {
+    .p-inputtext {
+      border: $error-border-width solid $error;
+    }
+  }
+
+  .p-dropdown-panel .p-dropdown-header .p-dropdown-filter-icon {
+    display: none;
+  }
+
+  .p-dropdown-item {
+    white-space: inherit;
+  }
+}

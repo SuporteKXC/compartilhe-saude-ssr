@@ -1,0 +1,57 @@
+<div #section class="timeline-section" [ngClass]="{ 'image-at-top': imageAtTop }">
+  <p
+    #textElement
+    [ngStyle]="{
+      'margin-top.px': imageAtTop ? 16 : 0,
+      'margin-bottom.px': !imageAtTop ? 16 : 0
+    }">
+    {{ text }}
+  </p>
+
+  <svg
+    [ngClass]="{ inverted: imageAtTop }"
+    width="7"
+    height="52"
+    viewBox="0 0 7 52"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg">
+    <path
+      d="M3.5 0.333333C2.02724 0.333333 0.833333 1.52724 0.833333 3C0.833333 4.47276 2.02724 5.66667 3.5 5.66667C4.97276 5.66667 6.16667 4.47276 6.16667 3C6.16667 1.52724 4.97276 0.333333 3.5 0.333333ZM3 3L3 52L4 52L4 3L3 3Z"
+      fill="#0A203E" />
+  </svg>
+
+  <div #mark class="mark">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M24 12C24 18.6274 18.6274 24 12 24C5.37258 24 0 18.6274 0 12C0 5.37258 5.37258 0 12 0C18.6274 0 24 5.37258 24 12ZM2.4 12C2.4 17.3019 6.69807 21.6 12 21.6C17.3019 21.6 21.6 17.3019 21.6 12C21.6 6.69807 17.3019 2.4 12 2.4C6.69807 2.4 2.4 6.69807 2.4 12Z"
+        fill="#60AE32" />
+      <circle cx="12" cy="12" r="7" fill="#60AE32" />
+    </svg>
+  </div>
+
+  <strong #yearElement>{{ year }}</strong>
+
+  <svg
+    [ngClass]="{ inverted: !imageAtTop }"
+    width="7"
+    height="52"
+    viewBox="0 0 7 52"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg">
+    <path
+      d="M3.5 0.333333C2.02724 0.333333 0.833333 1.52724 0.833333 3C0.833333 4.47276 2.02724 5.66667 3.5 5.66667C4.97276 5.66667 6.16667 4.47276 6.16667 3C6.16667 1.52724 4.97276 0.333333 3.5 0.333333ZM3 3L3 52L4 52L4 3L3 3Z"
+      fill="#0A203E" />
+  </svg>
+
+  <img
+    #imgElement
+    [ngSrc]="img"
+    [alt]="altImg"
+    [title]="altImg"
+    [ngStyle]="{
+      'margin-bottom.px': imageAtTop ? 24 : 0,
+      'margin-top.px': !imageAtTop ? 24 : 0
+    }"
+    width="100"
+    height="100" />
+</div>

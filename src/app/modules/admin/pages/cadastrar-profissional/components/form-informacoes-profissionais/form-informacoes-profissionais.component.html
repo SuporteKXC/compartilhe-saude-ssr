@@ -1,0 +1,39 @@
+<app-form-fieldset titulo="Informações profissionais" [formGroup]="formGroup">
+  <div class="flex flex-column gap-3">
+    <div class="flex flex-column lg:flex-row w-full gap-2 lg:gap-4">
+      <app-input-text
+        class="w-full required"
+        name="registro-profissional"
+        label="Registro profissional"
+        placeholder="Registro profissional"
+        formControlName="registroProfissional"
+        autocomplete="off" />
+
+      <app-input-text
+        class="w-full"
+        name="rqe"
+        label="RQE"
+        placeholder="RQE"
+        formControlName="rqe"
+        autocomplete="off" />
+    </div>
+
+    <app-form-especialidade />
+    <app-form-servicos-oferecidos [formGroup]="formGroup" />
+
+    <app-input-textarea
+      label="Sobre"
+      placeholder="Descreva sobre o profissional"
+      name="sobre"
+      formControlName="sobre"
+      class="w-full required">
+    </app-input-textarea>
+
+    <app-input-textarea
+      label="Experiência"
+      placeholder="Descreva sobre a experiência"
+      name="experiencia"
+      formControlName="experiencia"
+      class="w-full required" />
+  </div>
+</app-form-fieldset>

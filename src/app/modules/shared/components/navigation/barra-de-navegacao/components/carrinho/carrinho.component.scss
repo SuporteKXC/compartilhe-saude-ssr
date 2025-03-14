@@ -1,0 +1,44 @@
+@import 'variables';
+
+button {
+  position: relative;
+
+  background-color: transparent;
+
+  width: 20px;
+  height: 20px;
+
+  cursor: pointer;
+
+  span {
+    font-size: 20px;
+  }
+
+  .primary {
+    color: $primary-darker;
+  }
+
+  .secondary {
+    color: $primary-darker-sorrisos;
+  }
+}
+
+p-badge {
+  position: absolute;
+  top: -8px;
+  right: -2px;
+}
+
+:host ::ng-deep {
+  button {
+    .p-badge {
+      line-height: 0.8;
+    }
+
+    &.secondary {
+      .p-badge {
+        background-color: $primary-darker-sorrisos;
+      }
+    }
+  }
+}

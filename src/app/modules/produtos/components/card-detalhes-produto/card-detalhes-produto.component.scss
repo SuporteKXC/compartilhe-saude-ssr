@@ -1,0 +1,73 @@
+@import './variables';
+
+.wrapper {
+  &-card {
+    min-height: 260px;
+    box-shadow: $elevation-effect-3;
+    border-radius: 5px;
+    padding: 24px 8px 16px 8px;
+  }
+
+  &-header {
+
+    p .pipe-content::before {
+      content: ' | ';
+    }
+
+    p {
+      font-size: 16px;
+      font-weight: 400;
+
+      text-align: left;
+    }
+
+    h3 {
+      color: $primary-darker;
+
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 20px;
+
+      text-align: left;
+
+      overflow: hidden;
+      text-wrap: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    .link-detalhes-parceiro {
+      color: $primary-darker;
+
+      text-decoration: none;
+
+      span {
+        font-size: 14px;
+        line-height: 18px;
+        font-weight: 600;
+        text-align: left;
+      }
+    }
+  }
+
+  &-content {
+    app-icon {
+      color: $primary-darker;
+      margin-right: 12px;
+    }
+
+    p {
+      font-size: 20px;
+      font-weight: 400;
+      line-height: 28px;
+      text-align: left;
+    }
+  }
+}
+
+::ng-deep {
+  p-avatar {
+    div {
+      background-color: $tertiaryDarkColor;
+    }
+  }
+}

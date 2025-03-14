@@ -1,0 +1,14 @@
+<div>
+  <header>
+    <img
+      src="assets/icons/pagamento/logo-pix.svg"
+      alt="Logotipo do PIX"
+      [ngClass]="{ 'option-selected': isSelected }" />
+  </header>
+
+  <p *ngIf="isSelected">
+    O pagamento via Pix é uma forma fácil e segura de fazer sua compra na Compartilhe Saúde. Após
+    finalizar a compra, o código PIX ficará disponível para você pagar no banco da sua escolha. A
+    transação é realizada na hora, depois disso basta confirmar seu pagamento que nós validamos.
+  </p>
+</div>

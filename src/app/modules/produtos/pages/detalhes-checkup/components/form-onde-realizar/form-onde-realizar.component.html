@@ -1,0 +1,53 @@
+<div class="detalhes flex flex-column h-full">
+  <div class="subtitulo flex gap-2 mb-1">
+    <app-icon class="hidden xl:block" iconName="location_on" iconSize="24px" verticalAlign="middle" />
+    <app-icon class="inline xl:hidden" iconName="location_on" iconSize="20px" verticalAlign="middle" />
+    <h3>Selecione o local de atendimento</h3>
+  </div>
+
+  <div class="flex flex-column flex-auto justify-content-between gap-3">
+    <form [formGroup]="formLocalAtendimento">
+      <app-select
+        label="vazio"
+        name="local"
+        formControlName="local"
+        placeholder="Selecione o local"
+        [labelSrOnly]="true"
+        [options]="localOptions"
+        [disabled]="isArrayOfOne"
+        (optionSelected)="setValores()">
+      </app-select>
+    </form>
+
+    <ng-container *ngIf="localProduto">
+      <div class="valores">
+        <p class="texto mb-2 text-center lg:text-left">
+          De:
+          <span class="line-through">
+            {{ localProduto.valorReferencia | currency }}
+          </span>
+        </p>
+
+        <p class="texto mb-2 text-center lg:text-left flex flex-column md:flex-row md:gap-2">
+          <strong class="vista">{{ localProduto.valorVista | currency }} à vista </strong>
+          <span>ou até {{ numeroParcelas }}x com juros</span>
+        </p>
+
+        <div class="desconto flex flex-column align-items-center lg:flex-row lg:align-items-start gap-1">
+          <p class="valor">{{ localProduto.percentualDesconto }}%</p>
+          <p class="texto text-center lg:text-left">
+            de desconto comparado com o preço particular
+          </p>
+        </div>
+      </div>
+    </ng-container>
+
+    <app-button
+      class="align-self-center xl:pb-3"
+      label="Adicionar ao carrinho"
+      severity="primary"
+      [disabled]="!formLocalAtendimento.valid"
+      (handleClick)="adicionarItemCarrinho()">
+    </app-button>
+  </div>
+</div>

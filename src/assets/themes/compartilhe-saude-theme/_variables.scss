@@ -1,0 +1,168 @@
+// ### COLORS ###
+$primary-darker: #60ae32;
+$primary-dark: #84c225;
+$primary: #a0ce59;
+$primary-light: #bcdb8c;
+$primary-lighter: #d9e8c1;
+
+$primary-darker-sorrisos: #2cabbe;
+$primary-dark-sorrisos: #7ccfdd;
+$primary-sorrisos: #abdde5;
+$primary-lighter-sorrisos: #e0f3f5;
+
+$secondary-darker: #0a203e;
+$secondary-dark: #103f6b;
+$secondary-dim: #142a60;
+$secondary-dimmer: #6f6c8f;
+$secondary: #4b6e8f;
+$secondary-light: #859cb2;
+$secondary-lighter: #bfcbd6;
+
+$secondary-sorrisos: #134f85;
+
+$base-darker: #303030;
+$base-dark: #5e5e5e;
+$base-light: #7d7d7d;
+$base-light-2: #6b6c7e;
+$base-lighter: #bdbdbd;
+
+$background-lighter: #ffffff;
+$background-light: #fafafa;
+$background-dark: #f4f4f4;
+$background-darker: #d9d9d9;
+$secondary-background-light: #eff0f6;
+$primary-background-light: #ECF3E0;
+
+$background-mask: #dcdcdc80;
+$background-skeleton: #EDF3F6;
+$background-card: #F4F4F4;
+
+$success-dark: #228c3b;
+$success: #28a745;
+$success-light: #7be695;
+
+$error-dark: #ce1824;
+$error: #e9424d;
+$error-light: #f28d93;
+$error-lighter: #fff5f3;
+
+$warning-dark: #e6ae07;
+$warning: #ffc107;
+$warning-light: #ffd454;
+
+$secondary-darker-text-color: #000000;
+
+$link-text-color: #116dff;
+
+$error-border-width: 2px;
+
+// ### ICON ###
+$icon-size: 24px;
+$icon-error-color: #888888;
+
+// Theme Specific Variables
+$primaryColor: $primary;
+$primaryDarkColor: $primary-dark;
+$primaryDarkerColor: $primary-darker;
+$primaryTextColor: #ffffff;
+$primaryDimTextColor: #d9d9d9;
+
+$secondaryLighterColor: $primary-lighter-sorrisos;
+$secondaryColor: $primary-sorrisos;
+$secondaryDarkColor: $primary-dark-sorrisos;
+$secondaryDarkerColor: $primary-darker-sorrisos;
+
+$tertiaryColor: #ffffff;
+$tertiaryDarkColor: #d9d9d9;
+$tertiaryDarkerColor: #bdbdbd;
+
+// ### Effects ###
+$elevation-effect-lighter: 0px 5px 16px 0px rgba(8, 15, 52, 0.06);
+$elevation-effect-1: 0px 4px 4px 0px rgba(0, 0, 0, 0.15);
+$elevation-effect-2: 0px 3px 11px 2px rgba(0, 0, 0, 0.1);
+$elevation-effect-3: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+
+$colors: (
+  'blue': #2196f3,
+  'green': #4caf50,
+  'yellow': #fbc02d,
+  'cyan': #00bcd4,
+  'pink': #e91e63,
+  'indigo': #3f51b5,
+  'teal': #009688,
+  'orange': #f57c00,
+  'bluegray': #607d8b,
+  'purple': #9c27b0,
+  'red': #ff4032,
+  'primary': $primaryColor,
+);
+
+// ### RESPONSIVENESS ###
+$sm: 576px;
+$md: 768px;
+$lg: 992px;
+$xl: 1200px;
+
+$max-main-width: 1920px;
+
+// ### MAIN CONTENT LAYOUT ###
+$horizontal-padding-main-content: 100px;
+$horizontal-padding-main-content-sm: 16px;
+$horizontal-padding-main-content-md: 32px;
+
+$navHeightMobile: 58px;
+$navHeightDesktop: 73px;
+
+$footerHeightDashboard: 64px;
+
+// Mandatory Designer Variables
+@import './variables/general';
+@import './variables/form';
+@import './variables/button';
+@import './variables/panel';
+@import './variables/_data';
+@import './variables/_overlay';
+@import './variables/_message';
+@import './variables/_menu';
+@import './variables/_media';
+@import './variables/_misc';
+
+:root {
+  --font-family: 'Darker Grotesque', sans-serif;
+
+  --surface-a: #ffffff;
+  --surface-b: #f8f9fa;
+  --surface-c: #e9ecef;
+  --surface-d: #dee2e6;
+  --surface-e: #ffffff;
+  --surface-f: #ffffff;
+  --text-color: #495057;
+  --text-color-secondary: #6c757d;
+  --primary-color: #2196f3;
+  --primary-color-text: #ffffff;
+  --surface-0: #ffffff;
+  --surface-50: #fafafa;
+  --surface-100: #f5f5f5;
+  --surface-200: #eeeeee;
+  --surface-300: #e0e0e0;
+  --surface-400: #bdbdbd;
+  --surface-500: #9e9e9e;
+  --surface-600: #757575;
+  --surface-700: #616161;
+  --surface-800: #424242;
+  --surface-900: #212121;
+  --content-padding: #{$panelContentPadding};
+  --inline-spacing: #{$inlineSpacing};
+  --border-radius: #{$borderRadius};
+  --surface-ground: #f8f9fa;
+  --surface-section: #ffffff;
+  --surface-card: #ffffff;
+  --surface-overlay: #ffffff;
+  --surface-border: #dee2e6;
+  --surface-hover: #e9ecef;
+  --maskbg: #{$maskBg};
+  --highlight-bg: #{$highlightBg};
+  --highlight-text-color: #{$highlightTextColor};
+  --focus-ring: #{$focusShadow};
+  color-scheme: light;
+}

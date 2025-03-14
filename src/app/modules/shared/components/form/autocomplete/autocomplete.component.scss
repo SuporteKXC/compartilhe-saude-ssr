@@ -1,0 +1,38 @@
+@import 'variables';
+
+label {
+  margin-bottom: 8px;
+}
+
+span {
+  .input-container {
+    position: relative;
+
+    i {
+      position: absolute;
+
+      margin-top: 4px;
+
+      top: 50%;
+      transform: translateY(-50%);
+
+      right: 12px;
+
+      color: $primary-darker;
+    }
+  }
+}
+
+:host ::ng-deep {
+  .invalid {
+    .p-inputtext {
+      border: $error-border-width solid $error;
+    }
+  }
+}
+
+::ng-deep {
+  .p-autocomplete-panel {
+    border-radius: 8px ;
+  }
+}

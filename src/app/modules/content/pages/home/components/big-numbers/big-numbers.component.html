@@ -1,0 +1,31 @@
+<section class="w-full flex justify-content-center big-numbers">
+  <div class="grid grid-nogutter conteudo align-items-center lg:flex-nowrap">
+
+    <div class="flex justify-content-between align-items-center row">
+      <div class="item">
+        <p class="numero-qtd">+{{ bigNumbersData.pessoasCadastradas }}</p>
+        <p class="numero-tipo">Pessoas cadastradas</p>
+      </div>
+      <div class="separador-item"></div>
+      <div class="item">
+        <p class="numero-qtd qtd-especialidades">+{{ bigNumbersData.especialidadesMedicas }}</p>
+        <p class="numero-tipo">Especialidades médicas</p>
+      </div>
+    </div>
+
+    <div class="separador-item separador-conjunto"></div>
+
+    <div class="flex justify-content-between align-items-center row">
+      <div class="item">
+        <p class="numero-qtd">+{{ bigNumbersData.estabelecimentosParceiros }}</p>
+        <p class="numero-tipo tipo-estabelecimentos">Estabelecimentos parceiros</p>
+      </div>
+
+      <div class="separador-item"></div>
+      <div class="item">
+        <p class="numero-qtd">+{{ bigNumbersData.servicosRealizados }}</p>
+        <p class="numero-tipo">Serviços realizados</p>
+      </div>
+    </div>
+  </div>
+</section>

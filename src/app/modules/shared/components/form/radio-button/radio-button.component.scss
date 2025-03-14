@@ -1,0 +1,45 @@
+@import 'variables';
+
+.wrapper span {
+  margin-bottom: 8px;
+}
+
+.radio-container {
+  display: flex;
+  gap: 32px;
+
+  .radio-item {
+    display: flex;
+    gap: 10px;
+
+    label {
+      font-size: 18px;
+      font-weight: 600;
+    }
+  }
+}
+
+::ng-deep #radio-button {
+  .p-radiobutton .p-radiobutton-box {
+    border-width: 1px;
+    border-color: $base-lighter;
+
+    &.p-highlight {
+      border-color: $base-lighter;
+      background: none;
+    }
+
+    &:not(.p-disabled) {
+      &.p-focus {
+        box-shadow: none;
+        border-width: 2px;
+        border-color: $primary-darker;
+        background-color: $primary-lighter;
+      }
+
+      .p-radiobutton-icon {
+        background-color: $primary-darker;
+      }
+    }
+  }
+}

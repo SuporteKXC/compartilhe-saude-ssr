@@ -1,0 +1,27 @@
+<div class="flex flex-column" *ngIf="group" [formGroup]="group">
+  <label *ngIf="label" [htmlFor]="name" [ngClass]="{ 'p-sr-only': labelSrOnly }">{{ label }}</label>
+
+  <div class="flex gap-2" [id]="name">
+    <label
+      *ngFor="let option of options"
+      class="flex gap-2 justify-content-center align-items-center wrapper-radio"
+      [ngClass]="{ disabled }"
+      [htmlFor]="getOptionId(option)">
+      <span *ngIf="option.label">
+        {{ option.label }}
+      </span>
+
+      <p-radioButton
+        styleClass="radio-button"
+        [formControl]="control"
+        [value]="option.value"
+        [disabled]="disabled"
+        [inputId]="getOptionId(option)"
+        (onFocus)="onRadioSelected(option)"
+        (onBlur)="onTouched()">
+      </p-radioButton>
+    </label>
+  </div>
+
+  <small *ngIf="errorMessage">{{ errorMessage }}</small>
+</div>

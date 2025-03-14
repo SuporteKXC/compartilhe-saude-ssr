@@ -1,0 +1,146 @@
+<div
+  [ngClass]="{
+    'h-full': isPagante() && data.locaisAtendimento && data.locaisAtendimento.length > 0
+  }"
+  class="container flex flex-column">
+  <div class="flex align-items-center gap-2 mb-3">
+    <ng-container *ngIf="isPagante()">
+      <div *ngIf="!imageNotFound; else defaultAvatar">
+        <p-avatar
+          [image]="imgUrl + data.pathImagem"
+          styleClass="mr-2 block"
+          size="xlarge"
+          shape="circle"
+          (onImageError)="imageNotFound = true">
+        </p-avatar>
+      </div>
+
+      <ng-template #defaultAvatar>
+        <p-avatar
+          styleClass="mr-2"
+          size="xlarge"
+          shape="circle"
+          label="{{ data.nomeParceiro.charAt(0) }}">
+        </p-avatar>
+      </ng-template>
+    </ng-container>
+
+    <div
+      class="container-dados flex flex-column gap-2"
+      [ngClass]="{'w-full': !isPagante()}">
+      <h2 data-testid="nome-parceiro">{{ data.nomeParceiro }}</h2>
+      <div>
+        <h3>
+          {{ data.tiposEspecialidade | joinString : { separator: ' | ', includeAnd: false } }}
+        </h3>
+        <p class="documentos">
+          <ng-container *ngIf="data.registroProfissional">{{
+            data.registroProfissional
+          }}</ng-container>
+          <ng-container *ngIf="data.rqe">| {{ data.rqe }} </ng-container>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex flex-column justify-content-between h-full">
+    <div *ngIf="!data.locaisAtendimento" class="info-contato flex flex-column w-full gap-2">
+      <div class="flex align-items-center gap-1">
+        <app-icon iconName="location_on" iconSize="20px"></app-icon>
+        <span class="flex flex-column">
+          <p>
+            {{ getEndereco(data.endereco) | formatEndereco }}
+          </p>
+        </span>
+      </div>
+
+      <span class="flex align-items-end gap-1" *ngIf="data.telefone">
+        <app-icon iconName="phone" iconSize="24px"></app-icon>
+        <span class="flex align-items-end gap-2">
+          <p>{{ getTelefone(data.telefone) }}</p>
+          <p
+            aria-hidden="true"
+            *ngIf="hiddenText && !isPagante()"
+            class="ellipsis-toggle"
+            (click)="hiddenText = false">
+            Mostrar
+          </p>
+        </span>
+      </span>
+      <div class="flex justify-content-center mt-3">
+          <ng-container *ngIf="isPagante()">
+            <app-button
+              label="Ver detalhes"
+              size="small"
+              (handleClick)="navigateToDetalhes(data)">
+            </app-button>
+          </ng-container>
+        </div>
+    </div>
+
+    <ng-container *ngIf="data.locaisAtendimento && data.locaisAtendimento.length > 0">
+      <ng-container *ngIf="isPagante()">
+        <div class="wrapper-carrousel h-full">
+          <app-carousel
+            [items]="data.locaisAtendimento"
+            [itemTemplate]="cardParceiroEstabelecimento"
+            [numVisible]="numVisible"
+            [numScroll]="numScroll"
+            [overflow]="overflow"
+            [responsiveOptions]="responsiveOptions"
+            [showScroll]="false"
+            [slider]="true">
+          </app-carousel>
+        </div>
+
+        <div class="flex justify-content-center mt-3">
+          <ng-container>
+            <app-button
+              label="Ver detalhes"
+              size="small" 
+              (handleClick)="navigateToDetalhes(data)">
+            </app-button>
+          </ng-container>
+        </div>
+      </ng-container>
+
+      <ng-container
+        *ngIf="!isPagante()"
+        [ngTemplateOutlet]="cardParceiroEstabelecimento"
+        [ngTemplateOutletContext]="{ $implicit: data.locaisAtendimento[0] }">
+      </ng-container>
+    </ng-container>
+  </div>
+</div>
+
+<ng-template #cardParceiroEstabelecimento let-parceiro>
+  <div class="card-contaienr m-0 flex flex-column gap-2">
+    <p class="title">{{ parceiro?.nome }}</p>
+    <div class="flex align-items-center gap-1">
+      <app-icon iconName="location_on" iconSize="20px"></app-icon>
+      <ng-container *ngIf="parceiro.endereco">
+        <span class="flex flex-column">
+          {{ getEndereco(parceiro.endereco) | formatEndereco }}
+        </span>
+      </ng-container>
+      <ng-container *ngIf="!parceiro.endereco">
+        <span class="flex flex-column">
+          Atendimento on-line
+        </span>
+      </ng-container>
+    </div>
+    <span class="flex align-items-end gap-1" *ngIf="data.telefone">
+      <app-icon iconName="phone" iconSize="24px"></app-icon>
+      <span class="flex align-items-end gap-2">
+        <p>{{ getTelefone(data.telefone) }}</p>
+        <p
+          aria-hidden="true"
+          *ngIf="hiddenText && !isPagante()"
+          class="ellipsis-toggle"
+          (click)="hiddenText = false">
+          Mostrar
+        </p>
+      </span>
+    </span>
+  </div>
+</ng-template>

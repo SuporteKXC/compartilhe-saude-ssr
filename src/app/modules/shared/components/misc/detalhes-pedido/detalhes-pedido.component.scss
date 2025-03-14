@@ -1,0 +1,11 @@
+@import 'variables';
+
+.wrapper-pedido {
+  box-shadow: $elevation-effect-2;
+  
+  border-radius: 10px;
+  
+  @media (min-width: $xl) {
+    width: 72.5%;
+  }
+}

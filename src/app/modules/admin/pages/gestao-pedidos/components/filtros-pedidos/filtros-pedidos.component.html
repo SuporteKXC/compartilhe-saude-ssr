@@ -1,0 +1,34 @@
+<form class="grid" role="search" [formGroup]="formFiltro">
+  <div class="col-12 xl:col-6">
+    <app-input-text-search
+      formControlName="texto"
+      label="Digite o nome ou CPF"
+      [labelSrOnly]="true"
+      (search)="shouldSearchAgain.emit()"
+      placeholder="Digite o nome ou CPF"
+      autocomplete="off" />
+  </div>
+
+  <div class="col-5 xl:col-3">
+    <app-select
+      formControlName="status"
+      label="Status"
+      [labelSrOnly]="true"
+      placeholder="Status"
+      [options]="statusOptions"
+      [showClear]="true"
+      (optionSelected)="shouldSearchAgain.emit()" />
+  </div>
+
+  <div class="col-7 xl:col-3">
+    <app-datepicker
+      placeholder="Selecione um período"
+      label="Selecione um período"
+      mode="range"
+      [labelSrOnly]="true"
+      formControlName="data"
+      [maxDate]="maxDate"
+      [showClear]="true"
+      (dateSelect)="shouldSearchAgain.emit()" />
+  </div>
+</form>

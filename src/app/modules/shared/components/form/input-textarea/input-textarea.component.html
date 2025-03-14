@@ -1,0 +1,32 @@
+<span class="flex flex-column">
+  <span>
+    <label *ngIf="label" [htmlFor]="name" [ngClass]="{ 'p-sr-only': labelSrOnly }">
+      {{ label }}
+    </label>
+
+    <ng-container *ngIf="tooltipContent">
+      <app-tooltip class="ml-1" [content]="tooltipContent" />
+    </ng-container>
+  </span>
+
+  <span class="flex flex-column">
+    <textarea 
+      pInputTextarea 
+      [id]="name"
+      [rows]="3" 
+      [cols]="60" 
+      [value]="value"
+      [disabled]="disabled"
+      [name]="name"
+      [attr.formControlName]="formControlName"
+      [placeholder]="placeholder"
+      (input)="onInputTextChange($event)"
+      (blur)="onTouched()"
+      [ngClass]="{'ng-invalid ng-dirty': errorMessage}">
+    </textarea>
+  </span>
+
+  <small *ngIf="errorMessage" [ngStyle]="{ 'margin-bottom': errorMarginBottom }">
+    {{ errorMessage }}
+  </small>
+</span>

@@ -1,0 +1,67 @@
+<main>
+  <app-error-box
+    class="hidden lg:block"
+    *ngIf="pagamentoVerificadoNaoPago"
+    message="O pagamento ainda não foi identificado. Por favor verifique." />
+
+  <ng-container *ngIf="detalhesPix; else skeletonTelaPix">
+    <header>
+      <div class="msg-pagamento-pendente">Pagamento pendente</div>
+
+      <img class="logo-pix" src="assets/icons/pagamento/logo-pix.svg" alt="Logotipo do PIX" />
+    </header>
+
+    <div class="msg-expiracao">
+      <app-icon iconName="schedule" verticalAlign="sub" iconSize="18px"></app-icon>
+
+      <div>
+        <p *ngIf="msgTempoAteExpiracao">
+          Esse código expira em <strong>{{msgTempoAteExpiracao}}</strong>
+        </p>
+        <small>Pague até {{dataHoraExpiracao | date:"dd/MM/yyyy 'às' HH:mm"}}</small>
+      </div>
+    </div>
+
+    <app-qr-code [value]="detalhesPix.qrCode"></app-qr-code>
+
+    <p class="codigo-qr-code">{{detalhesPix.qrCode}}</p>
+
+    <div class="valor-total">Valor total <strong>{{detalhesPix.valorTotal| currency}}</strong></div>
+  </ng-container>
+
+  <footer>
+    <app-button
+      icon="content_copy"
+      label="Copiar código"
+      size="small"
+      [expand]="true"
+      [disabled]="!detalhesPix"
+      elementClass="btn-footer"
+      (handleClick)="copiarCodigo()"></app-button>
+    <app-button
+      label="Já paguei"
+      size="small"
+      [outlined]="true"
+      [expand]="true"
+      [loading]="verificandoPagamento"
+      [disabled]="!detalhesPix"
+      elementClass="btn-footer"
+      (handleClick)="verificarPagamento()"></app-button>
+  </footer>
+
+  <app-error-box
+    class="block lg:hidden"
+    *ngIf="pagamentoVerificadoNaoPago"
+    message="O pagamento ainda não foi identificado. Por favor verifique." />
+</main>
+
+<div class="btn-meus-pedidos-container">
+  <app-button
+    label="Ir para os meus pedidos"
+    [outlined]="true"
+    (handleClick)="navigateToMeusPedidos()" />
+</div>
+
+<ng-template #skeletonTelaPix>
+  <app-skeleton-tela-pix></app-skeleton-tela-pix>
+</ng-template>

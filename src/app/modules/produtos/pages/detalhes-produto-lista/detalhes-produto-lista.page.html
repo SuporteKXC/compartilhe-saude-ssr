@@ -1,0 +1,26 @@
+<app-button-whatsapp></app-button-whatsapp>
+<main>
+  <div>
+    <app-button
+      label="Voltar para lista"
+      icon="arrow_back"
+      severity="primary"
+      [outlined]="true"
+      size="small"
+      (handleClick)="goBack()">
+    </app-button>
+
+    <app-secao-detalhes-produto
+      [idProduto]="idProduto"
+      [detalhesProduto]="detalhesProduto"
+      [parentLoading]="isLoading"
+      [parentError]="isError">
+    </app-secao-detalhes-produto>
+
+    <app-secao-interesse [data]="detalhesProduto"></app-secao-interesse>
+  </div>
+</main>
+
+<div class="container-perguntas" *ngIf="perguntas.length > 0">
+  <app-secao-perguntas-frequentes [data]="perguntas"></app-secao-perguntas-frequentes>
+</div>

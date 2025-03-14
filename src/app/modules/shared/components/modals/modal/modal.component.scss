@@ -1,0 +1,56 @@
+@import 'variables.scss';
+
+:host {
+  width: 100%;
+}
+
+::ng-deep #custom-modal .p-dialog {
+  min-width: 320px;
+
+  overflow: hidden;
+
+  border-radius: 8px;
+
+  &[aria-modal=true] .p-dialog-content {
+    border-radius: 0;
+    padding: 0;
+  }
+
+  .p-dialog-header {
+    padding: 0;
+
+    .p-dialog-title {
+      align-self: center;
+    }
+
+    .p-dialog-header-icons {
+      .p-dialog-header-icon {
+        width: 24px;
+        height: 24px;
+        color: $secondary-dim;
+      }
+    }
+  }
+
+  .p-dialog-content {
+    width: 100%;
+  }
+
+  .p-dialog-footer {
+    padding: 0;
+  }
+
+  .p-dialog-header,
+  .p-dialog-content,
+  .p-dialog-footer {
+    &:empty {
+        display: none;
+    }
+  }
+
+  .p-dialog-content:not(:empty) ~ .p-dialog-footer {
+    display: block;
+    padding: 0;
+    padding-top: 12px
+  }
+}

@@ -1,0 +1,55 @@
+@import 'variables';
+
+// ao invés de usar o $md, utiliza-se esse valor fixo para evitar que as colunas se empilhem antes
+$width-barrier: 860px;
+
+section>div {
+  max-width: $max-main-width;
+  margin: auto;
+}
+
+.wrapper {
+  min-width: 100vw;
+  min-height: 100vh;
+
+  padding: 0 clamp(70px, 6vw, 140px);
+
+  background-color: $primary-lighter;
+}
+
+.apresentacao {
+  display: flex;
+  flex-direction: column;
+  gap: 30px; // no protótipo o gap é de 38px, aqui é menor para compensar a falta do leading-trim
+
+  h1 {
+    line-height: 50px;
+  }
+
+  strong {
+    color: $secondary-darker;
+    font-size: 50px;
+    font-weight: 600;
+  }
+
+  h2 {
+    width: min(360px, 100%);
+
+    font-size: 25px;
+    font-weight: normal;
+    
+    line-height: 30px;
+  }
+}
+
+@media screen and (max-width: $width-barrier) {
+  .apresentacao {
+    display: none;
+  }
+}
+
+@media screen and (max-width: $width-barrier) {
+  .wrapper {
+    padding: 0;
+  }
+}

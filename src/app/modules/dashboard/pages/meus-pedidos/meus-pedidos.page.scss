@@ -1,0 +1,59 @@
+@import 'variables';
+
+.wrapper-list {
+  width: 100%;
+  min-height: 60svh;
+  margin-top: 20px;
+
+  @media (min-width: $xl) {
+    height: 60svh;
+  }
+}
+
+.barrier {
+  @media (min-width: $xl) {
+    max-width: 64.8%;
+  }
+}
+
+.wrapper-no-items {
+  background-color: $background-card;
+
+  border-radius: 6px;
+
+  padding: 8px 24px;
+
+  @media (min-width: $xl) {
+    padding: 24px 22px;
+
+    margin-right: 61px;
+  }
+
+  h2 {
+    font-size: 24px;
+
+    line-height: 33px;
+
+    @media (min-width: $xl) {
+      font-size: 36px;
+
+      line-height: 36px;
+    }
+  }
+
+  p {
+    font-size: 14px;
+
+    line-height: 19px;
+
+    @media (min-width: $xl) {
+      font-size: 16px;
+
+      line-height: 16px;
+    }
+  }
+
+  app-icon {
+    color: $primary-darker;
+  }
+}

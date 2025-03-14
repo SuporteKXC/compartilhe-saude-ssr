@@ -1,0 +1,99 @@
+<div id="table" class="w-full">
+  <ng-container *ngIf="(!error && total > 0) || (total === 0 && loading)">
+    <div 
+      class="w-full flex flex-column align-items-end"
+      [ngClass]="{ 'wrapper-content p-3 xl:px-4 xl:py-3': isContained }">
+      <p-table
+        [value]="loading ? dummyData : this.data"
+        [paginator]="isPaginated"
+        [rows]="size"
+        [first]="(page - 1) * size"
+        [showCurrentPageReport]="true"
+        [tableStyle]="tableStyle"
+        class="w-full">
+        <ng-template pTemplate="header">
+          <tr [ngClass]="{ 'flex': isAccordion }">
+            <ng-container *ngIf="headerTemplate" [ngTemplateOutlet]="headerTemplate" />
+
+            <ng-container *ngIf="actionsTemplate">
+              <th [ngStyle]="{ width: isAccordion ? '90px' : '110px'  }" class="text-center">Ações</th>
+            </ng-container>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-data let-rowIndex="rowIndex" *ngIf="!isAccordion">
+            <tr>
+              <ng-container
+                *ngIf="!loading"
+                [ngTemplateOutlet]="bodyTemplate"
+                [ngTemplateOutletContext]="{ $implicit: data }" />
+
+              <ng-container *ngIf="loading" [ngTemplateOutlet]="loadingTemplate" />
+
+              <td *ngIf="!loading" class="wrapper-actions text-center">
+                <ng-container
+                  [ngTemplateOutlet]="actionsTemplate"
+                  [ngTemplateOutletContext]="{ $implicit: data, index: rowIndex }" />
+              </td>
+            </tr>
+        </ng-template>
+      </p-table>
+
+      <ng-container *ngIf="isAccordion">
+        <div class="w-full flex gap-3" id="accordion-table">
+          <p-accordion 
+            class="w-full" 
+            (onOpen)="setOpenedTab($event.index)" 
+            (onClose)="openedTab = null"
+            (activeIndexChange)="activeIndex = $event">
+            <ng-container *ngFor="let item of accordionPaginated; let index = index">
+              <p-accordionTab  [header]="$any(item).titulo">
+                <ng-template pTemplate="icon">
+                  <app-icon 
+                    class="p-icon-wrapper"
+                    iconSize="32px" 
+                    [iconName]="openedTab === index ? 'keyboard_arrow_up' : 'keyboard_arrow_down'" >
+                  </app-icon>
+                </ng-template>
+  
+                <span content class="accordion-texto">{{ $any(item).conteudo }}</span>
+              </p-accordionTab>
+              <div 
+                class="closed flex align-items-center" 
+                [ngClass]="{ 'opened': activeIndex === index}">
+                <ng-container
+                  [ngTemplateOutlet]="actionsTemplate"
+                  [ngTemplateOutletContext]="{ $implicit: item, index: index }">
+                </ng-container>
+              </div>
+            </ng-container>
+            
+          </p-accordion>
+        </div>
+      </ng-container>
+      
+      <ng-container *ngIf="isPaginated">
+        <div class="wrapper-paginator flex justify-content-center align-items-center">
+          <ng-container *ngIf="!loading">
+            <span class="mr-2">{{ first }}-{{ last }} de {{ total }}</span>
+          </ng-container>
+  
+          <button (click)="handlerPrevPage()" [disabled]="isFirstPage()">
+            <app-icon iconName="chevron_left" iconSize="14px" />
+          </button>
+  
+          <button (click)="handlerNextPage()" [disabled]="isLastPage() || loading">
+            <app-icon iconName="chevron_right" iconSize="14px" />
+          </button>
+        </div>
+      </ng-container>
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="total === 0 && !loading">
+    <ng-container *ngIf="emptyTemplate" [ngTemplateOutlet]="emptyTemplate" />
+  </ng-container>
+
+  <ng-container *ngIf="error">
+    <ng-container *ngIf="errorTemplate" [ngTemplateOutlet]="errorTemplate" />
+  </ng-container>
+</div>

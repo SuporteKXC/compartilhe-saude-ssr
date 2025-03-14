@@ -1,0 +1,59 @@
+<app-page-title
+  class="block mb-4"
+  titulo="Cadastro de cliente"
+  [returnPath]="returnPath"
+  [breadcrumbData]="breadcrumb">
+</app-page-title>
+
+<p-tabView styleClass="tabview-dados-gerais h-full flex flex-column mb-5" id="form-pessoas">
+  <p-tabPanel header="Dados gerais">
+    <ng-template pTemplate="content">
+      <form
+        class="flex flex-column gap-4 mt-3"
+        (submit)="pathId ? onSubmitAtualizar($event) : onSubmitCadastrar($event)">
+        <div class="flex flex-column gap-2">
+          <app-form-modalidade
+            [formGroup]="formService.cadastrarPessoaJuridica"
+            [options]="radioOptions">
+          </app-form-modalidade>
+
+          <app-form-dados-empresa
+            [formGroup]="formService.cadastrarPessoaJuridica" />
+
+          <app-form-endereco
+            [formGroup]="formService.cadastrarEndereco"
+            [data]="cidade"
+            class="mt-2"
+            (changeForm)="$event && formService.save()" />
+        </div>
+
+        <app-button
+          label="Salvar"
+          type="submit"
+          size="small"
+          [loading]="isLoading"
+          [disabled]="formService.isDisableSubmit">
+        </app-button>
+      </form>
+    </ng-template>
+  </p-tabPanel>
+
+  <p-tabPanel header="Beneficiários" *ngIf="false">
+    <ng-template pTemplate="content">
+      <div class="flex align-items-center justify-content-between mt-3">
+        <h3>Meus beneficiários</h3>
+        <app-button
+          label="Adicionar"
+          icon="add"
+          size="large"
+          [outlined]="true">
+        </app-button>
+      </div>
+      <app-button
+        label="Salvar"
+        type="submit"
+        size="small">
+      </app-button>
+    </ng-template>
+  </p-tabPanel>
+</p-tabView>

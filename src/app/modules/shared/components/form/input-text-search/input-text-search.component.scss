@@ -1,0 +1,17 @@
+@import 'variables';
+
+button {
+  cursor: pointer;
+
+  background: none;
+  border: none;
+
+  color: $primary-darker;
+
+  &:disabled {
+    cursor: default;
+    pointer-events: none;
+
+    color: $base-lighter;
+  }
+}

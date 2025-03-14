@@ -1,0 +1,104 @@
+@import 'variables';
+
+$gap: 16px;
+
+.card-produto {
+  background-color: $background-dark;
+
+  border-radius: 10px;
+
+  @media (max-width: $sm) {
+    box-shadow: $elevation-effect-3;
+  }
+
+  &[target="_blank"] {
+    background-color: $background-light;
+  }
+
+  p {
+    font-size: 18px;
+    line-height: 36px;
+  }
+
+  p,
+  a {
+    font-size: 20px;
+    line-height: 16px;
+  }
+
+  a,
+  app-icon {
+    color: $primary-darker;
+  }
+}
+
+.card-produto-odontologia {
+  $gap: 18px;
+
+  margin: 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  text-decoration: none;
+
+  padding: 20px;
+
+  background-color: $background-dark;
+
+  border-radius: 10px;
+
+  @media (max-width: $sm) {
+    box-shadow: $elevation-effect-3;
+  }
+
+  .card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: $gap;
+  }
+
+  .icon {
+    height: 18px;
+  }
+
+  app-icon {
+    $icon-margin-bottom: 12px;
+
+    height: 18px;
+
+    color: $primary-darker;
+    margin-bottom: calc($icon-margin-bottom - $gap);
+  }
+
+  h3 {
+    font-size: 24px;
+    line-height: 18px;
+
+    text-wrap: nowrap;
+  }
+
+  p {
+    font-size: 20px;
+    line-height: 16px;
+  }
+
+  a {
+    color: $primary-darker;
+    font-size: 20px;
+    font-weight: 600;
+    text-decoration: none;
+  }
+}
+
+.compartilhe-sorrisos.card-produto-odontologia {
+  background-color: $background-lighter;
+
+  img,
+  app-icon,
+  a {
+    color: $secondary-darker;
+  }
+}

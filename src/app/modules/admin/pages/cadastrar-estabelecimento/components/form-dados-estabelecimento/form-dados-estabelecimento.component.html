@@ -1,0 +1,63 @@
+<app-form-fieldset titulo="Dados do estabelecimento">
+  <div class="flex flex-column gap-3" [formGroup]="formService.formEstabelecimento">
+    <div class="flex flex-column lg:flex-row w-full gap-2 lg:gap-4">
+      <app-input-text
+        class="w-full required"
+        name="nome"
+        label="Nome"
+        placeholder="Nome"
+        formControlName="nome"
+        autocomplete="off" />
+
+      <app-input-text
+        class="w-full"
+        label="CNPJ"
+        placeholder="CNPJ"
+        name="cnpj"
+        formControlName="cnpj"
+        mask="99.999.999/9999-99"
+        autocomplete="off"
+        [ngClass]="{ 'required': formService.isParceiro}"
+        [customErrors]="cnpjCustomErrors" />
+    </div>
+
+    <div class="flex flex-column lg:flex-row w-full gap-2 lg:gap-4">
+      <app-input-text
+        class="w-full"
+        name="telefone"
+        label="Telefone"
+        [mask]="['(99) 9999-9999', '(99) 99999-9999']"
+        [customErrors]="telefoneCustomErrors"
+        placeholder="Telefone"
+        formControlName="telefone"
+        autocomplete="off" />
+
+      <app-input-text
+        class="w-full"
+        name="email"
+        label="E-mail"
+        placeholder="E-mail"
+        formControlName="email"
+        autocomplete="off" />
+    </div>
+
+    <app-input-text
+      class="w-full"
+      name="pessoa-contato"
+      label="Pessoa de contato"
+      placeholder="Pessoa de contato"
+      tooltipContent="Indique aqui o nome da pessoa de contato para assuntos administrativos."
+      formControlName="nomeContato"
+      autocomplete="off" />
+
+    <app-input-text
+      class="w-full"
+      name="path-img"
+      label="Link da imagem"
+      placeholder="Link da imagem"
+      tooltipContent="Adicione a imagem no banco e depois copie e cole o link aqui para exibição."
+      formControlName="pathImagem"
+      autocomplete="off"
+      [customErrors]="linkImageCustomErrors" />
+  </div>
+</app-form-fieldset>

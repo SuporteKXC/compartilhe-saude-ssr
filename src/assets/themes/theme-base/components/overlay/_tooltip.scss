@@ -1,0 +1,11 @@
+.p-tooltip {
+    .p-tooltip-text {
+        min-width: 200px;
+        max-width: 500px;
+        background: $background-darker;
+        color: $secondary-darker;
+        padding: $tooltipPadding;
+        box-shadow: $inputOverlayShadow;
+        border-radius: $borderRadius;
+    }
+}

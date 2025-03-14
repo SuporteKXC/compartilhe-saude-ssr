@@ -1,0 +1,25 @@
+<p-dialog
+  class="error-modal"
+  [(visible)]="visible"
+  [modal]="true"
+  [style]="{ width: 'clamp(250px, 30vw, 500px)' }"
+  [draggable]="false"
+  [resizable]="false"
+  (onHide)="showNextError()">
+  <div class="content flex flex-column gap-2 align-items-center justify-content-center">
+    <ng-container *ngIf="titulo">
+      <strong class="text-center">{{ titulo }}</strong>
+      <p class="text-center">{{ mensagem }}</p>
+    </ng-container>
+
+    <ng-container *ngIf="!titulo">
+      <strong class="text-center">{{ mensagem }}</strong>
+    </ng-container>
+    
+    <ng-container *ngIf="redirectLogin">
+      <app-button-login class="text-center">
+        <span class="link-login" content>{{ redirectLogin }}</span>
+      </app-button-login>
+    </ng-container>
+  </div>
+</p-dialog>

@@ -1,0 +1,97 @@
+<section
+  class="col-12 md:col-6 wrapper-formulario flex flex-column align-items-center justify-content-between">
+  <div class="flex flex-column align-items-center w-full">
+    <a routerLink="">
+      <img
+        [src]="pathImage + 'assets/Images/logo-compartilhe.png'"
+        alt="Logo Compartilhe Saúde"
+        title="Compartilhe Saúde" />
+    </a>
+
+    <h3>Cadastre-se para acessar nossos benefícios</h3>
+
+    <form [formGroup]="preCadastroFormService.formUsuario" (submit)="submitEvent()">
+      <app-input-text
+        name="nome"
+        label="Nome"
+        [labelSrOnly]="true"
+        placeholder="Digite aqui seu nome"
+        formControlName="nome"
+        icon="account_circle"
+        maxlength="70"
+        errorMarginBottom="-4px"></app-input-text>
+
+        <app-input-text
+        name="contato-whatsapp"
+        label="Whatsapp"
+        [customErrors]="contatoWhatsappCustomErrors"
+        [labelSrOnly]="true"
+        placeholder="Digite aqui seu Whatsapp"
+        formControlName="contatoWhatsapp"
+        icon="call"
+        [mask]="['(99) 9999-9999', '(99) 99999-9999']"
+        errorMarginBottom="-4px"></app-input-text>
+
+      <app-input-text
+        name="cpf"
+        label="CPF"
+        [customErrors]="cpfCustomErrors"
+        mask="999.999.999-99"
+        [labelSrOnly]="true"
+        placeholder="Digite aqui seu CPF"
+        formControlName="cpf"
+        icon="badge"
+        errorMarginBottom="-4px"></app-input-text>
+
+      <app-input-text
+        name="data-nascimento"
+        label="Data de nascimento"
+        [customErrors]="dataNascimentoCustomErrors"
+        mask="99/99/9999"
+        [labelSrOnly]="true"
+        placeholder="Digite aqui sua data de nascimento"
+        formControlName="dataNascimento"
+        icon="calendar_month"
+        errorMarginBottom="-4px"></app-input-text>
+
+      <app-input-text
+        name="email"
+        label="E-mail"
+        [labelSrOnly]="true"
+        placeholder="Digite aqui seu e-mail"
+        formControlName="email"
+        icon="mail"
+        errorMarginBottom="-4px"></app-input-text>
+
+      <app-input-checkbox name="aceite-termo" formControlName="aceiteTermo">
+        <span class="termos">
+          Eu aceito os
+          <a
+            [href]="pathImage + 'assets/PDF/termos_e_condicoes.pdf'"
+            target="_blank"
+            rel="noreferrer noopener"
+            >termos e condições</a
+          >
+        </span>
+      </app-input-checkbox>
+
+      <app-button
+        [disabled]="!preCadastroFormService.formUsuario.valid"
+        label="Cadastrar"
+        type="submit"
+        size="small"
+        [expand]="true"
+        [loading]="loading"></app-button>
+    </form>
+  </div>
+
+  <div class="links flex flex-column w-full mt-4 mb-5">
+    <app-button-login>
+      <span class="block" content>Já tem uma conta? Clique aqui para entrar</span>
+    </app-button-login>
+
+    <a routerLink="">Voltar para a pagina inicial</a>
+  </div>
+
+  <app-aviso-recaptcha />
+</section>

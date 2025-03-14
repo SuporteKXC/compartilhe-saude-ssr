@@ -1,0 +1,81 @@
+<nav class="w-full fixed" [ngClass]="{ 'compartilhe-sorrisos': isOdontologia }">
+  <div class="h-full flex justify-content-between align-items-center lg:gap-5">
+    <button
+      class="surface-section cursor-pointer border-none xl:hidden"
+      *ngIf="menuItems"
+      aria-label="menu"
+      (click)="toggleMenu()"
+      data-testid="botao-menu">
+      <app-icon iconName="menu" verticalAlign="middle" />
+    </button>
+
+    <a [routerLink]="getLink()" [title]="imgData.title" id="barra-navegacao-image">
+      <img
+        class="hidden xl:flex align-items-center"
+        [src]="pathImage + imgData.src"
+        [alt]="imgData.alt"
+        width="232"
+        height="53">
+
+      <img
+        class="flex xl:hidden align-items-center"
+        [src]="pathImage + imgData.src"
+        [alt]="imgData.alt"
+        width="162"
+        height="36">
+    </a>
+
+    <div 
+      *ngIf="isConnectSaude; else defaultNavigation" 
+      class="xl:w-full flex align-items-center gap-4 justify-content-end">
+      <app-desktop-links
+        class="hidden xl:block"
+        [menuItems]="connectSaudeItems"
+        [activeRoute]="activeRoute">
+      </app-desktop-links>
+    </div>
+
+    <ng-template #defaultNavigation>
+      <div class="xl:w-full flex align-items-center gap-3">
+        <app-desktop-links
+          class="w-full hidden xl:block"
+          [menuItems]="menuItems"
+          [userItems]="userItems"
+          [activeRoute]="activeRoute"
+          [isOdontologia]="isOdontologia"
+          [isConnectSaude]="isConnectSaude"
+          [user]="user"
+          (sair)="logout()">
+        </app-desktop-links>
+
+        <app-carrinho
+          [severity]="isOdontologia ? 'secondary' : 'primary'"
+          (handleClick)="navigateToCarrinho()" />
+      </div>
+    </ng-template>
+  </div>
+</nav>
+
+<app-sidebar
+  [ngClass]="{ 'compartilhe-sorrisos': isOdontologia }"
+  class="xl:hidden"
+  [visible]="isVisible"
+  [template]="mobileLinksTemplate"
+  (hide)="toggleMenu()">
+</app-sidebar>
+
+<ng-template #mobileLinksTemplate>
+  <div class="w-full flex flex-column align-items-center gap-4">
+    <app-mobile-links
+      [menuItems]="isConnectSaude ? connectSaudeItems : menuItems"
+      [userItems]="!isConnectSaude ? userItems : []"
+      [activeRoute]="activeRoute"
+      [accordionFix]="accordionFix"
+      [accordionAnimation]="accordionAnimation"
+      [isOdontologia]="isOdontologia"
+      [isConnectSaude]="isConnectSaude"
+      [user]="user"
+      (linkSelected)="toggleMenu()">
+    </app-mobile-links>
+  </div>
+</ng-template>

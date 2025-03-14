@@ -1,0 +1,63 @@
+<app-table
+  #table
+  description="Lista de pedidos"
+  [data]="parceiros"
+  [total]="totalParceiros"
+  [(page)]="page"
+  [size]="pageSize"
+  [loading]="isLoading"
+  [headerTemplate]="headerTemplate"
+  [bodyTemplate]="bodyTemplate"
+  [loadingTemplate]="loadingTemplate"
+  [actionsTemplate]="actionsTemplate"
+  [emptyTemplate]="emptyTemplate"
+  [tableStyle]="{'min-width': '320px'}"
+  (nextPage)="getPageParceiros()">
+</app-table>
+
+<ng-template #headerTemplate>
+  <th [style]="{ maxWidth: '89px' }">ID</th>
+  <th [style]="{ maxWidth: '220px' }">Nome</th>
+  <th [style]="{ maxWidth: '151px' }">Categoria</th>
+  <th [style]="{ maxWidth: '257px' }">Subcategoria</th>
+  <th [style]="{ maxWidth: '79px' }">Situação</th>
+</ng-template>
+
+<ng-template #bodyTemplate let-item let-position="index">
+  <td [style]="{ maxWidth: '89px' }">{{ item.id }}</td>
+  <td [style]="{ maxWidth: '220px' }">
+    <span>{{ item.nome }}</span>
+  </td>
+  <td [style]="{ maxWidth: '151px' }">{{ item.descricaoCategoria }}</td>
+  <td [style]="{ maxWidth: '257px' }">{{ item.descricaoSubcategorias | joinString }}</td>
+  <ng-container>
+    <td [style]="{ maxWidth: '79px' }">{{ item.ativo ? 'Ativo' : 'Inativo' }}</td>
+  </ng-container>
+</ng-template>
+
+<ng-template #loadingTemplate>
+  <td><p-skeleton width="41px" height="15px"></p-skeleton></td>
+  <td><p-skeleton width="132px" height="15px"></p-skeleton></td>
+  <td><p-skeleton width="132px" height="15px"></p-skeleton></td>
+  <td><p-skeleton width="59px" height="15px"></p-skeleton></td>
+  <td><p-skeleton width="59px" height="15px"></p-skeleton></td>
+  <td class="flex justify-content-center gap-2">
+    <p-skeleton shape="circle" width="18px" height="18px" styleClass="mx-auto" />
+    <p-skeleton shape="circle" width="18px" height="18px" styleClass="mx-auto" />
+  </td>
+</ng-template>
+
+<ng-template #actionsTemplate let-item let-position="index">
+  <app-button
+    icon="edit"
+    size="small"
+    [text]="true"
+    (handleClick)="navigateToEdicaoParceiro(item.id, item.descricaoCategoria)" />
+</ng-template>
+
+<ng-template #emptyTemplate>
+  <app-error-no-results
+    header="Não localizamos parceiros para serem exibidos."
+    description="Verifique os filtros informados."
+    iconName="receipt_long" />
+</ng-template>

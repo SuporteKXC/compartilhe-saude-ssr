@@ -1,0 +1,18 @@
+<p-dialog [modal]="true" [(visible)]="visible" id="form-modal">
+  <app-page-title [titulo]="titulo" (handleClick)="closeModal()" />
+  <div class="flex flex-column gap-4 mt-5" [formGroup]="formGroup">
+
+    <ng-content />
+
+    <ng-container *ngIf="saveAction">
+      <app-button
+        label="Salvar"
+        type="button"
+        size="small"
+        (handleClick)="saveEvent()"
+        [disabled]="!formGroup.valid"
+        class="mt-3" >
+      </app-button>
+    </ng-container>
+  </div>
+</p-dialog>

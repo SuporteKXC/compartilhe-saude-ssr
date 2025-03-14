@@ -1,0 +1,81 @@
+@import 'variables';
+
+h3 {
+  margin-block: 16px;
+
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.item-container {
+  color: $secondary-darker;
+
+  img {
+    width: 57px;
+    height: 48px;
+
+    border-radius: 10px;
+  }
+
+  header {
+    h4 {
+      font-size: 16px;
+      font-weight: 700;
+
+      line-height: 24px;
+    }
+
+    p {
+      font-weight: 400;
+      font-size: 16px;
+    }
+  }
+
+  main {
+    > div {
+      font-size: 16px;
+      line-height: 24px;
+
+      b {
+        font-weight: 600;
+      }
+    }
+  }
+
+  footer .wrapper-item-content {
+    @media (min-width: $xl) {
+      margin-left: 72px;
+    }
+
+    h5 {
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    > div {
+      display: flex;
+      align-items: center;
+
+      gap: 8px;
+
+      > div {
+        display: flex;
+        flex-direction: column;
+
+        font-size: 16px;
+
+        strong {
+          font-weight: 500;
+        }
+      }
+
+      .location-icon {
+        color: $primary-darker;
+      }
+    }
+  }
+
+  footer + div {
+    margin-top: 16px;
+  }
+}

@@ -1,0 +1,15 @@
+<div class="flex gap-3">
+  <ng-container *ngFor="let item of data; index as i">
+    <div class="flex items-center">
+      <p-checkbox 
+        [inputId]="name + i" 
+        [name]="name + i"
+        [value]="item.value"
+        [formControl]="control"
+        (onChange)="handleChangeEvent($event)" >
+      </p-checkbox>
+      <label [for]="name + i" class="ml-2">{{ item.label }}</label>
+    </div>
+  </ng-container>
+</div>
+

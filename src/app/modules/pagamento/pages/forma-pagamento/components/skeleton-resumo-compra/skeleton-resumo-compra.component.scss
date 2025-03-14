@@ -1,0 +1,116 @@
+@import 'variables';
+
+.wrapper-resumo {
+  width: 100%;
+  box-shadow: $elevation-effect-2;
+  border-radius: 10px;
+  padding: 16px 12px;
+  margin-top: 16px;
+
+  @media (min-width: $xl) {
+    padding: 16px;
+  }
+
+  .skeleton-img {
+    width: 52px;
+    height: 48px;
+    border-radius: 10px;
+    background-color: $background-darker;
+
+    @media (min-width: $xl) {
+      width: 80px;
+      height: 61px;
+    }
+  }
+
+  .descricao {
+    margin-bottom: 12px;
+
+    p-skeleton {
+      width: 100px;
+      height: 12px;
+      background-color: $background-lighter;
+
+      @media (min-width: $xl) {
+        width: 150px;
+        height: 14px;
+      }
+    }
+  }
+
+  .valores {
+    p-skeleton {
+      width: 80px;
+      height: 21px;
+      background-color: $background-lighter;
+
+      @media (min-width: $xl) {
+        width: 100px;
+        height: 24px;
+      }
+    }
+  }
+
+  .localidade {
+    p-skeleton {
+      width: 140px;
+      height: 21px;
+      background-color: $background-lighter;
+
+      @media (min-width: $xl) {
+        width: 160px;
+        height: 24px;
+      }
+    }
+
+    p-skeleton + p-skeleton {
+      width: 100px;
+      height: 12px;
+      background-color: $background-lighter;
+
+      @media (min-width: $xl) {
+        width: 120px;
+        height: 14px;
+      }
+    }
+
+    .skeleton-icon {
+      width: 18px;
+      height: 18px;
+      background-color: $background-lighter;
+
+      @media (min-width: $xl) {
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
+}
+
+.skeleton-total {
+  margin-top: 20px;
+
+  p-skeleton {
+    width: 347px;
+    height: 60px;
+    border-radius: 10px 0px 0px 0px;
+    opacity: 0.5;
+  }
+}
+
+.skeleton-button {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+
+  p-skeleton {
+    width: 163px;
+    height: 35px;
+    padding: 10px 12px;
+    gap: 5px;
+    border-radius: 6px 0px 0px 0px;
+    opacity: 0.5;
+  }
+}
+
+

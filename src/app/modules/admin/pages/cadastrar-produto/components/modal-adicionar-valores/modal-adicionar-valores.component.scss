@@ -1,0 +1,49 @@
+@import 'variables';
+
+.container-valores {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  column-gap: 22px;
+  row-gap: 20px;
+}
+
+::ng-deep #modal-valores {
+  .p-dialog[aria-modal='true'] {
+    margin-top: 52px;
+    align-self: start;
+
+    @media (min-width: $lg) {
+      width: 67%;
+    }
+
+    h2 {
+      font-size: 24px;
+      line-height: 24px;
+    }
+
+    app-page-title h2 {
+      font-size: 36px;
+      line-height: 36px;
+    }
+
+    .p-dialog-header {
+      display: none;
+    }
+
+    .p-dialog-content {
+      padding: 24px;
+      border-radius: 0;
+      width: 300px;
+
+      @media (min-width: $lg) {
+        width: 100%;
+      }
+    }
+  }
+
+  .p-inputtext:disabled {
+    color: #424242;
+    font-weight: 500;
+  }
+}

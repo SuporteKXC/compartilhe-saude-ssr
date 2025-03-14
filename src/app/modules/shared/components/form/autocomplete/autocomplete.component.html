@@ -1,0 +1,36 @@
+<span class="flex flex-column">
+  <label *ngIf="label" [htmlFor]="name" [ngClass]="{ 'p-sr-only': labelSrOnly }">{{ label }}</label>
+
+  <span class="input-container" *ngIf="group" [formGroup]="group">
+    <p-autoComplete
+      [disabled]="disabled"
+      [formControl]="control"
+      [inputId]="name"
+      [name]="name"
+      [placeholder]="placeholder"
+      field="itemLabel"
+      appendTo="body"
+      [styleClass]="getControlStateClasses()"
+      [emptyMessage]="emptyMessage"
+      [showEmptyMessage]="!!emptyMessage"
+      [suggestions]="suggestions"
+      [forceSelection]="forceSelection"
+      [autocomplete]="autocomplete"
+      (completeMethod)="completeMethod.emit($event)"
+      (onSelect)="onItemSelect($event)"
+      (onBlur)="onTouched()">
+
+      <ng-template *ngIf="suggestionTemplate" let-item pTemplate="item">
+        <ng-container
+          [ngTemplateOutlet]="suggestionTemplate"
+          [ngTemplateOutletContext]="{ $implicit: item }" />
+      </ng-template>
+    </p-autoComplete>
+
+    <i>
+      <app-icon *ngIf="!!icon" [iconName]="icon" verticalAlign="baseline"></app-icon>
+    </i>
+  </span>
+
+  <small *ngIf="errorMessage">{{ errorMessage }}</small>
+</span>

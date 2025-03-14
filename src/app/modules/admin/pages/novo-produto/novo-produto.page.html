@@ -1,0 +1,38 @@
+<app-page-title 
+  titulo="Cadastro de Produtos Compartilhe" 
+  [returnPath]="['/', 'admin', 'dashboard', 'produtos-compartilhe']" >
+</app-page-title>
+
+<section>
+  <h3 class="titulo mb-4">Informe o tipo de produto</h3>
+  <form
+    class="flex flex-column gap-3"
+    [formGroup]="formTipo"
+    (ngSubmit)="onSubmit()">
+    <ng-container *ngFor="let option of options">
+      <app-radio-panel
+        formControlName="tipo"
+        label="tipo produto"
+        [name]="'tipo-' + option.value"
+        [option]="option"
+        [template]="content"
+        [disabled]="!enabledPaths.includes(option.label)">
+      </app-radio-panel>
+    </ng-container>
+
+    <app-button
+      class="align-self-end mt-3"
+      label="Continuar"
+      type="submit"
+      size="small"
+      id="submit-selecionar-unidade"
+      [disabled]="!formTipo.valid">
+    </app-button>
+  </form>
+</section>
+
+<ng-template #content let-option>
+  <div class="flex flex-column">
+    <p class="texto font-medium">{{ option.label }}</p>
+  </div>
+</ng-template>

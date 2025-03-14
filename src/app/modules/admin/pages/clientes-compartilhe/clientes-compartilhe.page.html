@@ -1,0 +1,57 @@
+<header class="flex justify-content-between align-items-end">
+  <app-page-title
+    titulo="Clientes Compartilhe"
+    [returnPath]="['/', 'admin', 'dashboard']"
+    [breadcrumbData]="breadcrumb" >
+  </app-page-title>
+
+  <app-button 
+    label="Novo Cliente" 
+    icon="add" 
+    [outlined]="true"
+    (handleClick)="toggleModal()" />
+</header>
+
+<main class="mt-5">
+  <app-filtro-clientes-compartilhe (shouldSearchAgain)="shouldSearchAgain$.next()" />
+  <app-tabela-clientes-compartilhe [shouldSearchAgain$]="shouldSearchAgain$" />
+</main>
+
+<app-modal 
+  [(visible)]="visible" 
+  [closable]="false"
+  [headerTemplate]="header"
+  [contentTemplate]="content">
+  <ng-template #header>
+    <div class="w-full px-4 pt-4">
+      <app-page-title titulo="Novo Cliente" (handleClick)="toggleModal()" />
+    </div>
+  </ng-template>
+
+  <ng-template #content>
+    <div class="flex justify-content-between gap-4 m-4">
+      <div class="card flex flex-column gap-3">
+        <p>
+          <app-icon iconName="person" verticalAlign="bottom" class="mr-2" />
+          <span>Pessoa Física</span>
+        </p>
+        <app-button 
+          label="Cadastrar" 
+          [expand]="true"
+          (handleClick)="cadastrar(tipoCliente.PESSOA_FISICA)" />
+      </div>
+      
+      <div class="card flex flex-column gap-3">
+        <p>
+          <app-icon iconName="group" verticalAlign="bottom" class="mr-2" />
+          <span>Pessoa Jurídica</span>
+        </p>
+        <app-button 
+          label="Cadastrar" 
+          [expand]="true"
+          (handleClick)="cadastrar(tipoCliente.PESSOA_JURIDICA)" />
+      </div>
+    </div>
+  </ng-template>
+</app-modal>
+

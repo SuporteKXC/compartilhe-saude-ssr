@@ -1,0 +1,60 @@
+<app-table
+  #table
+  description="Lista de pedidos"
+  [data]="pedidos"
+  [total]="totalPedidos"
+  [(page)]="page"
+  [size]="pageSize"
+  [loading]="isLoading"
+  [headerTemplate]="headerTemplate"
+  [bodyTemplate]="bodyTemplate"
+  [loadingTemplate]="loadingTemplate"
+  [actionsTemplate]="actionsTemplate"
+  [emptyTemplate]="emptyTemplate"
+  [tableStyle]="{'min-width': '320px'}"
+  (nextPage)="getPagePedidos()">
+</app-table>
+
+<ng-template #headerTemplate>
+  <th [style]="{ width: '157px'}">Número do pedido</th>
+  <th [style]="{ minWidth: '192px'}">Nome</th>
+  <th [style]="{ minWidth: '134px'}">CPF</th>
+  <th [style]="{ width: '154px'}">Status</th>
+  <th [style]="{ minWidth: '110px'}">Data do pedido</th>
+</ng-template>
+
+<ng-template #bodyTemplate let-item let-position="index">
+  <td class="font-semibold">{{ item.id }}</td>
+  <td [style]="{ minWidth: '192px' }">{{ item.nome }}</td>
+  <td>{{ item.cpf | mask : '999.999.999-99' }}</td>
+  <ng-container [ngSwitch]="item.status">
+    <td *ngSwitchCase="StatusPedido.PAGO">Pago</td>
+    <td *ngSwitchCase="StatusPedido.AGUARDA_PAGAMENTO">Aguardando Pagamento</td>
+    <td *ngSwitchDefault>Expirado</td>
+  </ng-container>
+  <td>{{ item.dataHoraInclusao | date : 'dd/MM/yyyy' }}</td>
+</ng-template>
+
+<ng-template #loadingTemplate>
+  <td><p-skeleton width="114px" height="15px"></p-skeleton></td>
+  <td><p-skeleton width="137px" height="15px"></p-skeleton></td>
+  <td><p-skeleton width="102px" height="15px"></p-skeleton></td>
+  <td><p-skeleton width="45px" height="15px"></p-skeleton></td>
+  <td><p-skeleton width="94px" height="15px"></p-skeleton></td>
+  <td><p-skeleton shape="circle" width="18px" height="18px" styleClass="mx-auto" /></td>
+</ng-template>
+
+<ng-template #actionsTemplate let-item let-position="index">
+  <app-button
+    icon="visibility"
+    size="small"
+    [text]="true"
+    (handleClick)="navigateToDetalhesPedido(item.id)" />
+</ng-template>
+
+<ng-template #emptyTemplate>
+  <app-error-no-results
+    header="Não localizamos pedidos para serem exibidos."
+    description="Verifique os filtros informados."
+    iconName="receipt_long" />
+</ng-template>

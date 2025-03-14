@@ -1,0 +1,11 @@
+<section class="relative pt-4">
+  <div class="background absolute w-screen h-full"></div>
+
+  <h2>Nossos Serviços</h2>
+
+  <app-carousel [items]="produtos" [itemTemplate]="cardNossosProdutos" class="compartilhe-sorrisos" />
+
+  <ng-template #cardNossosProdutos let-produto>
+    <app-card-nossos-produtos [dataOdonto]="produto" class="block compartilhe-sorrisos" height="300px"/>
+  </ng-template>
+</section>

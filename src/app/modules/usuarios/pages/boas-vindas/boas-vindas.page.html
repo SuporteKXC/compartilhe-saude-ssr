@@ -1,0 +1,30 @@
+<main class="flex align-items-center w-screen h-screen">
+  <div class="content flex flex-column lg:flex-row lg:align-items-center">
+    <figure>
+      <img
+        [src]="pathImage + '/assets/Images/usuarios/boas-vindas.png'"
+        alt="Mulher branca, jovem, de cabelos longos e escuros, sorrindo.
+          Está segurando uma pasta azul com o logo da compartilhe saúde."
+        data-testid="image" 
+        class="w-full h-full"/>
+    </figure>
+
+    <div class="container flex flex-column">
+      <div class="container-textos">
+        <h1 data-testid="title">Que bom ter você conosco!</h1>
+
+        <p>
+          Agora você já faz parte da comunidade Compartilhe Saúde, em breve uma de nossas
+          consultoras irá entrar em contato com você!
+        </p>
+      </div>
+
+      <div class="flex flex-column text-center lg:mt-5 lg:pl-5">
+        <a class="text-center lg:pl-5" routerLink="" data-testid="anchor">Voltar para a pagina inicial</a>
+        <app-button-login class="flex justify-content-center lg:pl-5">
+          <span content>Fazer Login</span>
+        </app-button-login>
+      </div>
+    </div>
+  </div>
+</main>

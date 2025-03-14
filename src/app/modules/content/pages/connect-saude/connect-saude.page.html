@@ -1,0 +1,10 @@
+<app-button-whatsapp />
+<main class="w-full flex flex-column">
+  <app-secao-destaque />
+  <app-secao-planos-precos id="planos" />
+  <app-secao-mais-servicos />
+
+  <div class="container-perguntas" id="perguntas" *ngIf="perguntas.length > 0">
+    <app-accordion-faq [data]="perguntas"></app-accordion-faq>
+  </div>
+</main>

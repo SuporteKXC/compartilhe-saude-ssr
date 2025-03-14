@@ -1,0 +1,16 @@
+@import 'variables';
+
+.depoimentos {
+  h2 {
+    margin-bottom: 40px;
+    color: $secondary-darker;
+  }
+}
+
+@media (max-width: $md) {
+  .depoimentos {
+    h2 {
+      margin-bottom: 20px;
+    }
+  }
+}

@@ -1,0 +1,61 @@
+@import 'variables';
+
+.wrapper-valores {
+  background: $primaryTextColor;
+  box-shadow: $elevation-effect-2;
+  border-radius: 10px;
+
+  padding: 16px;
+
+  @media (min-width: $lg) {
+    padding: 24px;
+  }
+}
+
+.wrapper-buttons {
+  margin-top: 30px;
+
+  a {
+    color: $primary-darker;
+
+    font-size: 16px;
+    
+    line-height: 22px;
+  }
+}
+
+.subtotal {
+  span {
+    font-size: 16px;
+
+    line-height: 22px;
+  }
+}
+
+.total {
+  span {
+    font-size: 20px;
+    font-weight: 600;
+
+    line-height: 27px;
+  }
+
+  .valor {
+    font-weight: 700;
+    color: $primary-darker;
+  }
+}
+
+:host ::ng-deep .wrapper-valores #cupom {
+  app-input-text {
+    width: 100%;
+  }
+  
+  .p-inputtext {
+    width: 150px;
+
+    @media (min-width: $xl) {
+      width: 100%;
+    }
+  }
+}

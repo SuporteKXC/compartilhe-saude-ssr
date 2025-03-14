@@ -1,0 +1,29 @@
+<section>
+  <div class="content">
+    <h2>Perguntas frequentes</h2>
+    <div class="w-full mt-5">
+      <p-accordion
+        id="accordion-component"
+        (onOpen)="setOpenedTab($event.index)"
+        (onClose)="openedTab = null">
+        <ng-container *ngFor="let faq of data; let index = index">
+          <p-accordionTab [header]="faq.pergunta">
+            <ng-template pTemplate="icon">
+              <app-icon
+                class="p-icon-wrapper"
+                iconSize="32px"
+                [iconName]="openedTab === index ? 'keyboard_arrow_down' : 'keyboard_arrow_up'">
+              </app-icon>
+            </ng-template>
+
+            <div class="flex flex-column gap-1">
+              <ng-container *ngFor="let textos of getConteudo(faq.resposta)">
+                <p class="texto" [innerHTML]="sanitizerHtml(textos)"></p>
+              </ng-container>
+            </div>
+          </p-accordionTab>
+        </ng-container>
+      </p-accordion>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,26 @@
+@import 'variables';
+
+::ng-deep #breadcrumb {
+  .p-breadcrumb {
+    background-color: transparent;
+    border: none;
+    padding-inline: 0;
+    padding-top: 8px;
+    padding-bottom: 8px;
+
+    .p-breadcrumb-list {
+      li:not(:last-child) span {
+        color: $primary-darker;
+        text-decoration: underline;
+      }
+
+      li:last-child span {
+        color: $base-darker;
+      }
+
+      li.p-menuitem-separator {
+        padding-inline: 8px;
+      }
+    }
+  }
+}

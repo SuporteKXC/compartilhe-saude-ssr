@@ -1,0 +1,236 @@
+@import 'variables';
+
+@mixin cardStyle() {
+  border-radius: 10px;
+  box-shadow: $elevation-effect-2;
+
+  h1 {
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  h2 {
+    font-size: 14px;
+  }
+
+  strong {
+    font-size: 12px;
+    font-weight: 500;
+    color: $secondary-darker;
+  }
+
+  p {
+    font-size: 12px;
+  }
+
+  footer {
+    display: flex;
+    justify-content: space-between;
+
+    p {
+        text-wrap: unset;
+    }
+
+    .atendimento {
+      display: flex;
+      align-items: center;
+
+      gap: 8px;
+
+      > div {
+        display: flex;
+        flex-direction: column;
+       }
+
+      .location-icon {
+          color: $primary-darker;
+      }
+
+      .profissionalAtendimento {
+        width: 40%;
+      }
+    }
+  }
+
+
+  // mobile
+  @media (max-width: $xl) {
+    display: flex;
+    flex-direction: column;
+
+    padding: 16px;
+
+    img {
+      width: 52px;
+      height: 48px;
+
+      border-radius: 10px;
+
+      object-fit: cover;
+    }
+
+    main {
+      display: flex;
+      gap: 16px;
+    }
+
+    footer {
+      margin-top: 12px;
+    }
+  }
+
+  // desktop
+  @media (min-width: $xl) {
+    position: relative;
+
+    display: flex;
+    flex-direction: row;
+
+    padding: 24px;
+
+    .main-content {
+      width: 65%;
+
+      img {
+        width: 106px;
+        height: 90px;
+
+        border-radius: 10px;
+
+        object-fit: cover;
+      }
+
+      main {
+        display: flex;
+        gap: 16px;
+      }
+    }
+
+    footer {
+      margin-top: 24px;
+    }
+
+    .side-column {
+
+      .extra-info {
+        justify-content: space-between;
+
+        margin-top: 27px;
+      }
+    }
+
+    .delete-button {
+      position: absolute;
+      top: 10px;
+      right: 16px;
+
+      &.remover-disabled {
+        pointer-events: none;
+        color: $base-lighter;
+      }
+    }
+  }
+}
+
+:host ::ng-deep .skeleton-img {
+  @media (min-width: $xl) {
+    width: 106px !important;
+    height: 90px !important;
+  }
+}
+
+.card {
+  @media (min-width: $xl) {
+    @include cardStyle();
+  }
+}
+
+.card-mobile {
+  @media (max-width: $xl) {
+    @include cardStyle();
+  }
+}
+
+.carrinho-qtd {
+  width: 24px;
+  text-align: center;
+
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.side-column {
+  @media (max-width: $xl) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-top: 24px;
+  }
+}
+
+.extra-info {
+  height: fit-content;
+
+  display: flex;
+  align-items: center;
+  gap: 32px;
+
+  @media (max-width: $xl) {
+    gap: 2px;
+    width: 240px;
+    justify-content: space-between;
+  }
+
+  .qtd-controls {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    color: $primary-darker;
+  }
+
+  strong {
+    font-size: 20px;
+    font-weight: 600;
+  }
+}
+
+:host ::ng-deep .botao-qtd-control {
+  width: 34px;
+  height: 34px;
+
+  justify-content: center;
+
+  padding: 0;
+
+  &:disabled {
+    background-color: $background-lighter;
+    color: $base-lighter;
+    border-color: $base-lighter;
+  }
+
+  app-icon {
+    padding: 0 !important;
+
+    span {
+      $iconSize: 20px;
+
+      width: $iconSize;
+      height: $iconSize;
+
+      font-size: $iconSize;
+    }
+  }
+}
+
+.delete-button {
+  cursor: pointer;
+
+  color: $primary-darker;
+
+  &:hover {
+    color: $primary-dark;
+  }
+}

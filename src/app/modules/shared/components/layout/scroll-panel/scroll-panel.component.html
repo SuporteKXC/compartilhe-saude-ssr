@@ -1,0 +1,13 @@
+<ng-container *ngIf="isBrowser">
+  <p-scrollPanel 
+    class="scroll-desktop" 
+    [styleClass]="className" 
+    *ngIf="scroll" 
+    [style]="style">
+    <ng-container *ngIf="scroll" [ngTemplateOutlet]="contentTemplate" />
+  </p-scrollPanel>
+
+  <ng-container *ngIf="!scroll" [ngTemplateOutlet]="contentTemplate" />
+</ng-container>
+
+

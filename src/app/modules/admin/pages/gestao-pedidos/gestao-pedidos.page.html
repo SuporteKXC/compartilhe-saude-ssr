@@ -1,0 +1,8 @@
+<app-page-title 
+    titulo="Gestão de Pedidos" 
+    [returnPath]="['/', 'admin', 'dashboard']"
+    [breadcrumbData]="breadcrumb" />
+
+<app-filtros-pedidos (shouldSearchAgain)="shouldSearchAgain$.next()" />
+
+<app-tabela-pedidos [shouldSearchAgain$]="shouldSearchAgain$" />

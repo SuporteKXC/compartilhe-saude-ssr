@@ -1,0 +1,23 @@
+<section>
+  <div>
+    <h2 class="p-sr-only">Linha do Tempo</h2>
+  
+    <div *ngIf="!shouldShowCarousel" class="timeline">
+      <ng-container *ngFor="let item of timelineItems; index as i">
+        <app-timeline-section
+          class="lg:w-full"
+          [text]="item.text"
+          [year]="item.year"
+          [img]="item.img"
+          [altImg]="item.altImg"
+          [imageAtTop]="i % 2 === 1">
+        </app-timeline-section>
+      </ng-container>
+    </div>
+  
+    <app-timeline-carousel
+      *ngIf="shouldShowCarousel"
+      [timelineItems]="timelineItems">
+    </app-timeline-carousel>
+  </div>
+</section>

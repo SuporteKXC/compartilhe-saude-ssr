@@ -1,0 +1,29 @@
+<form
+  [formGroup]="formFiltro.group"
+  class="grid grid-nogutter justify-content-between gap-3 mb-4 w-full">
+  <app-input-text-search
+    class="col-12 lg:col-7 p-0 flex-1"
+    name="busca"
+    formControlName="busca"
+    autocomplete="off"
+    label="Digite a pergunta ou palavra chave"
+    placeholder="Digite a pergunta ou palavra chave"
+    [labelSrOnly]="true" />
+
+  <app-select
+    class="col-7 lg:col-3 p-0"
+    label="Categoria"
+    name="categoria"
+    formControlName="categoria"
+    placeholder="Categoria"
+    [options]="categorias"
+    [labelSrOnly]="true"
+    [showClear]="true" />
+
+  <app-button
+    class="align-self-center sm:col-4 lg:w-fit p-0"
+    [expand]="true"
+    label="Buscar"
+    [disabled]="!formFiltro.isValid"
+    (handleClick)="shouldSearchAgain.emit()" />
+</form>

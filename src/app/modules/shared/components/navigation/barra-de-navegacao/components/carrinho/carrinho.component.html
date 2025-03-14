@@ -1,0 +1,14 @@
+<ng-container *ngIf="totalItems !== undefined">
+  <button
+    class="border-none p-0 flex justify-content-center align-items-center"
+    [ngClass]="severity"
+    (click)="handleClickEvent()">
+    <p-badge *ngIf="totalItems > 0" [value]="totalItems.toString()" />
+    <app-icon
+      iconName="shopping_cart"
+      iconSize="20px"
+      display="inline-block"
+      title="Carrinho"
+      [ngClass]="severity" />
+  </button>
+</ng-container>

@@ -1,0 +1,123 @@
+@import 'variables';
+@import 'mixins';
+
+section {
+  $patternPaddingMobile: 32px;
+  $patternPaddingDesktop: 32px;
+
+  @include mainPadding(0, $horizontal-padding-main-content);
+
+  @media (max-width: $sm) {
+    @include mainPadding($patternPaddingMobile, $horizontal-padding-main-content-sm);
+  }
+
+  @media (min-width: $sm) and (max-width: $lg) {
+    @include mainPadding($patternPaddingMobile, $horizontal-padding-main-content-md);
+  }
+
+  & > div:not(.background) {
+    max-width: $max-main-width;
+  }
+
+  display: flex;
+  justify-content: center;
+
+  padding-block: 48px;
+
+  .content {
+    width: 100%;
+    max-width: $max-main-width;
+
+    h2 {
+      font-size: 36px;
+      font-weight: 600;
+      line-height: 40px;
+      text-align: left;
+
+      @media (min-width: $lg) {
+        font-size: 40px;
+        line-height: 44px;
+      }
+    }
+  }
+}
+
+::ng-deep #accordion-component {
+  p-accordiontab,
+  .p-accordion.p-component,
+  .p-accordion-tab,
+  .p-accordion-header-link,
+  .p-accordion-tab-active {
+    border-radius: 18px;
+  }
+
+  .p-accordion.p-component {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  p-accordiontab {
+    background-color: $background-lighter;
+  }
+
+  .p-accordion-tab {
+    background-color: $background-lighter;
+    border: 2px solid $background-lighter;
+  }
+
+  .p-icon-wrapper {
+    padding: 4px;
+    border-radius: 50%;
+    box-shadow: $elevation-effect-2;
+    color: $primary-darker;
+  }
+
+  .p-accordion-header-text {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 24px;
+    text-align: left;
+  }
+
+  .p-accordion-header-link {
+    background-color: $background-lighter;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    border: none;
+    border-color: $primary-darker;
+    padding: 8px 16px;
+  }
+
+  .p-accordion-content {
+    background-color: $background-lighter;
+    border: none;
+    border-color: $primary-darker;
+    padding: 0 16px 8px;
+
+    .texto {
+      color: $secondary-darker;
+      font-size: 20px;
+      font-weight: 400;
+      line-height: 24px;
+      text-align: left;
+    }
+  }
+
+  .p-accordion-tab-active {
+    border: 2px solid $primary-darker;
+    overflow: hidden;
+
+    .p-accordion-header-link {
+      padding-bottom: 8px;
+    }
+
+    .p-icon-wrapper {
+      background-color: $primary-darker;
+      padding: 4px;
+      border-radius: 50%;
+      color: $primaryTextColor;
+    }
+  }
+}

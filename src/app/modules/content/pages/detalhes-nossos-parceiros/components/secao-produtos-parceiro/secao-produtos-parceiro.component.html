@@ -1,0 +1,58 @@
+<section class="flex flex-column">
+  <app-grid-list
+    [items]="produtos"
+    [mobileSize]="mobileSize"
+    [(page)]="queryParams.page"
+    [total]="total"
+    [loading]="isLoading"
+    [error]="isError"
+    [cardTemplate]="cardTemplate"
+    [skeletonTemplate]="skeletonTemplate"
+    [noItemsTemplate]="noItemsTemplate"
+    [errorTemplate]="errorTemplate"
+    [searchTemplate]="searchTemplate"
+    (handleNextPage)="getProdutos()">
+  </app-grid-list>
+</section>
+
+<ng-template #cardTemplate let-item let-position="index">
+  <app-card-produtos class="w-full" [data]="item" [state]="state" />
+</ng-template>
+
+<ng-template #skeletonTemplate>
+  <app-skeleton-card-produtos class="w-full" />
+</ng-template>
+
+<ng-template #noItemsTemplate>
+  <app-error-list-message
+    iconName="local_mall"
+    message="No momento não temos produtos disponíveis para o parceiro informado." >
+  </app-error-list-message>
+</ng-template>
+
+<ng-template #errorTemplate>
+  <app-error-list-message
+    header="Desculpe, algo deu errado."
+    message="Não conseguimos carregar os dados corretamente. Por favor,
+    verifique sua conexão com a internet e tente novamente. Se o problema persistir,
+    pode ser um problema temporário do nosso site. Estamos trabalhando para resolvê-lo
+    o mais rápido possível.">
+  </app-error-list-message>
+</ng-template>
+
+<ng-template #searchTemplate [formGroup]="filtroForm">
+  <div class="flex flex-column lg:flex-row w-full">
+    <h1 class="col-3 flex-auto py-0 pl-0 mb-3 lg:mb-0">Serviços oferecidos</h1>
+    <app-select
+      class="filter-select w-100"
+      formControlName="categoria"
+      name="categoria"
+      placeholder="Selecione uma categoria"
+      [options]="categoriaOptions"
+      [filter]="true"
+      [showClear]="true"
+      [disabled]="isCategoriaUnica"
+      (optionSelected)="handleCategoriaFilter()">
+    </app-select>
+  </div>
+</ng-template>

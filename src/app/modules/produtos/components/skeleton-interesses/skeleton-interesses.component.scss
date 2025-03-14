@@ -1,0 +1,30 @@
+@import 'variables';
+
+.card {
+  width: 254px;
+  height: 257px;
+
+  border-radius: 10px;
+  background: $background-lighter;
+
+  box-shadow: $elevation-effect-3;
+
+  padding-top: 16px;
+  padding-bottom: 24px;
+  padding-inline: 16px;
+
+  position: relative;
+  z-index: 2;
+}
+
+
+:host ::ng-deep {
+  #skeleton-interesses-titulo {
+    .p-skeleton {
+      border-radius: 0;
+
+      border-top-right-radius: 5px;
+      border-top-left-radius: 5px;
+    }
+  }
+}

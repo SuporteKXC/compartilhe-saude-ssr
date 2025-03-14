@@ -1,0 +1,42 @@
+@import 'variables';
+
+.wrapper-carrinho-vazio {
+  background-color: $background-card;
+
+  border-radius: 6px;
+
+  padding: 8px 24px;
+
+  @media (min-width: $xl) {
+    padding: 24px 22px;
+  }
+
+  h2 {
+    font-size: 24px;
+    font-weight: 700;
+
+    line-height: 33px;
+
+    @media (min-width: $xl) {
+      font-size: 36px;
+
+      line-height: 36px;
+    }
+  }
+
+  p {
+    font-size: 14px;
+
+    line-height: 19px;
+
+    @media (min-width: $xl) {
+      font-size: 16px;
+
+      line-height: 16px;
+    }
+  }
+}
+
+app-icon {
+  color: $primary-darker;
+}

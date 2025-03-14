@@ -1,0 +1,94 @@
+<p-toast id="cadastro-toast">
+  <ng-template let-message pTemplate="message">
+    <app-toast-content [message]="message"></app-toast-content>
+  </ng-template>
+</p-toast>
+
+<app-page-title
+  titulo="Cadastro Rede Compartilhe"
+  [returnPath]="['/', 'admin', 'dashboard', 'rede-compartilhe']"
+  [breadcrumbData]="breadcrumb" >
+</app-page-title>
+
+<section class="w-full mt-3" id="form-estabelecimento">
+  <form (submit)="pathId ? onSubmitAlterar($event) : onSubmitCadastrar($event)">
+    <div class="flex gap-5 mb-3">
+      <app-form-situacao [formGroup]="formService.formEstabelecimento" />
+
+      <app-form-parceiro />
+
+      <app-form-destaque
+        [formGroup]="formService.formEstabelecimento"
+        [disable]="isDisable">
+      </app-form-destaque>
+
+      <app-form-unidade-propria
+        [formGroup]="formService.formEstabelecimento"
+        [disable]="isDisable">
+      </app-form-unidade-propria>
+    </div>
+
+    <p-tabView styleClass="tabview-dados-gerais h-full flex flex-column mb-5" id="form-pessoas">
+      <p-tabPanel header="Dados gerais">
+        <ng-template pTemplate="content">
+          <section class="flex flex-column gap-4 mt-3">
+            <app-form-modalidade
+              [formGroup]="formService.formEstabelecimento"
+              [options]="radioOptions"
+              [required]="formService.isParceiro">
+            </app-form-modalidade>
+
+            <app-form-dados-estabelecimento />
+
+            <app-form-endereco
+              [data]="cidade"
+              [formGroup]="formService.formEnderecoEstabelecimento"
+              [required]="true"
+              (changeForm)="$event && formService.save()">
+            </app-form-endereco>
+          </section>
+        </ng-template>
+      </p-tabPanel>
+
+      <p-tabPanel header="Dados de atendimento">
+        <ng-template pTemplate="content">
+          <section class="flex flex-column gap-3 mt-3">
+            <app-form-informacoes-atendimento 
+              [formGroup]="formService.formEstabelecimento"
+              [required]="formService.isParceiro" >
+            </app-form-informacoes-atendimento>
+
+            <app-form-redes-sociais [formGroup]="formService.formEstabelecimento" />
+          </section>
+        </ng-template>
+      </p-tabPanel>
+
+      <p-tabPanel header="Dados financeiros">
+        <ng-template pTemplate="content">
+          <section class="flex flex-column gap-4 mt-3">
+            <app-form-seller-id [formGroup]="formService.formEstabelecimento" />
+
+            <app-form-dados-bancarios [formGroup]="formService.formEstabelecimento" />
+          </section>
+        </ng-template>
+      </p-tabPanel>
+
+      <p-tabPanel header="Conteúdo">
+        <ng-template pTemplate="content">
+          <section class="flex flex-column gap-4 mt-3">
+            <app-form-tabela-conteudo [categoriaParceiro]="categoriaParceiro.ESTABELECIMENTO" />
+          </section>
+        </ng-template>
+      </p-tabPanel>
+    </p-tabView>
+
+    <app-button
+      label="Salvar"
+      type="submit"
+      size="small"
+      [loading]="isLoading"
+      [disabled]="formService.isDisableSubmit">
+    </app-button>
+  </form>
+</section>
+

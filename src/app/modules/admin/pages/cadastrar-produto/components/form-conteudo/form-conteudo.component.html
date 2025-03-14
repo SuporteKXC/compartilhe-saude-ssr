@@ -1,0 +1,22 @@
+<app-form-table
+  tableTitulo="Perguntas"
+  [tableData]="formService.perguntasAccordion"
+  [tableTotal]="formService.perguntasAccordion.length"
+  [formGroup]="formService.formTabelaPerguntas"
+  [headerTemplate]="headerTemplate"
+  [modalTemplate]="modal"
+  modalTitulo="Adicionar pergunta"
+  [editAction]="false"
+  [saveAction]="false"
+  [isAccordion]="true"
+  (handleDelete)="openDeleteModal($event.index)">
+</app-form-table>
+
+<ng-template #modal>
+  <app-modal-perguntas-frequentes
+    (handleSave)="formService.save($event)"></app-modal-perguntas-frequentes>
+</ng-template>
+
+<ng-template #headerTemplate>
+  <th [style]="{ width: '100%' }">Pergunta</th>
+</ng-template>

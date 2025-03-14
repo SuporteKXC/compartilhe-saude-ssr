@@ -1,0 +1,23 @@
+<app-button-whatsapp />
+<main>
+  <div class="wrapper-button my-6">
+    <div>
+      <app-button
+        label="Voltar para lista"
+        icon="arrow_back"
+        severity="primary"
+        [outlined]="true"
+        size="small"
+        class="block"
+        (handleClick)="navigateToCheckups()">
+      </app-button>
+    </div>
+  </div>
+
+  <app-secao-detalhes [formTemplate]="formTemplate">
+    <ng-template #formTemplate let-item>
+      <app-form-onde-realizar class="w-full xl:w-5" [detalhesProduto]="item" [state]="state">
+      </app-form-onde-realizar>
+    </ng-template>
+  </app-secao-detalhes>
+</main> 

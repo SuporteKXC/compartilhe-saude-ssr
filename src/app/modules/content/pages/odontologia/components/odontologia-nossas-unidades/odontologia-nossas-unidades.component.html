@@ -1,0 +1,20 @@
+<section>
+  <div class="background"></div>
+
+  <h2>Nossas Unidades</h2>
+
+  <div class="compartilhe-sorrisos" id="odontologia-nossas-unidades">
+    <app-carousel [items]="unidades" [itemTemplate]="nossasUnidades"></app-carousel>
+  </div>
+
+  <ng-template #nossasUnidades let-unidade>
+    <figure class="m-0">
+      <img 
+        [ngSrc]="unidade.image" 
+        [alt]="unidade.local"
+        [title]="unidade.local" 
+        width="100" height="100" />
+      <figcaption>{{ unidade.local }}</figcaption>
+    </figure>
+  </ng-template>
+</section>

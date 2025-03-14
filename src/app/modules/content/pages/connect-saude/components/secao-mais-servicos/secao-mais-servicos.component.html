@@ -1,0 +1,33 @@
+<section class="relative flex justify-content-center">
+  <div class="flex align-items-start justify-content-between">
+    <div class="imagem-container col-4 p-0 relative hidden md:flex justify-content-center">
+      <img
+        [ngSrc]="'/IMAGEM+2+CONNECT+SAUDE.png'"
+        alt="Profissional de saúde feliz usando o Connect Saúde para crescer digitalmente"
+        width="200"
+        height="200"
+        class="align-self-end" />
+      <div class="circulo"></div>
+      <div class="quadrado"></div>
+    </div>
+
+    <div class="text-container flex flex-column gap-4 align-self-end md:mb-6 lg:mb-8">
+      <p class="text">
+        <span>Descubra como transformar seu negócio em saúde!</span>
+        Nossa equipe de marketing especializada está pronta para impulsionar seus serviços com
+        estratégias sob medida, gestão de redes sociais, criação de conteúdo e materiais exclusivos.
+      </p>
+      <a
+        [href]="getWhatsAppLink()"
+        target="_blank"
+        title="Consulte nossos serviços"
+        class="w-fit no-underline p-button p-button-primary p-button-outlined"
+        target="_blank"
+        rel="noreferrer noopener">
+        Consulte nossos serviços
+      </a>
+    </div>
+  </div>
+
+  <div class="hidden md:block background absolute w-screen"></div>
+</section>

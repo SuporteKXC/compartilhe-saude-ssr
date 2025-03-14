@@ -1,0 +1,65 @@
+@import 'variables';
+
+$correcao-box-shadow: 4px;
+
+section {
+  background-color: $primary-background-light;
+  padding-inline: $horizontal-padding-main-content-sm;
+
+  @media (min-width: $md) {
+    padding-inline: $horizontal-padding-main-content-md;
+  }
+
+  @media (min-width: $lg) {
+    padding: 0 $horizontal-padding-main-content;
+  }
+
+  &>div {
+    max-width: $max-main-width;
+    margin: auto;
+  }
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 25px;
+  text-align: center;
+}
+
+.wrapper-card {
+  height: calc(100% - $correcao-box-shadow);
+  max-height: 180px;
+  margin: $correcao-box-shadow;
+
+  background-color: $background-lighter;
+  padding: 16px;
+
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
+  border-radius: 8px;
+
+  app-icon {
+    color: $primary-darker;
+  }
+
+  p {
+    font-family: Darker Grotesque;
+    font-size: 16px;
+    font-weight: 400;
+    text-align: left;
+  }
+
+  h3 {
+    font-family: Darker Grotesque;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 24px;
+    text-align: left;
+  }
+}
+
+
+.skeleton {
+  padding-top: $correcao-box-shadow;
+  padding-bottom: 40px;
+}

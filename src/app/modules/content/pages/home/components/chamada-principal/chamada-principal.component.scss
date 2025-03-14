@@ -1,0 +1,51 @@
+@import 'variables';
+
+section {
+  background-color: $primary-background-light;
+
+  gap: 40px;
+
+  padding-inline: $horizontal-padding-main-content-sm;
+
+  @media (min-width: $md) {
+    padding-inline: $horizontal-padding-main-content-md;
+  }
+
+  @media (min-width: $lg) {
+    padding-inline: $horizontal-padding-main-content;
+  }
+
+  &>div {
+    max-width: $max-main-width;
+    margin: auto;
+  }
+}
+
+h1 {
+  font-size: 36px;
+  font-weight: 600;
+
+  @media (min-width: $lg) {
+    font-size: 56px;
+  }
+}
+
+.label-categoria {
+  border: 1px solid $primary-darker;
+  border-radius: 6px;
+  color: $primary-darker;
+
+  p {
+    color: $primary-darker;
+    font-size: 10px;
+    font-weight: 700;
+    text-align: center;
+  }
+}
+
+.label-nome {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  text-align: left;
+}

@@ -1,0 +1,18 @@
+@import 'variables';
+
+.card {
+  min-width: 304px;
+  padding: 24px 16px;
+
+  box-shadow: $elevation-effect-2;
+
+  app-icon {
+    color: $primary-dark;
+  }
+
+  span {
+    font-size: 22px;
+    line-height: 22px;
+    font-weight: 600;
+  }
+}

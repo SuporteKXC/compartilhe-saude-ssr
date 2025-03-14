@@ -1,0 +1,24 @@
+<div class="card flex flex-column justify-content-center align-items-center gap-3 p-3">
+  <figure class="wrapper-img">
+    <img
+      [src]="pathImage"
+      [alt]="data.nome"
+      [title]="data.nome"
+      aria-hidden="true">
+  </figure>
+  <div class="texto flex flex-column">
+    <div class="titulo flex align-items-center">
+      <h3>{{ data.nome }}</h3>
+    </div>
+    <div class="descricao flex align-items-center">
+      <p>{{ data.resumo }}</p>
+    </div>
+  </div>
+  <div class="w-full flex justify-content-center">
+    <app-button
+      label="Ver detalhes"
+      size="small"
+      (handleClick)="navigateToDetalhes(data)">
+    </app-button>
+  </div>
+</div>

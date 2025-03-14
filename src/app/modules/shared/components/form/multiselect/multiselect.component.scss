@@ -1,0 +1,55 @@
+@import 'variables';
+
+:host ::ng-deep {
+  .p-multiselect-clear-icon {
+    top: 32%;
+  }
+
+  .invalid {
+    .p-multiselect {
+      border: $error-border-width solid $error;
+    }
+  }
+}
+
+::ng-deep {
+  .multiselect-panel {
+    .p-multiselect-header {
+      gap: 8px;
+
+      .p-inputtext {
+        height: 32px;
+      }
+
+      .p-multiselect-filter-icon {
+        top: 25%;
+      }
+
+      .p-multiselect-close,
+      .p-checkbox,
+      .p-multiselect-filter-icon {
+        display: none;
+      }
+    }
+
+    .p-multiselect-items {
+      padding-top: 0;
+    }
+
+    .p-multiselect-item {
+      gap: 8px;
+
+      color: $base-darker;
+
+      &.p-highlight {
+        background: $background-lighter;
+      }
+    }
+  }
+
+  .p-multiselect-label {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}

@@ -1,0 +1,38 @@
+<main class="h-full flex justify-content-center">
+  <div class="w-full">
+    <h2 class="mb-3">Meu carrinho</h2>
+  
+    <ng-container *ngIf="(carrinho$ | async) as carrinho; else skeleton">
+      <ng-container *ngIf="carrinho.length > 0; else carrinhoVazio">
+        <div class="wrapper-content">
+          <div class="cards-wrapper">
+            <app-card-item-carrinho
+              *ngFor="let item of carrinho; trackBy: indentifyItemCarrinho"
+              [carrinhoItem]="item">
+            </app-card-item-carrinho>
+          </div>
+          <app-card-valores />
+        </div>
+      </ng-container>
+    </ng-container>
+  </div>
+</main>
+
+<ng-template #skeleton>
+  <app-skeleton-meu-carrinho></app-skeleton-meu-carrinho>
+</ng-template>
+
+<ng-template #carrinhoVazio>
+  <div class="carrinho-vazio" >
+    <app-error-no-results
+      header="Seu carrinho está vazio"
+      description="Você ainda não possui itens no seu carrinho."
+      [actionsTemplate]="actionsTemplate"
+      iconName="shopping_cart_off"
+    />
+  </div>
+</ng-template>
+
+<ng-template #actionsTemplate>
+  <app-button label="Voltar para HOME" size="small" (handleClick)="navigate()" />
+</ng-template>

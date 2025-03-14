@@ -1,0 +1,58 @@
+<div>
+  <form [formGroup]="formBusca" class="flex align-items-start gap-3">
+    <app-input-text
+      class="w-full required"
+      name="busca"
+      placeholder="Frase para ser buscada"
+      icon="search"
+      formControlName="busca" >
+    </app-input-text>
+
+    <app-button
+      label="Localizar"
+      (handleClick)="searchPerguntaFrequente()"
+      [disabled]="!isFormValid" >
+    </app-button>
+  </form>
+
+  <div *ngIf="perguntas" class="mt-4">
+    <ng-container *ngIf="perguntas.length > 0; else empty">
+      <app-scroll-panel [desktopOnly]="true" [style]="{ height: '45vh'}">
+        <p-accordion [multiple]="false" class="w-full" id="accordion-faq">
+          <ng-container *ngFor="let pergunta of perguntas">
+            <p-accordionTab [header]="pergunta.pergunta ?? ''">
+              <span content>{{ pergunta.resposta }}</span>
+            </p-accordionTab>
+            <div class="flex align-items-center wrapper-action">
+              <app-button
+                label="Adicionar"
+                icon="add"
+                size="small"
+                [text]="true"
+                (handleClick)="handleSave.emit(pergunta)">
+              </app-button>
+            </div>
+          </ng-container>
+        </p-accordion>
+        <ng-container *ngIf="isPageable">
+          <div class="flex justify-content-center align-items-center my-3">
+            <app-button
+              label="Carregar mais"
+              size="small"
+              (handleClick)="nextPage()">
+            </app-button>
+          </div>
+        </ng-container>
+      </app-scroll-panel>
+    </ng-container>
+
+    <ng-template #empty>
+      <app-error-no-results
+        header="Não encontramos resultados para sua busca."
+        description="Verifique o termo informado."
+        iconName="receipt_long" >
+      </app-error-no-results>
+    </ng-template>
+  </div>
+</div>
+

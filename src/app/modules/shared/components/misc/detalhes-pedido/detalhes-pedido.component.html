@@ -1,0 +1,9 @@
+<section class="wrapper-pedido h-fit py-3 px-2 md:p-4">
+  <ng-container *ngIf="(detalhesPagamento$ | async) as detalhesPagamento">
+    <app-resumo-pedido [data]="detalhesPagamento" />
+
+    <p-divider />
+
+    <app-itens-pedido class="border-black-alpha-10" [itens]="detalhesPagamento.itens" />
+  </ng-container>
+</section>

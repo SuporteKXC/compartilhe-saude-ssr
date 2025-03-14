@@ -1,0 +1,30 @@
+<app-form-fieldset titulo="Redes sociais">
+  <div class="flex flex-column gap-3" [formGroup]="formGroup">
+    <app-input-text
+      class="w-full"
+      autocomplete="off"
+      name="whatsApp"
+      label="WhatsApp"
+      formControlName="whatsapp"
+      placeholder="Link para WhatsApp comercial"
+      [customErrors]="linkCustomErrors" />
+
+    <app-input-text
+      class="w-full"
+      autocomplete="off"
+      name="linkedin"
+      label="Linkedin"
+      formControlName="linkedin"
+      placeholder="Link para perfil do LinkedIn"
+      [customErrors]="linkCustomErrors" />
+
+    <app-input-text
+      class="w-full"
+      autocomplete="off"
+      name="instagram"
+      label="Instagram"
+      formControlName="instagram"
+      placeholder="Link para perfil do Instagram"
+      [customErrors]="linkCustomErrors" />
+  </div>
+</app-form-fieldset>

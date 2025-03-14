@@ -1,0 +1,82 @@
+<div class="wrapper-resumo">
+  <div class="flex gap-3">
+    <figure>
+      <img [src]="pathImage + data.pathImagem" [alt]="data.nome" aria-hidden="true" />
+    </figure>
+
+    <div class="w-full flex flex-column gap-2">
+      <div class="descricao">
+        <h4>{{ data.nome }}</h4>
+        <p>{{ data.descricao }}</p>
+      </div>
+
+      <div class="hidden md:block">
+        <ng-container [ngTemplateOutlet]="valoresTemplate" />
+      </div>
+    </div>
+  </div>
+
+  <div class="block md:hidden">
+    <ng-container [ngTemplateOutlet]="valoresTemplate" />
+  </div>
+
+  <footer class="flex lg:flex-column flex-wrap gap-2">
+    <div class="localidade flex flex-column">
+      <h4>Local de atendimento</h4>
+
+      <div class="flex gap-2">
+        <app-icon iconName="location_on" />
+
+        <ng-container [ngSwitch]="data.localProduto.formaAtendimento">
+          <div 
+            class="flex align-items-center" 
+            *ngSwitchCase="getFormaAtendimento(formaAtendimento.PRESENCIAL)">
+            <h6>{{ data.localProduto.nomeEstabelecimento }}</h6>
+            <p>{{ data.localProduto.endereco | formatEndereco }}</p>
+          </div>
+
+          <div 
+            class="flex align-items-center" 
+            *ngSwitchCase="getFormaAtendimento(formaAtendimento.ONLINE)">
+            <h6>Atendimento On-line</h6>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  
+    <ng-container *ngIf="data.localProduto.nomeProfissional">
+      <div class="localidade flex flex-column">
+        <h4>Profissional de atendimento</h4>
+
+        <div class="flex gap-2">
+          <app-icon iconName="location_on" />
+
+          <div>
+            <h6>{{ data.localProduto.nomeProfissional }}</h6>
+            <p>
+              <span>
+                {{ data.localProduto.especialidadesProfissional | joinString }}
+              </span>
+
+              <span class="before-content">
+                {{ data.localProduto.registroProfissional }}
+              </span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </footer>
+</div>
+
+<ng-template #valoresTemplate>
+  <div class="valores flex flex-wrap gap-3 md:gap-0 md:justify-content-between">
+    <h4>
+      Quantidade: <span>{{ data.quantidade }}</span>
+    </h4>
+
+    <h4>
+      Valor: <span>{{ data.localProduto.valorVista | currency }}</span>
+    </h4>
+  </div>
+</ng-template>

@@ -1,0 +1,40 @@
+@import 'variables';
+
+footer {
+  height: $footerHeightDashboard;
+
+  background-color: $primary-lighter;
+
+  padding: 19px 24px 19px 28px;
+
+  @media (min-width: $xl) {
+    padding: 17px 0 21px 28px;
+  }
+
+  span {
+    color: $secondary-darker;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    cursor: default;
+  }
+
+  a {
+    background-color: $secondary-darker;
+
+    padding: 8px 22px 10px 22px;
+
+    border: none;
+    border-radius: 6px;
+
+    color: $tertiaryColor;
+
+    text-align: center;
+    text-decoration: none;
+
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 8px;
+  }
+}

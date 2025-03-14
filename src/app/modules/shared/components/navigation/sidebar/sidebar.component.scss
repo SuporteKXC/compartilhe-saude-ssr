@@ -1,0 +1,16 @@
+::ng-deep {
+  .p-sidebar-top {
+    height: fit-content;
+  }
+
+  .p-sidebar-content {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    padding: 0;
+  }
+
+  .p-sidebar-footer {
+    display: none;
+  }
+}

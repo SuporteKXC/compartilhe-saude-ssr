@@ -1,0 +1,134 @@
+@import 'variables';
+
+.big-numbers {
+  padding-inline: $horizontal-padding-main-content-sm;
+
+  @media (min-width: $md) {
+    padding-inline: $horizontal-padding-main-content-md;
+  }
+
+  @media (min-width: $lg) {
+    padding-inline: $horizontal-padding-main-content;
+  }
+
+  &>div {
+    max-width: $max-main-width;
+    margin: auto;
+  }
+}
+
+p {
+  text-wrap: nowrap;
+}
+
+.item {
+  text-align: center;
+}
+
+.numero-qtd {
+  color: $secondary-darker;
+  font-size: 80px;
+  font-weight: 700;
+  line-height: 46px;
+  margin-bottom: 20px;
+}
+
+.numero-tipo {
+  color: $secondary-darker;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 16px;
+}
+
+.separador-item {
+  background-color: $primary-darker;
+  margin-inline: 20px;
+  height: 60px;
+  width: 2px;
+  margin-top: 5px;
+}
+
+@media (max-width: $lg) {
+  p {
+    text-wrap: wrap;
+  }
+
+  .conteudo {
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .item {
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-self: flex-start;
+    margin-top: 11px;
+  }
+
+  .numero-qtd {
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 36px;
+    margin-bottom: 0px;
+  }
+
+  .numero-tipo {
+    width: 100px;
+  }
+
+  .tipo-estabelecimentos {
+    width: 115px;
+  }
+}
+
+@media (max-width: $md) {
+  .numero-qtd {
+    color: $secondary-darker;
+    font-size: 36px;
+    font-weight: 600;
+    line-height: 36px;
+  }
+
+  .qtd-especialidades {
+    margin-right: 6px;
+  }
+
+  .item {
+    width: 115px;
+  }
+
+  .tipo-estabelecimentos {
+    width: unset;
+  }
+
+  .numero-tipo {
+    color: $secondary-darker;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+    width: 70px;
+  }
+
+  .separador-item {
+    background-color: $primary-darker;
+    margin-inline: 12px;
+    height: 50px;
+    width: 1px;
+  }
+
+  .separador-conjunto {
+    display: none;
+  }
+}
+@media (max-width: $sm) {
+
+  .conteudo {
+    justify-content: center;
+  }
+  
+  .row {
+    width: 90%;
+  }
+}

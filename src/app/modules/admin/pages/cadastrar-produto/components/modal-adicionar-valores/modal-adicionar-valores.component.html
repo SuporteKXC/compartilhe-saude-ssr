@@ -1,0 +1,96 @@
+<div class="flex flex-column gap-4" [formGroup]="form">
+  <div class="flex gap-3 justify-content-between">
+    <div class="col-6 flex-auto p-0">
+      <h2 class="mb-3">Profissional de saúde</h2>
+        <app-select
+          label="Profissional de saúde"
+          placeholder="Selecione"
+          name="parceiroProfissional"
+          [labelSrOnly]="true"
+          formControlName="parceiroProfissional"
+          [options]="parceiroProfissionalOptions"
+          [filter]="true"
+          [showClear]="true"
+          (optionSelected)="recarregarForm()"
+          (clear)="recarregarForm()">
+        </app-select>
+    </div>
+  
+    <div class="col-6 flex-auto p-0">
+      <h2 class="required mb-3">Forma de Atendimento</h2>
+        <app-select
+          label="Forma de Atendimento"
+          placeholder="Selecione"
+          name="formaAtendimento"
+          [labelSrOnly]="true"
+          formControlName="formaAtendimento"
+          [options]="formaAtendimentoOptions"
+          (optionSelected)="carregarLocalAtendimento()">
+        </app-select>
+    </div>
+  
+    <div class="col-6 flex-auto p-0">
+      <h2
+        class="mb-3"
+        [ngClass]="{ 'required': formService.isLocalAtendimentoRequired }">
+        Local de atendimento
+      </h2>
+        <app-select
+          label="Local de atendimento"
+          placeholder="Selecione"
+          name="localAtendimento"
+          [labelSrOnly]="true"
+          formControlName="localAtendimento"
+          [options]="localAtendimentoOptions"
+          [filter]="true"
+          [disabled]="!formService.isLocalAtendimentoRequired" >
+        </app-select>
+    </div>
+  </div>
+  
+  <div class="flex flex-column">
+    <h2 class="required mb-3">Valores</h2>
+    <div class="container-valores">
+      <app-input-number
+        label="Valor de referência"
+        name="valorReferencia"
+        formControlName="valorReferencia"
+        prefix="R$"
+        [customErrors]="formService.priceCustomErros"
+        (handleChange)="formService.setValues()" />
+  
+      <app-input-number
+        label="Valor à vista"
+        name="valorVista"
+        formControlName="valorVista"
+        prefix="R$"
+        [customErrors]="formService.priceCustomErros"
+        (handleChange)="formService.setValues()" />
+  
+      <app-input-number
+        label="Valor de repasse"
+        name="valorRepasse"
+        formControlName="valorRepasse"
+        prefix="R$"
+        [customErrors]="formService.priceCustomErros"
+        (handleChange)="formService.setValues()" />
+  
+      <app-input-number
+        label="Valor de comissão"
+        name="valorComissao"
+        formControlName="valorComissao"
+        prefix="R$"
+        [negative]="true"
+        [customErrors]="formService.priceCustomErros"
+        [disabled]="true" />
+  
+      <app-input-number
+        label="Desconto"
+        name="percentualDesconto"
+        formControlName="percentualDesconto"
+        prefix="%"
+        [disabled]="true" />
+    </div>
+  </div>
+</div>
+

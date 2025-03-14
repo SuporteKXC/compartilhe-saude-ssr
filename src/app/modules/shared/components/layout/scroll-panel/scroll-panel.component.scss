@@ -1,0 +1,57 @@
+@import 'variables';
+
+:host ::ng-deep .scroll-panel {
+  $scrollBarWidth: 4px;
+
+  &.only-desktop {
+    // define height fit-content para mobile se é necessário somente desktop
+    height: fit-content;
+
+    @media (min-width: $lg) {
+      // define height correta para desktop
+      height: 100%;
+    }
+  }
+
+  // esconder as scrollbars do browser
+  .p-scrollpanel-content {
+    scrollbar-width: none; // firefox
+
+    &::-webkit-scrollbar {
+      display: none; // chrome
+    }
+  }
+
+  &.overflowing:hover .p-scrollpanel-wrapper::after {
+    opacity: 1;
+  }
+
+  .p-scrollpanel-wrapper {
+    padding-right: calc($scrollBarWidth * 3);
+
+    &::after {
+      content: '';
+
+      position: absolute;
+      right: 0;
+      top: 0;
+
+      width: $scrollBarWidth;
+      // HACK de novo, o chrome coloca um espaço a mais no final da barra
+      // tirando 1.5% para compensar esse espaço a mais
+      height: 98.5%;
+
+      background: $background-darker;
+
+      border-radius: 3px;
+
+      opacity: 0;
+      transition: opacity 0.25s linear;
+    }
+  }
+
+  .p-scrollpanel-bar {
+    width: $scrollBarWidth;
+    background: $secondary-light;
+  }
+}

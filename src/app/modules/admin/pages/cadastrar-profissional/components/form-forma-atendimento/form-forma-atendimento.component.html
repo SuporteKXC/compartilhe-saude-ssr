@@ -1,0 +1,14 @@
+<app-form-fieldset>
+  <div class="flex flex-column mt-1 required" [formGroup]="form">
+    <app-multiselect
+      class="w-full"
+      label="Forma de atendimento"
+      placeholder="Selecione"
+      name="forma-atendimento"
+      formControlName="formasAtendimento"
+      [customErrors]="formaAtendimentoCustomErrors"
+      [options]="formaAtendimentoOptions"
+      [showHeader]="true"
+      (optionSelected)="resetLocaisAtendimento()" />
+  </div>
+</app-form-fieldset>

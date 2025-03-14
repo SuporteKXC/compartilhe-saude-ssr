@@ -1,0 +1,165 @@
+<footer
+  class="footer flex flex-column align-items-center"
+  [ngClass]="{ 'compartilhe-sorrisos': isOdontologia }">
+  <div class="w-full">
+    <a class="col-12 p-0 pb-3" [routerLink]="getLink()" [title]="imgData.title">
+      <img
+        [ngSrc]="imgData.src"
+        [title]="imgData.title"
+        [alt]="imgData.alt"
+        class="logo"
+        width="115"
+        height="26" />
+    </a>
+
+    <div class="flex flex-column md:flex-row md:flex-wrap justify-content-between gap-2">
+      <div class="info flex flex-column md:col-3 p-0 gap-2">
+        <ng-container *ngIf="isOdontologia">
+          <p>
+            A Compartilhe Sorrisos é uma clínica odontológica administrada pela Compartilhe Saúde e
+            conta com o responsável técnico: Dr. João Vitor Gouveia Vital | CRO/ES: 09549 -
+            Cirurgião Dentista - Registro 2209.
+          </p>
+        </ng-container>
+
+        <p>
+          A Compartilhe Saúde é uma intermediadora de serviços de saúde,
+          <b>não é um plano de saúde</b>.
+        </p>
+
+        <div *ngIf="isOdontologia" class="block lg:hidden">
+          <ng-container [ngTemplateOutlet]="local" />
+        </div>
+
+        <div *ngIf="!isOdontologia">
+          <ng-container [ngTemplateOutlet]="local" />
+        </div>
+      </div>
+
+      <div class="contato flex flex-column gap-2">
+        <div *ngIf="isOdontologia" class="hidden lg:block">
+          <ng-container [ngTemplateOutlet]="local" />
+        </div>
+
+        <div class="flex flex-column">
+          <p>
+            <span class="white-space-nowrap">Atendimento:</span>
+            <span class="md:white-space-nowrap"> Segunda a sexta-feira, das 8h às 18h. </span>
+          </p>
+          <p>
+            <span class="white-space-nowrap">Telefone:</span>
+            <a [href]="messageLink" target="_blank" title="Entre em contato pelo WhatsApp">
+              (27) 3600-2121
+            </a>
+          </p>
+
+          <p>
+            <span class="white-space-nowrap">E-mail:</span>
+            <a
+              href="mailto:atendimento@compartilhesaude.com.br"
+              title="E-mail da Compartilhe Saúde">
+              atendimento&#64;sejacompartilhe.com.br
+            </a>
+          </p>
+        </div>
+
+        <div class="block lg:hidden" *ngIf="isOdontologia">
+          <ng-container [ngTemplateOutlet]="politicas" />
+        </div>
+
+        <app-social-media class="hidden lg:block" />
+      </div>
+
+      <div>
+        <ng-container [ngTemplateOutlet]="formasPagamento" />
+      </div>
+
+      <p-divider class="block md:hidden py-2" />
+
+      <div>
+        <ng-container [ngTemplateOutlet]="politicas" />
+      </div>
+
+      <div class="mt-4 md:mt-0">
+        <ng-container [ngTemplateOutlet]="profissionais" />
+      </div>
+    </div>
+
+    <div class="block lg:hidden mt-4">
+      <app-social-media />
+    </div>
+  </div>
+</footer>
+
+<ng-template #local>
+  <p>
+    Av. Agenor Luís Heringer, 865-B, Vila Nova - Pinheiros - ES, CEP: 29980-000. CNPJ
+    34.861.868/0001-06
+  </p>
+</ng-template>
+
+<ng-template #politicas>
+  <div class="politicas flex flex-column gap-1">
+    <h6>Compartilhe Saúde:</h6>
+    <a
+      [href]="pathBucket + 'assets/PDF/politica_de_privacidade.pdf'"
+      target="_blank"
+      rel="noreferrer noopener"
+      title="Política de Privacidade">
+      Política de Privacidade
+    </a>
+    <a
+      routerLink="/sobre-nos"
+      fragment="perguntas-frequentes"
+      class="m-0"
+      title="Perguntas Frequentes">
+      Perguntas Frequentes
+    </a>
+  </div>
+</ng-template>
+
+<ng-template #formasPagamento>
+  <div class="formas-pagamento flex flex-column gap-2">
+    <h6>Formas de pagamento:</h6>
+
+    <div class="h-fit flex flex-column gap-1">
+      <div>
+        <ng-container *ngFor="let bandeira of bandeiras.slice(0, 3)">
+          <img
+            [src]="bandeira.imgPath"
+            [alt]="'Bandeira ' + bandeira.nome"
+            [title]="bandeira.nome"
+            class="p-0"
+            width="44"
+            height="30" />
+        </ng-container>
+      </div>
+      <div>
+        <ng-container *ngFor="let bandeira of bandeiras.slice(3, 6)">
+          <img
+            [src]="bandeira.imgPath"
+            [alt]="'Bandeira ' + bandeira.nome"
+            [title]="bandeira.nome"
+            class="p-0"
+            width="44"
+            height="30" />
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #profissionais>
+  <div class="politicas flex flex-column gap-1">
+    <h6>Profissionais de Saúde:</h6>
+    <a routerLink="/planos-connect-saude"> Connect Saúde </a>
+    <a routerLink="/planos-connect-saude" fragment="planos"> Planos e preços </a>
+    <a
+      [href]="pathBucket + 'TERMOS+DE+USO+CONNECT+SAUDE.pdf'"
+      target="_blank"
+      rel="noreferrer noopener"
+      title="Política de Privacidade">
+      Termos de Uso
+    </a>
+  </div>
+</ng-template>

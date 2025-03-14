@@ -1,0 +1,11 @@
+<div class="flex flex-column" *ngIf="group" [formGroup]="group">
+  <div class="flex align-items-center">
+    <p-inputSwitch [formControl]="control" [disabled]="disabled" (onChange)="handleChangeEvent($event)"/>
+
+    <label *ngIf="label" [htmlFor]="name" [ngClass]="{ 'p-sr-only': labelSrOnly }">
+      {{ label }}
+    </label>
+  </div>
+
+  <small *ngIf="errorMessage">{{ errorMessage }}</small>
+</div>

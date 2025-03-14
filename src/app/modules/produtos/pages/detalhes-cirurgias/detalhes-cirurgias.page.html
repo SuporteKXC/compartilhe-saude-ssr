@@ -1,0 +1,41 @@
+<app-button-whatsapp />
+<main>
+  <div class="wrapper-button my-6">
+    <div>
+      <app-button
+        label="Voltar para lista"
+        icon="arrow_back"
+        severity="primary"
+        [outlined]="true"
+        size="small"
+        class="block"
+        (handleClick)="navigateToCirurgias()">
+      </app-button>
+    </div>
+  </div>
+  
+  <app-secao-detalhes [formTemplate]="formTemplate">
+    <ng-template #formTemplate let-item>
+      <div class="atendimento w-full xl:w-7 flex flex-column justify-content-between">
+        <div class="flex flex-column gap-3">
+          <h2>Faça sua Cirurgia com Especialistas Qualificados</h2>
+          <p>
+            Na Compartilhe Saúde, suas cirurgias são realizadas com profissionais qualificados,
+            garantindo atenção e cuidado que você merece.
+          </p>
+        </div>
+        <div class="flex flex-column gap-2">
+          <p class="mt-5">Clique para saber mais e fale com nossa equipe!</p>
+          <a
+            class="w-fit flex justify-content-center no-underline p-button p-button-primary white-space-nowrap"
+            [href]="getMensagem(item)"
+            title="Agende pelo WhatsApp"
+            target="_blank"
+            rel="noreferrer noopener">
+            Agende pelo WhatsApp
+          </a>
+        </div>
+      </div>
+    </ng-template>
+  </app-secao-detalhes>
+</main>

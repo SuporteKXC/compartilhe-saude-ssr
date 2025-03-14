@@ -1,0 +1,20 @@
+<header class="flex flex-column">
+  <ng-container *ngIf="breadcrumbData">
+    <app-breadcrumb [data]="breadcrumbData"></app-breadcrumb>
+  </ng-container>
+
+  <div class="wrapper-titulo flex align-items-center pt-5 xl:pt-0">
+    <button 
+      (click)="returnPath ? return() : handleClickEvent()" 
+      class="bg-transparent border-none cursor-pointer p-0" type="button">
+      <app-icon class="hidden xl:block" iconName="arrow_circle_left" iconSize="28px" />
+      <app-icon
+        class="block xl:hidden"
+        iconName="arrow_circle_left"
+        iconSize="24px"
+        verticalAlign="bottom" />
+    </button>
+  
+    <h2>{{ titulo }}</h2>
+  </div>
+</header>

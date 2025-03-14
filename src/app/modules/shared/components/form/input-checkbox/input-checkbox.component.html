@@ -1,0 +1,15 @@
+<span class="flex">
+  <p-checkbox
+    [label]="label"
+    [attr.formControlName]="formControlName"
+    [value]="value"
+    [disabled]="disabled"
+    [binary]="true"
+    [name]="name"
+    [inputId]="name"
+    (onChange)="onChange($event.checked)"></p-checkbox>
+
+  <label [for]="name" *ngIf="!label">
+    <ng-content></ng-content>
+  </label>
+</span>

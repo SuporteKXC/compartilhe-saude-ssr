@@ -1,0 +1,63 @@
+@import 'variables.scss';
+
+:host {
+  width: 100%;
+}
+.content {
+  gap: 8px;
+
+  color: $secondary-dim;
+  font-size: 20px;
+
+  strong {
+    font-weight: 600;
+  }
+
+  p {
+    font-size: 16px;
+    font-weight: 500;
+  }
+}
+
+::ng-deep .confirmation-modal.p-dialog {
+  min-width: 320px;
+
+  overflow: hidden;
+
+  border-radius: 8px;
+
+  .p-dialog-content {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    border-radius: 0;
+    padding: 0;
+    padding-inline: 24px;
+  }
+
+  .p-dialog-header {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: flex-end;
+    padding: 24px 24px 8px 24px;
+
+    .p-dialog-title {
+      align-self: center;
+    }
+
+    .p-dialog-header-icons {
+      .p-dialog-header-icon {
+        width: 24px;
+        height: 24px;
+        color: $secondary-dim;
+      }
+    }
+  }
+
+  .p-dialog-footer {
+    display: flex;
+    justify-content: space-between;
+
+    padding: 24px;
+  }
+}

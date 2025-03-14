@@ -1,0 +1,16 @@
+<div>
+  <h5>Ao escolher a plataforma da Compartilhe Saúde, você ganha:</h5>
+  <div class="wrapper-beneficios">
+    <ng-container *ngFor="let beneficio of beneficiosDestaque">
+      <p class="flex align-items-center gap-2" [ngClass]="{ 'incluso': beneficio.incluso }">
+        <app-icon
+          class="inline-block border-circle"
+          iconName="check"
+          iconSize="20px"
+          verticalAlign="super">
+        </app-icon>
+        <span>{{ beneficio.nome }}</span>
+      </p>
+    </ng-container>
+  </div>
+</div>

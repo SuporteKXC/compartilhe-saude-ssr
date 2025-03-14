@@ -1,0 +1,36 @@
+<section class="h-full">
+  <app-page-title titulo="Meus pedidos" [returnPath]="['/', 'dashboard']" />
+
+  <div class="wrapper-list mb-6" [ngClass]="{'barrier': pedidos.length > 0}">
+    <app-grid-list
+      [items]="pedidos"
+      [size]="4"
+      [(page)]="queryParams.page"
+      [total]="totalRecords"
+      [loading]="isLoading"
+      [error]="isError"
+      [cardTemplate]="cardTemplate"
+      [skeletonTemplate]="skeleton"
+      [noItemsTemplate]="noItems"
+      [scroll]="true"
+      (handleNextPage)="getPedidos(queryParams)"
+      layout="list" />
+  </div>
+</section>
+
+<ng-template #cardTemplate let-item let-position="index">
+  <app-card-pedido [data]="item" />
+</ng-template>
+
+<ng-template #skeleton>
+  <app-skeleton-meus-pedidos></app-skeleton-meus-pedidos>
+</ng-template>
+
+<ng-template #noItems>
+  <app-error-no-results
+    class="w-full"
+    header="Você ainda não possui pedidos realizados."
+    description="Após concluir seus pedidos, eles serão listados aqui!"
+    iconName="receipt_long"
+  />
+</ng-template>

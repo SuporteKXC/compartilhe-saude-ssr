@@ -1,0 +1,27 @@
+@import 'variables';
+
+.wrapper-titulo {
+  gap: 10px;
+
+  h2 {
+    font-size: 24px;
+    line-height: 24px;
+
+    @media (min-width: $xl) {
+      font-size: 36px;
+      line-height: 36px;
+    }
+  }
+
+  button {
+    // para centralizar o botão com o texto
+    margin-top: 4px;
+    @media (min-width: $xl) {
+      margin-top: 6px;
+    }
+  }
+
+  app-icon {
+    color: $primary-darker;
+  }
+}

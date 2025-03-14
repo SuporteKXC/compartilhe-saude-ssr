@@ -1,0 +1,62 @@
+@import 'variables';
+@import 'mixins';
+
+section {
+
+  @media (max-width: $md) {
+    height: auto;
+  }
+
+  @media (max-width: $md) {
+    height: auto;
+  }
+}
+
+.btn-container {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: center;
+  margin-top: 40px;
+
+  @media (max-width: $md) {
+    flex-direction: column;
+    margin-top: 0;
+    width: 100%;
+    align-items: flex-start;
+  }
+
+  a {
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 20px;
+
+    @media (max-width: $sm) {
+      height: 48px;
+    }
+
+    &.link-como-funciona {
+      color: $primary-darker;
+
+      app-icon {
+        margin-right: 8px;
+      }
+    }
+  }
+}
+
+.wrapper-beneficios {
+  background-color: $background-dark;
+}
+
+::ng-deep .conteudo {
+  app-button .p-button:enabled:focus {
+    box-shadow: none;
+  }
+  
+  .p-button.p-button-text {
+    padding-inline: 0;
+    overflow: visible;
+    font-size: 20px;
+  }
+}

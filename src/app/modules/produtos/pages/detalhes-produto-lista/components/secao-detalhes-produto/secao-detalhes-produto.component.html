@@ -1,0 +1,90 @@
+<section class="flex flex-column">
+  <ng-container
+    *ngIf="!((parentLoading || isLoading) && !(parentError || isError));
+    else tituloLoading">
+    <app-titulo-tooltip *ngIf="detalhesProduto" [data]="detalhesProduto"/>
+  </ng-container>
+
+  <app-grid-list
+    [items]="produtosPreco"
+    [size]="size"
+    [mobileSize]="mobileSize"
+    [(page)]="queryParams.page"
+    [total]="total"
+    [loading]="isLoading || parentLoading"
+    [error]="isError || parentError"
+    [cardTemplate]="cardTemplate"
+    [searchTemplate]="searchTemplate"
+    [skeletonTemplate]="skeletonTemplate"
+    [noItemsTemplate]="noItemsTemplate"
+    [errorTemplate]="errorTemplate"
+    (handleNextPage)="getProdutosPreco()">
+  </app-grid-list>
+</section>
+
+<ng-template #cardTemplate let-item let-position="index">
+  <app-card-detalhes-produto
+    class="w-full"
+    [data]="item"
+    (cardProdutoPrecoId)="adicionarItemCarrinho($event)" >
+  </app-card-detalhes-produto>
+</ng-template>
+
+<ng-template #tituloLoading>
+  <p-skeleton width="600px" height="28px" />
+</ng-template>
+
+<ng-template #skeletonTemplate>
+  <app-skeleton-card-detalhes-produto class="w-full"/>
+</ng-template>
+
+<ng-template #noItemsTemplate>
+  <app-error-list-message
+    iconName="local_mall"
+    message="No momento não temos opções disponíveis para os filtros de busca informados." >
+  </app-error-list-message>
+</ng-template>
+
+<ng-template #errorTemplate>
+  <app-error-list-message
+    header="Desculpe, algo deu errado."
+    message="Não conseguimos carregar os dados corretamente. Por favor,
+    verifique sua conexão com a internet e tente novamente. Se o problema persistir,
+    pode ser um problema temporário do nosso site. Estamos trabalhando para resolvê-lo
+    o mais rápido possível.">
+  </app-error-list-message>
+</ng-template>
+
+<ng-template #searchTemplate>
+  <form [formGroup]="formFiltro" class="flex flex-column xl:flex-row mt-3">
+    <app-search-cidade
+      class="search-cidade"
+      formControlName="cidade"
+      [preSelected]="cidadePreSelected"
+      (handleSearchAndClear)="searchCidade()">
+    </app-search-cidade>
+
+    <div class="select-container">
+      <app-select
+        placeholder="Nome do estabelecimento"
+        class="select-parceiro"
+        name="idParceiro"
+        formControlName="idParceiro"
+        [filter]="true"
+        [showClear]="true"
+        [options]="parceiroNomeOptions"
+        (optionSelected)="searchProdutosPreco()">
+      </app-select>
+
+      <app-select
+        placeholder="Forma de atendimento"
+        class="select-atendimento"
+        name="formaAtendimento"
+        formControlName="formaAtendimento"
+        [showClear]="true"
+        [options]="formaAtendimentoOptions"
+        (optionSelected)="searchProdutosPreco()">
+      </app-select>
+    </div>
+  </form>
+</ng-template>

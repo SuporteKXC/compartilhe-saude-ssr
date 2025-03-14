@@ -1,0 +1,62 @@
+@import 'variables';
+
+.titulo {
+  width: fit-content;
+  background-color: $primary-darker;
+  padding: 1px 6px 3px 6px;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+
+  p {
+    color: $primaryTextColor;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 150%;
+    letter-spacing: -0.176px;
+  }
+}
+
+.wrapper-card {
+  padding-inline: 4px;
+  padding-right: 16px;
+}
+
+.card {
+  height: 286px;
+  border-radius: 10px;
+  background: $background-lighter;
+  box-shadow: $elevation-effect-3;
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  justify-content: space-between;
+  align-items: center;
+
+  @media (min-width: $lg) {
+    max-width: 278px;
+  }
+
+  .image-container {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 164px;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  img {
+    max-width: 100%;
+    max-height: 200px;
+    height: auto;
+    border-radius: 10px;
+  }
+
+  .button-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: auto;
+  }
+}

@@ -1,0 +1,23 @@
+<h1 class="xl:flex align-items-center">
+  Resultados para {{ data.nome }}
+  <app-tooltip class="hidden xl:block ml-1" [content]="tooltipContent" size="20px" />
+
+  <button (click)="toggle()" *ngIf="!isVisible">
+    <app-icon  class="block xl:hidden xl:mt-2 xl:ml-2" iconName="info" iconSize="20px" verticalAlign="bottom"/>
+  </button>
+</h1>
+
+
+<div class="tooltip xl:hidden gap-2 mt-3" [ngClass]="isVisible ? 'isVisible' : 'isHidden'">
+  <app-icon class="h-fit" iconName="info" iconSize="20px" verticalAlign="middle"/>
+  <p>
+    <ng-container [ngTemplateOutlet]="tooltipContent"></ng-container>
+  </p>
+  <button (click)="toggle()">
+    <app-icon  iconName="close" iconSize="20px" verticalAlign="middle"/>
+  </button>
+</div>
+
+<ng-template #tooltipContent>
+  {{ data.descricao }}
+</ng-template>

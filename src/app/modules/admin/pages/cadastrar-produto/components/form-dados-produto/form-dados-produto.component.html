@@ -1,0 +1,84 @@
+<app-form-fieldset [titulo]="categoria">
+  <div class="flex flex-column gap-3" [formGroup]="form">
+    <div class="flex flex-column lg:flex-row gap-3">
+      <app-input-text
+        label="Nome"
+        placeholder="Nome"
+        name="nome"
+        formControlName="nome"
+        autocomplete="off"
+        class="required col-12 lg:col-9 flex-auto p-0" >
+      </app-input-text>
+
+      <app-select
+        label="Subcategoria"
+        placeholder="Selecione"
+        name="subcategoria"
+        formControlName="subcategoria"
+        [options]="subcategoriaOptions"
+        class="required col-12 lg:col-3 p-0"
+        [filter]="true">
+      </app-select>
+    </div>
+
+    <div class="flex flex-column flex-wrap lg:flex-row gap-3">
+      <app-input-textarea
+        label="Resumo"
+        placeholder="Resumo"
+        name="resumo"
+        formControlName="resumo"
+        class="required col-12 lg:w-fit flex-auto p-0" >
+      </app-input-textarea>
+
+      <app-input-textarea
+        label="Indicação"
+        placeholder="Indicação"
+        name="indicacao"
+        formControlName="indicacao"
+        class="required col-12 lg:w-fit flex-auto p-0" >
+      </app-input-textarea>
+    </div>
+
+    <div class="flex flex-column lg:flex-row gap-3 gap-3">
+      <app-input-textarea
+        label="Descrição"
+        placeholder="Descrição"
+        name="descricao"
+        formControlName="descricao"
+        class="required col-12 lg:col-6 flex-auto p-0" >
+      </app-input-textarea>
+
+      <app-input-textarea
+        label="Observação"
+        placeholder="Observação"
+        name="observacao"
+        formControlName="observacao"
+        class="col-12 lg:col-6 flex-auto p-0" >
+      </app-input-textarea>
+    </div>
+
+    <div class="flex gap-3">
+      <app-input-textarea
+        label="Informações de preparo"
+        placeholder="Informações de preparo"
+        name="preparo"
+        formControlName="preparo"
+        class="col-12 lg:col-6 flex-auto p-0">
+      </app-input-textarea>
+    </div>
+
+    <div class="flex gap-3">
+      <app-input-text
+        label="Link da imagem"
+        placeholder="Link da imagem"
+        name="pathImagem"
+        formControlName="pathImagem"
+        class="required w-full"
+        [customErrors]="linkImageCustomErrors"
+        autocomplete="off"
+        tooltipContent="Adicione a imagem no banco e depois copie e cole o link
+        aqui para exibição." >
+      </app-input-text>
+    </div>
+  </div>
+</app-form-fieldset>

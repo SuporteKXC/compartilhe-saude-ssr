@@ -1,0 +1,34 @@
+@import './_variables';
+
+.p-disabled .p-dropdown {
+  color: #888;
+  background-color: $background-dark;
+}
+
+.p-dropdown {
+  width: 100%;
+
+  border: 1px solid #bdbdbd;
+  border-radius: 8px;
+
+  &::placeholder {
+    color: $base-light;
+  }
+
+  &:focus {
+    border-color: $primary;
+    outline: none;
+    box-shadow: none;
+  }
+
+  &:not(.p-disabled).p-focus {
+    border-color: $primary;
+
+    box-shadow: none;
+  }
+
+  .p-dropdown-label {
+    border: none;
+    border-radius: 0px;
+  }
+}

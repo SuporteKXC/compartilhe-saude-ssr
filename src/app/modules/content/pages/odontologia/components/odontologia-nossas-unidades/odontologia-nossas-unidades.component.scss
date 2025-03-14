@@ -1,0 +1,48 @@
+@import 'variables';
+
+figure {
+  height: fit-content;
+
+  figcaption {
+    position: relative;
+    top: -8px;
+
+    color: $secondary-darker;
+
+    font-size: 16px;
+    font-weight: 500;
+  }
+}
+
+img {
+  border-radius: 10px;
+  width: 100%;
+  height: auto;
+
+  @media (max-width: $sm) {
+    height: 169px;
+  }
+}
+
+h2 {
+  margin-bottom: 42px;
+}
+
+:host ::ng-deep {
+  #odontologia-nossas-unidades {
+    .p-carousel-item > * {
+      margin: 0;
+    }
+
+    .p-carousel-item:first-child {
+      margin-right: 19px;
+    }
+
+    .p-carousel-item {
+      @media (max-width: $sm) {
+        width: 100%;
+        margin-right: 8px;
+      }
+    }
+  }
+}

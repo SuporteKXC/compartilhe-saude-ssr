@@ -1,0 +1,36 @@
+@import 'variables';
+
+.content {
+  width: 100%;
+
+  padding: 0 18px 0px 28px;
+}
+
+@media (min-width: $xl) {
+  .content {
+    width: 79.5%;
+
+    right: 0;
+
+    padding-top: 49px;
+    padding-bottom: 47px;
+
+    margin: 0;
+  }
+}
+
+:host ::ng-deep {
+  @media (max-width: $xl) {
+    .p-toast-top-right {
+      top: calc(20px + 58px);
+      right: 0;
+    }
+  }
+
+  @media (max-width: $sm) {
+    .p-toast {
+      width: calc(100% - 52px);
+      margin-right: 24px;
+    }
+  }
+}

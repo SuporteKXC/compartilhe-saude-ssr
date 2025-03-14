@@ -1,0 +1,13 @@
+<main class="w-full h-full">
+  <div class="w-full h-full">
+    <ng-content select="[menu]"></ng-content>
+  </div>
+  <section class="wrapper-content w-full h-full" [ngClass]="{'no-footer': !hasFooter}">
+    <div class="content">
+      <ng-content select="[content]"></ng-content>
+    </div>
+    <div class="footer w-full" #footer>
+      <ng-content select="[footer]"></ng-content>
+    </div>
+  </section>
+</main>

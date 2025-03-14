@@ -1,0 +1,160 @@
+@import 'variables';
+
+.input-container {
+  position: relative;
+
+  app-icon {
+    position: absolute;
+    right: 5px;
+
+    color: $base-light;
+  }
+}
+
+:host ::ng-deep {
+  .p-calendar {
+    width: 100%;
+
+    .p-inputtext {
+      padding-right: 30px;
+    }
+
+    .p-calendar-clear-icon {
+      right: 32px;
+      top: 32%;
+    }
+
+    .p-datepicker {
+      min-width: 0;
+
+      .p-datepicker-header * {
+        color: $primary-darker;
+      }
+
+      .p-datepicker-calendar {
+        font-family: 'Roboto', sans-serif;
+        font-weight: 500;
+        font-size: 14px;
+
+        color: $secondary-darker;
+
+        thead {
+          // aumentando a distância entre os nomes dos dias da semana e os números dos dias
+          height: 42px;
+
+          th {
+            font-weight: 500;
+          }
+        }
+
+        tbody {
+          td {
+            padding: 0;
+
+            // centralizando os números dos dias dentro do td
+            & > span {
+              margin: auto;
+
+              &.p-disabled {
+                color: $base-lighter;
+              }
+            }
+          }
+
+          .p-highlight {
+            color: $background-lighter;
+            background-color: $primary-darker;
+
+            .day-number {
+              background-color: transparent;
+            }
+          }
+        }
+      }
+    }
+
+    .p-datepicker.range-mode {
+      .p-datepicker-calendar {
+        tbody {
+          // definindo o estilo do dia de hoje SOMENTE quando ele não esta selecionado
+          td.p-datepicker-today > span:not(.p-highlight) {
+            background-color: $background-lighter;
+            border: solid $primary-darker 1px;
+
+            &:hover {
+              background-color: #e9ecef;
+
+              .day-number {
+                background-color: inherit;
+              }
+            }
+          }
+
+          td:has(.day-in-range) {
+            position: relative;
+
+            // data limite selecionada deve aparecer esmaecida quando vista de outros meses
+            & > .p-disabled {
+              &:has(.limit-day-number) {
+                color: $background-lighter;
+                background-color: $primary-light;
+
+                opacity: 1;
+              }
+            }
+
+            // background que conecta os dias em um range
+            &::after {
+              content: '';
+
+              position: absolute;
+              z-index: -1;
+
+              top: 50%;
+              left: 50%;
+
+              transform: translate(-50%, -50%);
+
+              width: 105%; // um pouquinho acima de 100% pra evitar pequenos riscos entre os dias conectados no range
+              height: 36px;
+              background-color: $primary-lighter;
+            }
+
+            // garantir que quando selecionamos só um dia, não apareça o background que conecte o range
+            &:has(.limit-day-number):not(:has(.first-limit-day-number)) {
+              &::after {
+                width: 0%;
+              }
+            }
+
+            // mover o background que conecta ranges do primeiro dia um pouco mais pra esquerda
+            &:has(.limit-day-number.first-limit-day-number) {
+              &::after {
+                width: 52%;
+                left: 75%;
+              }
+            }
+
+            // mover o background que conecta ranges do último dia um pouco mais pra direita
+            &:has(.limit-day-number.last-limit-day-number) {
+              &::after {
+                width: 52%;
+                left: 25%;
+              }
+            }
+          }
+
+          .p-highlight {
+            color: inherit;
+            background-color: inherit;
+
+            &:has(.limit-day-number) {
+              color: $background-lighter;
+              background-color: $primary-darker;
+            }
+          }
+        }
+      }
+    }
+  }
+}

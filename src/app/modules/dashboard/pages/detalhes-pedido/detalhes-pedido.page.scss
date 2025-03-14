@@ -1,0 +1,10 @@
+@import 'variables';
+
+section {
+  padding-top: 24px;
+  padding-bottom: 44px;
+
+  @media (min-width: $xl) {
+    padding-bottom: calc(44px + $footerHeightDashboard);
+  }
+}

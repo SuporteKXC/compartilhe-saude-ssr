@@ -1,0 +1,58 @@
+<section class="flex flex-column justify-content-center align-items-center pt-6 pb-5">
+  <div class="w-full flex flex-column align-items-center justify-content-center gap-4">
+    <div>
+      <h1 class="block xl:inline white-space-nowrap xl:white-space-normal">
+        Saúde mais acessível
+      </h1>
+      <ng-container *ngIf="isBrowser">
+        <app-texto-dinamico class="block xl:inline text-center" />
+      </ng-container>
+    </div>
+  
+    <form [formGroup]="form" class="w-full">
+      <ng-container *ngIf="isBrowser; else skeleton">
+        <app-autocomplete
+          class="block w-full xl:w-28rem xl:m-auto"
+          label="Busque por nossos serviços"
+          placeholder="Busque por nossos serviços"
+          name="busca"
+          formControlName="busca"
+          icon="search"
+          autocomplete="off"
+          [forceSelection]="true" 
+          [labelSrOnly]="true"
+          [suggestions]="autoCompleteItens"
+          [emptyMessage]="emptyMessageSearch"
+          [suggestionTemplate]="suggestionTemplate"
+          (completeMethod)="getItens($event)"
+          (itemSelected)="navigateToProduto()">
+          <ng-template #suggestionTemplate let-item>
+            <div class="flex align-items-center gap-2">
+              <div class="label-categoria flex align-items-center gap-1 py-1 px-2">
+                <ng-container *ngIf="getProdutoLabel(item.value.categoria) as categoria">
+                  <app-icon 
+                    [iconName]="categoria.icon" 
+                    iconSize="14px" 
+                    verticalAlign="baseline" />
+                  <p>{{ categoria.label }}</p>
+                </ng-container>
+              </div>
+  
+              <p class="label-nome">{{ item.value.nome }}</p>
+            </div>
+          </ng-template>
+        </app-autocomplete>
+      </ng-container>
+      
+      <ng-template #skeleton>
+        <div class="w-full flex justify-content-center align-items-center">
+          <p-skeleton class="hidden lg:block" width="448px" height="40px" />
+          <p-skeleton class="w-full block lg:hidden" width="100%" height="40px" />
+        </div>
+      </ng-template>
+    </form>
+  </div>
+</section>
+
+<app-secao-produtos-destaque />
+

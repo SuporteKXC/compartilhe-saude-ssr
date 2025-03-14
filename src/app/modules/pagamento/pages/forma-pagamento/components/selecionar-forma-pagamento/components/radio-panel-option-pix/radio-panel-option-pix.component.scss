@@ -1,0 +1,16 @@
+@import 'variables';
+
+img {
+  width: 60px;
+
+  &.option-selected {
+    vertical-align: top;
+  }
+}
+
+p {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 22px;
+  color: $base-light-2;
+}

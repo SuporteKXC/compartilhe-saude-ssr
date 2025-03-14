@@ -1,0 +1,41 @@
+@import 'variables';
+
+main {
+  display: grid;
+  grid-template-rows: 58px auto;
+}
+
+.wrapper-content {
+  display: grid;
+  grid-template-rows: auto 64px;
+}
+
+.footer {
+  position: relative;
+  z-index: 2;
+}
+
+@media (min-width: $xl) {
+  main {
+    grid-template-columns: 260px auto;
+    grid-template-rows: auto;
+  }
+
+  .footer {
+    position: fixed;
+    bottom: 0;
+  }
+
+  .wrapper-content {
+    grid-template-rows: calc(100svh - 64px) auto;
+
+    &.no-footer{
+      grid-template-rows: auto;
+
+      .content {
+        overflow: hidden;
+        max-width: calc(100vw - 260px);
+      }
+    }
+  }
+}

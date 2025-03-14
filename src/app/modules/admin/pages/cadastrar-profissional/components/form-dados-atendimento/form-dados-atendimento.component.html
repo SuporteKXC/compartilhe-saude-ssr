@@ -1,0 +1,32 @@
+<app-form-fieldset titulo="Informações de atendimento" [formGroup]="formCadastrarProfissionalService.formProfissional">
+  <div class="flex flex-column gap-3" >
+    <app-input-text
+      class="w-full required"
+      name="idadeAtendimento"
+      label="Idade de atendimento"
+      placeholder="Idade de atendimento"
+      formControlName="idadeAtendimento"
+      autocomplete="off" />
+
+    <app-multiselect
+      class="w-full required"
+      name="formasPagamento"
+      label="Forma de pagamento"
+      placeholder="Selecione"
+      [options]="formasPagamento"
+      [showHeader]="true"
+      formControlName="formasPagamento" />
+
+    <app-multiselect
+      class="w-full required"
+      name="convenios"
+      label="Convênios"
+      placeholder="Selecione"
+      [options]="convenios"
+      [showHeader]="true"
+      formControlName="convenios" />
+
+      <app-form-forma-atendimento />
+      <app-form-local-atendimento />
+  </div>
+</app-form-fieldset>

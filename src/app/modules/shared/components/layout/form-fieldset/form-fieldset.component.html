@@ -1,0 +1,10 @@
+<fieldset id="form-fieldset">
+  <legend [ngClass]="{ required }" class="flex align-items-center">
+    <h3>{{ titulo }}</h3>
+    <ng-container *ngIf="tooltipContent">
+      <app-tooltip class="ml-1 mt-1" [content]="tooltipContent" display="flex" />
+    </ng-container>
+  </legend>
+
+  <ng-content />
+</fieldset>

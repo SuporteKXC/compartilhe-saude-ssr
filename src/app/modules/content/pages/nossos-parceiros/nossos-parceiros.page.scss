@@ -1,0 +1,19 @@
+@import './variables';
+@import 'mixins';
+
+$patternPaddingMobile: 32px;
+$patternPaddingDesktop: 50px;
+
+main {
+  @include mainPadding($patternPaddingDesktop, 50px);
+  gap: 78px;
+
+  @media (max-width: $sm) {
+    @include mainPadding($patternPaddingMobile, $horizontal-padding-main-content-sm);
+  }
+
+  @media (min-width: $sm) and (max-width: $lg) {
+    @include mainPadding($patternPaddingMobile, $horizontal-padding-main-content-md);
+    gap: 35px;
+  }
+}

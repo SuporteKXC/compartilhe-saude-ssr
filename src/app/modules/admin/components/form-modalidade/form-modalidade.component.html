@@ -1,0 +1,12 @@
+<app-form-fieldset titulo="Modalidade" [required]="required">
+  <div class="flex flex-column" [formGroup]="formGroup">
+    <app-radio-button
+      class="mt-2"
+      name="modalidade"
+      label="Modalidade"
+      [labelSrOnly]="true"
+      [options]="options"
+      formControlName="modalidade">
+    </app-radio-button>
+  </div>
+</app-form-fieldset>  

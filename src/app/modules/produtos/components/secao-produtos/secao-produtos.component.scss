@@ -1,0 +1,53 @@
+@import 'variables';
+
+$patternPaddingMobile: 30px;
+$patternPaddingDesktop: 40px;
+
+.wrapper {
+  min-height: 783px;
+  margin-top: 28px;
+
+  padding:
+    0
+    $horizontal-padding-main-content
+    $patternPaddingDesktop
+    $horizontal-padding-main-content;
+
+
+  @media (max-width: $sm) {
+    padding:
+    0
+    $horizontal-padding-main-content-sm
+    $patternPaddingMobile
+    $horizontal-padding-main-content-sm;
+
+  }
+
+  @media (min-width: $sm) and (max-width: $lg) {
+    padding:
+    0
+    $horizontal-padding-main-content-md
+    $patternPaddingMobile
+    $horizontal-padding-main-content-md;
+  }
+
+  p {
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 25px;
+
+    @media (min-width: $sm) {
+      font-size: 24px;
+      line-height: 30px;
+    }
+  }
+}
+
+h1 {
+  font-size: 24px;
+  margin: 0;
+  white-space: nowrap;
+  padding-right: 9px;
+}
+

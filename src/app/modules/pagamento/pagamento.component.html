@@ -1,0 +1,10 @@
+<p-toast>
+  <!-- toast com service nativo do PrimeNG não funcionavam corretamente se componentizados -->
+  <ng-template let-message pTemplate="message">
+    <app-toast-content [message]="message"></app-toast-content>
+  </ng-template>
+</p-toast>
+
+<app-page-wrapper>
+  <router-outlet></router-outlet>
+</app-page-wrapper>

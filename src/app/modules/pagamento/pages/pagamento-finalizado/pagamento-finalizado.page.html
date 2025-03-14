@@ -1,0 +1,11 @@
+<main class="flex flex-column gap-4 xl:flex-row-reverse xl:justify-content-between xl:gap-0">
+  <app-button
+    label="Ir para os meus pedidos"
+    size="small"
+    (handleClick)="navigateToMeusPedidos()"
+    [outlined]="true"
+    class="align-self-end xl:align-self-start"
+    contentClass="white-space-nowrap" />
+
+  <app-detalhes-pedido />
+</main>

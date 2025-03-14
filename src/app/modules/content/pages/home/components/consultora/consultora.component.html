@@ -1,0 +1,47 @@
+<section class="consultora-container">
+  <div class="flex justify-content-between align-items-center">
+    <div class="h-fit mr-3 md:mr-5 text-container">
+      <h2 class="my-0" data-testid="title-consultora">
+        Cadastre-se grátis e acesse nossos benefícios!
+      </h2>
+
+      <p>
+        Faça parte da nossa comunidade e tenha acesso a consultas, exames, cirurgias,
+        procedimentos e odontologia, sem mensalidades ou taxas de adesão!
+      </p>
+
+      <app-button
+        class="block lg:hidden"
+        label="Cadastre-se"
+        severity="primary"
+        [outlined]="false"
+        type="button"
+        (handleClick)="navigateTo('usuarios/pre-cadastro')"
+        data-testid="btn-consultora">
+      </app-button>
+
+      <app-button
+        class="hidden lg:block"
+        label="Cadastre-se"
+        severity="primary"
+        [outlined]="false"
+        type="button"
+        size="large"
+        (handleClick)="navigateTo('usuarios/pre-cadastro')"
+        data-testid="btn-consultora">
+      </app-button>
+    </div>
+
+    <figure class="mx-0 my-0">
+      <img
+        ngSrc="/HOME+CONSULTORA.jpg"
+        alt="Uma mulher branca, jovem usando óculos, de cabelos longos e escuros, sorrindo. Está segurando uma pasta azul com o logo da Compartilhe Saúde.
+          Ao fundo vemos uma parede de vidro transparente, um banner com textos e imagens que aparecem desfocados."
+        title="Consultora"
+        width="100"
+        height="100"
+        data-testid="img-consultora"
+        loading="lazy" />
+    </figure>
+  </div>
+</section>

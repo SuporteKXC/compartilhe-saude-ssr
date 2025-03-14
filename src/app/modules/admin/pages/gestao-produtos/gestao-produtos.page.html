@@ -1,0 +1,14 @@
+<app-page-title
+    titulo="Produtos Compartilhe"
+    [returnPath]="['/', 'admin', 'dashboard']"
+    [breadcrumbData]="breadcrumb"
+    class="mb-2">
+</app-page-title>
+
+<div class="flex flex-column gap-4">
+    <app-button class="xl:align-self-end mt-2" label="Novo"  size="small" icon="add" (handleClick)="navigateToNovoProduto()" />
+
+    <app-filtros-produtos (shouldSearchAgain)="shouldSearchAgain$.next()" />
+
+    <app-tabela-produtos [shouldSearchAgain$]="shouldSearchAgain$" />
+</div>

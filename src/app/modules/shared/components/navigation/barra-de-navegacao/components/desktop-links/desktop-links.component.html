@@ -1,0 +1,130 @@
+<div class="links-container flex justify-content-between align-items-center">
+  <div class="flex align-items-center">
+    <ng-container *ngFor="let item of menuItems">
+      <ng-container *ngIf="isSubrouteItem(item); else navbarLink">
+        <ng-container
+          [ngTemplateOutlet]="submenuDesktop"
+          [ngTemplateOutletContext]="{ $implicit: item }">
+        </ng-container>
+      </ng-container>
+
+      <ng-template #navbarLink>
+        <ng-container *ngIf="!$any(item).handleClick ">
+          <a
+            *ngIf="!$any(item).href"
+            [routerLink]="$any(item).path"
+            [fragment]="$any(item).fragment"
+            class="navbar-item"
+            [title]="item.label"
+            [ngClass]="{ active: shouldItemBeActive(item, activeRoute) }">
+            {{ item.label }}
+          </a>
+          <a
+            *ngIf="$any(item).href"
+            class="navbar-item"
+            target="_blank"
+            rel="noreferrer noopener"
+            [href]="$any(item).href"
+            [title]="item.label"
+            [ngClass]="{ active: shouldItemBeActive(item, activeRoute) }">
+            {{ item.label }}
+          </a>
+        </ng-container>
+        
+        <button
+          *ngIf="$any(item).handleClick"
+          class="navbar-item no-underline p-button p-button-text p-2"
+          [ngClass]="{ active: shouldItemBeActive(item, activeRoute) }"
+          (click)="$any(item).handleClick()"
+          [attr.data-testid]="item.datatestid">
+          {{ item.label }}
+        </button>
+      </ng-template>
+    </ng-container>
+  </div>
+
+  <div class="flex gap-3">
+    <ng-container *ngIf="!user && !isConnectSaude && isBrowser">
+      <app-button
+        label="Cadastre-se"
+        size="small"
+        [outlined]="true"
+        [severity]="isOdontologia ? 'secondary' : 'primary'"
+        (handleClick)="navigateToCadastrar()">
+      </app-button>
+
+      <app-button
+        icon="login"
+        size="small"
+        label="Fazer Login"
+        [severity]="isOdontologia ? 'secondary' : 'primary'"
+        (handleClick)="authService.login()">
+      </app-button>
+    </ng-container>
+
+    <span class="submenu-item-container-login" *ngIf="user">
+      <button
+        class="w-fit h-fit"
+        (click)="toggleMenu($event, menuUsuario)"
+        (keydown)="toggleMenu($event, menuUsuario)">
+        <span
+          class="p-button p-button-sm"
+          [ngClass]="isOdontologia ? 'p-button-secondary' : 'p-button-primary'">
+          Olá, {{ user.given_name }}
+          <app-icon
+            [ngStyle]="{ display: menuUsuario.visible ? 'none' : 'inline' }"
+            [ariaHidden]="menuUsuario.visible"
+            iconName="keyboard_arrow_down"
+            iconSize="24px"></app-icon>
+          <app-icon
+            [ngStyle]="{ display: menuUsuario.visible ? 'inline' : 'none' }"
+            [ariaHidden]="!menuUsuario.visible"
+            iconName="keyboard_arrow_up"
+            iconSize="24px"></app-icon>
+        </span>
+      </button>
+
+      <p-menu
+        #menuUsuario
+        styleClass="submenu submenu-usuario"
+        ariaLabel="Submenu Usuário"
+        [model]="menuUsuarioItens"
+        [popup]="true">
+      </p-menu>
+    </span>
+  </div>
+
+  <ng-container *ngIf="isConnectSaude">
+    <a
+      [href]="getWhatsappLink()"
+      title="Quero agendar"
+      class="hidden xl:flex w-fit no-underline p-button p-button-sm ml-2"
+      target="_blank"
+      rel="noreferrer noopener">
+      Assine agora
+    </a>
+  </ng-container>
+</div>
+
+<ng-template #submenuDesktop let-item>
+  <span class="submenu-item-container" (mouseleave)="menu.hide()">
+    <button
+      (mouseenter)="openMenu($event, menu)"
+      (click)="toggleMenu($event, menu)"
+      (keydown)="toggleMenu($event, menu)">
+      <span
+        class="navbar-item"
+        [ngClass]="{ active: shouldItemBeActive(item, activeRoute) }">
+        {{ item.label }}
+      </span>
+    </button>
+
+    <p-menu
+      #menu
+      styleClass="submenu"
+      ariaLabel="Submenu Produtos"
+      [model]="item.menuModel"
+      [popup]="true">
+    </p-menu>
+  </span>
+</ng-template>

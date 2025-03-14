@@ -1,0 +1,14 @@
+<app-autocomplete 
+    #autoCompleteBusca  
+    label="Buscar por cidade" 
+    [formControl]="control" 
+    placeholder="Digite sua cidade" 
+    icon="location_on"
+    [labelSrOnly]="true"
+    [suggestions]="cidades" 
+    [forceSelection]="true" 
+    [emptyMessage]="emptyMessageSearchCidade"
+    [disabled]="disabled"
+    (completeMethod)="searchCidades($event)"
+    (itemSelected)="searchAndClearEvent($event)">
+</app-autocomplete>

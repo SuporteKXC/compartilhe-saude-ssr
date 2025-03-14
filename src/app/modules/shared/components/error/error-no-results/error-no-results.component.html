@@ -1,0 +1,10 @@
+<div class="wrapper-carrinho-vazio flex flex-column align-items-center xl:flex-row xl:align-items-start xl:gap-4 w-full">
+  <app-icon [iconName]="iconName" iconSize="49px"/>
+  <div class="flex flex-column align-items-center xl:align-items-start">
+    <h2>{{ header }}</h2>
+    <p class="text-center mb-3">{{ description }}</p>
+    <ng-container *ngIf="actionsTemplate">
+      <ng-container [ngTemplateOutlet]="actionsTemplate" />
+    </ng-container>
+  </div>
+</div>

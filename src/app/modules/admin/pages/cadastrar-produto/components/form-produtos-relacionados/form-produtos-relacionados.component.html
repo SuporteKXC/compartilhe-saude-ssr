@@ -1,0 +1,19 @@
+<app-form-fieldset
+  titulo="Produtos relacionados" class="required"
+  tooltipContent="Selecione os produtos que são complementares e que podem gerar interesse do cliente.">
+  <div class="flex flex-column mt-1" [formGroup]="formCadastrarProdutoService.formProduto">
+    <app-multiselect
+      label="Produtos Relacionados"
+      formControlName="produtosInteresse"
+      name="produtosInteresse"
+      placeholder="Selecione"
+      class="w-full"
+      [options]="produtos"
+      [showHeader]="true"
+      [virtualScrollConfig]="{ enabled: true, itemSize: 45, step: pageSize }"
+      [lazyLoad]="true"
+      [labelSrOnly]="true"
+      [customErrors]="produtosCustomErros"
+      (loadNewData)="loadProdutosPage()" />
+  </div>
+</app-form-fieldset>

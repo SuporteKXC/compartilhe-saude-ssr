@@ -1,0 +1,28 @@
+<span class="flex flex-column">
+  <label *ngIf="label" [htmlFor]="name" [ngClass]="{ 'p-sr-only': labelSrOnly }">{{ label }}</label>
+
+  <span class="flex flex-column p-input-icon-right">
+    <input
+      pInputText
+      [value]="value"
+      [disabled]="disabled"
+      [attr.formControlName]="formControlName"
+      [id]="name"
+      [name]="name"
+      type="text"
+      [attr.maxlength]="maxLength"
+      [placeholder]="placeholder"
+      (keypress)="handleKeyPress($event)"
+      (input)="onInputTextChange($event)"
+      (blur)="onTouched()"
+      [autocomplete]="autocomplete" />
+
+    <i>
+      <button (click)="handleSearch()" type="button" [disabled]="shouldDisableSearch">
+        <app-icon iconName="search" verticalAlign="baseline" />
+      </button>
+    </i>
+  </span>
+
+  <small *ngIf="errorMessage">{{ errorMessage }}</small>
+</span>

@@ -1,0 +1,114 @@
+<div class="content-wrapper card">
+  <div class="main-content card-mobile w-full">
+    <main class="flex gap-3 justify-content-between">
+      <div class="flex gap-3">
+        <img
+          [src]="pathImage"
+          [alt]="carrinhoItem.nome"
+          (load)="imgLoaded = true"
+          [ngStyle]="{ display: imgLoaded ? 'block' : 'none' }" />
+
+        <p-skeleton
+          *ngIf="!imgLoaded"
+          width="52px"
+          height="48px"
+          borderRadius="10px"
+          styleClass="skeleton-img"></p-skeleton>
+
+        <div>
+          <h1>{{ carrinhoItem.nome }}</h1>
+          <p>{{ carrinhoItem.descricao }}</p>
+        </div>
+      </div>
+
+      <div class="hidden md:block">
+        <ng-container [ngTemplateOutlet]="actions" />
+      </div>
+    </main>
+
+    <footer class="grid grid-nogutter">
+      <div class="col-12 sm:col-7 p-0" dataTestid="localAtendimento">
+        <h2>Local de atendimento</h2>
+        <div class="atendimento">
+          <span class="location-icon">
+            <app-icon iconName="location_on" iconSize="18px" verticalAlign="baseline"></app-icon>
+          </span>
+          <div class="info-parceiro" *ngIf="checkEnumValue(carrinhoItem.localProduto.formaAtendimento, 'On-line')" dataTestid="info-online">
+            <strong>Atendimento On-line</strong>
+          </div>
+          <div class="info-parceiro" *ngIf="checkEnumValue(carrinhoItem.localProduto.formaAtendimento, 'Presencial')" dataTestid="info-local">
+            <strong>{{ carrinhoItem.localProduto.nomeEstabelecimento }}</strong>
+            <p>{{ carrinhoItem.localProduto.endereco | formatEndereco }}</p>
+          </div>
+          <div class="info-parceiro" *ngIf="checkEnumValue(carrinhoItem.localProduto.formaAtendimento, 'Domiciliar')" dataTestid="info-local">
+            <strong>Atendimento Domiciliar</strong>
+          </div>
+        </div>
+      </div>
+
+      <div
+        *ngIf="carrinhoItem.localProduto.nomeProfissional"
+        class="col-12 sm:col-5 p-0"
+        id="profissionalAtendimento"
+        dataTestid="profissionalAtendimento">
+        <h2>Profissional de atendimento</h2>
+        <div class="atendimento">
+          <span class="location-icon">
+            <app-icon iconName="account_circle" iconSize="18px" verticalAlign="baseline"></app-icon>
+          </span>
+          <div class="info-parceiro" dataTestid="info-profissional">
+            <strong>{{ carrinhoItem.localProduto.nomeProfissional }}</strong>
+            <p>{{ carrinhoItem.localProduto.especialidadesProfissional | joinString : { separator: ' | ', includeAnd: false } }}
+                -
+                {{ carrinhoItem.localProduto.registroProfissional }}</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <div class="block md:hidden">
+    <ng-container [ngTemplateOutlet]="actions" />
+  </div>
+</div>
+
+<ng-template #actions>
+  <div class="side-column">
+    <div class="extra-info">
+      <div class="qtd-controls">
+        <app-button
+          label="Diminuir quantidade do item no carrinho"
+          [labelSrOnly]="true"
+          icon="remove"
+          [outlined]="true"
+          size="small"
+          [disabled]="carrinhoItem.quantidade <= 1 || itemDisabled"
+          elementClass="botao-qtd-control"
+          (handleClick)="diminuirQuantidade()"></app-button>
+        <span class="carrinho-qtd">{{ carrinhoItem.quantidade }}</span>
+        <app-button
+          label="Aumentar quantidade do item no carrinho"
+          [labelSrOnly]="true"
+          icon="add"
+          [outlined]="true"
+          size="small"
+          [disabled]="itemDisabled"
+          elementClass="botao-qtd-control"
+          (handleClick)="aumentarQuantidade()"></app-button>
+      </div>
+
+      <strong>{{ carrinhoItem.localProduto.valorVista | currency }}</strong>
+    </div>
+
+    <div
+      aria-label="Remover item do carrinho"
+      class="delete-button"
+      [ngClass]="{ 'remover-disabled': itemDisabled }"
+      [ariaDisabled]="itemDisabled"
+      tabindex="0"
+      (click)="removerItem()"
+      (keydown)="removerItem($event)">
+      <app-icon iconName="delete" verticalAlign="sub" iconSize="24px"></app-icon>
+    </div>
+  </div>
+</ng-template>

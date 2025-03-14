@@ -1,0 +1,75 @@
+<app-form-fieldset titulo="Dados do profissional de saúde">
+  <div class="flex flex-column gap-3" [formGroup]="formCadastrarProfissionalService.formProfissional">
+    <div class="flex flex-column lg:flex-row w-full gap-2 lg:gap-4">
+      <app-input-text
+        class="w-full required"
+        name="nome"
+        label="Nome"
+        placeholder="Nome"
+        formControlName="nome"
+        autocomplete="off" />
+
+      <app-input-text
+        class="w-full required"
+        name="cpf"
+        label="CPF"
+        placeholder="CPF"
+        formControlName="cpf"
+        mask="999.999.999-99"
+        [customErrors]="cpfCustomErrors"
+        autocomplete="off" />
+    </div>
+
+    <div class="flex flex-column lg:flex-row w-full gap-2 lg:gap-4">
+      <app-input-text
+        class="w-full"
+        name="data-nascimento"
+        label="Data de nascimento"
+        placeholder="__/__/____"
+        formControlName="dataNascimento"
+        mask="99/99/9999"
+        [customErrors]="dataNascimentoCustomErrors"
+        autocomplete="off" />
+      
+      <app-select
+        class="w-full"
+        label="Sexo"
+        name="sexoBiologico"
+        formControlName="sexoBiologico"
+        placeholder="Selecione"
+        [options]="sexoBiologicoOptions" />
+    </div>
+
+    <div class="flex flex-column lg:flex-row w-full gap-2 lg:gap-4">
+      <app-input-text
+        class="w-full"
+        name="telefone"
+        label="Telefone"
+        [mask]="['(99) 9999-9999', '(99) 99999-9999']"
+        [customErrors]="telefoneCustomErrors"
+        placeholder="Telefone"
+        formControlName="telefone"
+        autocomplete="off" />
+
+      <app-input-text
+        class="w-full"
+        name="email"
+        label="E-mail"
+        placeholder="E-mail"
+        formControlName="email"
+        autocomplete="off" />
+    </div>
+
+    <div class="flex flex-column lg:flex-row w-full gap-2 lg:gap-4">
+      <app-input-text
+        class="w-full"
+        name="path-img"
+        label="Link da imagem"
+        placeholder="Link da imagem"
+        tooltipContent="Adicione a imagem no banco e depois copie e cole o link aqui para exibição."
+        formControlName="pathImagem"
+        [customErrors]="linkImageCustomErrors"
+        autocomplete="off" />
+    </div>
+  </div>
+</app-form-fieldset>

@@ -1,0 +1,29 @@
+@import './variables';
+@import 'mixins';
+
+$patternPaddingMobile: 32px;
+$patternPaddingDesktop: 32px;
+
+main {
+  @include mainPadding($patternPaddingDesktop, $horizontal-padding-main-content);
+  gap: 78px;
+
+  @media (max-width: $sm) {
+    @include mainPadding($patternPaddingMobile, $horizontal-padding-main-content-sm);
+  }
+
+  @media (min-width: $sm) and (max-width: $lg) {
+    @include mainPadding($patternPaddingMobile, $horizontal-padding-main-content-md);
+    gap: 35px;
+  }
+
+  &>div {
+    width: 100%;
+    max-width: $max-main-width;
+    margin: auto;
+  }
+}
+
+.container-perguntas {
+  background-color: $primary-background-light;
+}

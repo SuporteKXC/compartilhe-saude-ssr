@@ -1,0 +1,18 @@
+@import 'variables';
+
+.wrapper-nossos-produtos {
+  display: flex;
+  flex-direction: column;
+
+  @media (max-width: $sm) {
+    flex-direction: column-reverse;
+  }
+}
+
+.wrapper-nossos-parceiros ::ng-deep {
+  .grid {
+    @media (max-width: $xl) {
+      grid-template-columns: repeat(2, calc(50% - 14px)) !important;
+    }
+  }
+}

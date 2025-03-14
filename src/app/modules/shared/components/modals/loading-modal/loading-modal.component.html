@@ -1,0 +1,20 @@
+<p-dialog
+  [(visible)]="visible"
+  [modal]="true"
+  [draggable]="false"
+  [resizable]="false"
+  [baseZIndex]="1110"
+  id="loading-modal">
+  <div class="wrapper-loading-modal flex gap-2 xl:gap-3">
+    <div class="wrapper-loading">
+      <img
+        class="loading-spinner"
+        src="/assets/icons/shared/loading-spinner.svg"
+        alt="Carregando..." />
+    </div>
+    <div class="wrapper-texto w-full">
+      <h4>Aguarde</h4>
+      <p>{{ message }}</p>
+    </div>
+  </div>
+</p-dialog>

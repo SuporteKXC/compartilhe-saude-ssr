@@ -1,0 +1,26 @@
+<div class="flex principal-container justify-content-between">
+  <div class="text-container">
+    <h1 class="my-0" data-testid="title">
+      Atendimento odontológico completo e de qualidade é na Compartilhe Sorrisos
+    </h1>
+
+    <p>
+      Cuidar do seu sorriso é nosso compromisso diário, por isso na Compartilhe
+      Saúde, você também conta com atendimento odontológico especializado e
+      condições de pagamento facilitadas. Queremos garantir a você o seu melhor
+      sorriso. Seja Compartilhe Saúde!
+    </p>
+
+    <app-button label="Quero ser Compartilhe" severity="secondary" [outlined]="true" type="button"
+      (handleClick)="navigateTo('usuarios/pre-cadastro')">
+    </app-button>
+  </div>
+
+  <figure class="mx-0 my-0">
+    <img
+      [src]="pathImage + '/BANNER+P%C3%81GINA+ODONTO.jpg'"
+      alt="Homem de cabelos escuros com um belo sorriso no rosto, usando um jaleco da cor azul
+      escuro, ao fundo aparece o consultório odontológico."
+      title="Compartilhe Sorrisos odontologia" />
+  </figure>
+</div>

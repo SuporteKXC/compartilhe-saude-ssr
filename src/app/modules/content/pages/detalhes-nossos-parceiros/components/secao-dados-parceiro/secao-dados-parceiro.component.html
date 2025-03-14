@@ -1,0 +1,208 @@
+<section class="wrapper-dados w-full flex flex-column gap-3 p-3 lg:p-4" id="detalhes-nossos-parceiros">
+  <ng-container *ngIf="detalhesParceiro; else loading">
+    <section class="wrapper-identificacao w-full flex flex-column gap-3">
+      <div class="w-full flex align-items-center justify-content-between flex-wrap lg:flex-nowrap">
+        <ng-container [ngTemplateOutlet]="avatar"/>
+
+        <div class="w-full flex flex-order-3 lg:flex-order-2 flex-column justify-content-center gap-2 xl:px-3 xl:py-1">
+          <h1>{{ detalhesParceiro.nomeParceiro }}</h1>
+
+          <div class="w-full flex flex-column gap-2">
+            <p class="w-fit">{{ detalhesParceiro.tiposEspecialidade | joinString }}</p>
+            <p class="white-space-nowrap">
+              <ng-container *ngIf="detalhesParceiro.registroProfissional">
+                <span >{{ detalhesParceiro.registroProfissional }}</span>
+              </ng-container>
+
+              <ng-container *ngIf="detalhesParceiro.rqe">
+                <span class="pipe-content">{{detalhesParceiro.rqe }}</span>
+              </ng-container>
+            </p>
+          </div>
+        </div>
+
+        <ng-container [ngTemplateOutlet]="redesSociais" />
+      </div>
+      <div class="flex flex-column gap-2">
+        <p class="flex flex-nowrap gap-2">
+          <app-icon iconName="Stethoscope" iconSizeDesktop="24px" verticalAlign="sub" />
+
+          <span>{{ detalhesParceiro.servicosOferecidos | joinString }}</span>
+        </p>
+        <ng-container *ngIf="detalhesParceiro.categoria === categoriaParceiroEnum.PROFISSIONAL_SAUDE">
+          <p class="flex flex-nowrap gap-2">
+            <app-icon iconName="home_health" iconSizeDesktop="24px" verticalAlign="sub" />
+
+            <span>Modalidade: {{ detalhesParceiro.formasAtendimento | joinString }}</span>
+          </p>
+
+          <ng-container *ngIf="detalhesParceiro.idadeAtendimento as idadeAtendimento">
+            <p class="flex flex-nowrap gap-2">
+              <app-icon iconName="supervisor_account" iconSizeDesktop="24px" verticalAlign="sub" />
+
+              <span>Atendimento: {{ idadeAtendimento  }}</span>
+            </p>
+          </ng-container>
+        </ng-container>
+      </div>
+    </section>
+
+    <p-divider />
+
+    <section class="wrapper-localizacao flex flex-column gap-3">
+      <h2>Local de atendimento</h2>
+
+      <ng-container *ngIf="detalhesParceiro.categoria === categoriaParceiroEnum.PROFISSIONAL_SAUDE">
+        <app-carousel
+          [items]="detalhesParceiro.locaisAtendimento"
+          [itemTemplate]="cardlocalAtendimento"
+          [numVisible]="numVisible"
+          [numScroll]="numScroll"
+          [overflow]="false"
+          [responsiveOptions]="responsiveOptions"
+          [slider]="isSlider">
+        </app-carousel>
+
+        <ng-template #cardlocalAtendimento let-localAtendimento>
+          <div class="card-local-atendimento h-full flex flex-column gap-3 p-3">
+            <p class="titulo">{{ localAtendimento.nome }}</p>
+            <div class="flex flex-column justify-content-between flex-grow-1">
+              <p class="flex flex-nowrap align-items-center w-fit gap-2">
+                <app-icon iconName="location_on" iconSizeDesktop="24px" verticalAlign="sub" />
+
+                <span>{{ getEndereco(localAtendimento.endereco) | formatEndereco }}</span>
+              </p>
+
+              <ng-container *ngIf="localAtendimento.telefone as telefone">
+                <p class="flex flex-nowrap align-items-center w-fit gap-2 mb-2">
+                  <app-icon iconName="call" iconSizeDesktop="24px" verticalAlign="sub" />
+
+                  <span>{{ telefone | mask : ['(99) 9999-9999', '(99) 99999-9999']}}</span>
+                </p>
+
+                <a
+                  class="w-fit h-fit flex justify-content-center gap-2 px-3 no-underline p-button p-button-sm p-button-outlined align-self-center lg:align-self-start"
+                  [href]="getMensagem(detalhesParceiro.nomeParceiro, telefone)"
+                  target="_blank"
+                  rel="noreferrer noopener">
+                  <img
+                    src="/assets/icons/social/whatsapp-verde.svg"
+                    [alt]="'whatsApp ' + detalhesParceiro.nomeParceiro"
+                    [title]="'whatsApp ' + detalhesParceiro.nomeParceiro"
+                    width="12" height="12"
+                    class="mt-1" />
+                  <span>Entrar em contato</span>
+                </a>
+              </ng-container>
+            </div>
+          </div>
+        </ng-template>
+      </ng-container>
+
+      <ng-container *ngIf="detalhesParceiro.categoria === categoriaParceiroEnum.ESTABELECIMENTO">
+        <div class="flex flex-column gap-2">
+          <p class="flex flex-nowrap align-items-center w-fit gap-2">
+            <app-icon iconName="location_on" iconSizeDesktop="24px" verticalAlign="sub" />
+
+            <ng-container *ngIf="isOnline; else cidade">
+              <span>On-line</span>
+            </ng-container>
+
+            <ng-template #cidade>
+              <span>{{ getEndereco() | formatEndereco }}</span>
+            </ng-template>
+          </p>
+
+          <ng-container *ngIf="detalhesParceiro.telefone as telefone">
+            <p class="flex flex-nowrap align-items-center w-fit gap-2 mb-2">
+              <app-icon iconName="call" iconSizeDesktop="24px" verticalAlign="sub" />
+   
+              <span>{{ telefone | mask : ['(99) 9999-9999', '(99) 99999-9999']}}</span>
+            </p>
+
+            <a
+              class="w-fit flex justify-content-center gap-2 no-underline p-button p-button-sm p-button-outlined white-space-nowrap align-self-center md:align-self-start"
+              [href]="getMensagem(detalhesParceiro.nomeParceiro, telefone)"
+              target="_blank"
+              rel="noreferrer noopener">
+              <img
+                src="/assets/icons/social/whatsapp-verde.svg"
+                [alt]="'whatsApp ' + detalhesParceiro.nomeParceiro"
+                [title]="'whatsApp ' + detalhesParceiro.nomeParceiro"
+                width="12" height="12"
+                class="mt-1" />
+              <span>Entrar em contato</span>
+            </a>
+          </ng-container>
+        </div>
+      </ng-container>
+    </section>
+  </ng-container>
+</section>
+
+<ng-template #avatar>
+  <div class="flex-order-1">
+    <ng-container *ngIf="!imageNotFound; else defaultAvatar">
+      <p-avatar
+        [image]="pathImg + detalhesParceiro.pathImagem"
+        styleClass="mr-2 block"
+        size="xlarge"
+        shape="circle"
+        (onImageError)="imageNotFound = true">
+      </p-avatar>
+    </ng-container>
+
+    <ng-template #defaultAvatar>
+      <p-avatar
+        styleClass="mr-2"
+        size="xlarge"
+        shape="circle"
+        label="{{ detalhesParceiro.nomeParceiro.charAt(0) }}">
+      </p-avatar>
+    </ng-template>
+  </div>
+</ng-template>
+
+<ng-template #loading>
+  <app-skeleton-secao-nossos-parceiros />
+</ng-template>
+
+<ng-template #redesSociais>
+  <div class="flex flex-order-2 lg:flex-order-3 align-items-center justify-content-center lg:justify-content-start gap-3">
+    <ng-container *ngIf="detalhesParceiro.instagram as instagram">
+      <a [href]="instagram"
+        [title]="'instagram ' + detalhesParceiro.nomeParceiro "
+        target="_blank" rel="noreferrer noopener">
+        <img
+          src="/assets/icons/social/instagram-verde.svg"
+          [alt]="'instagram ' + detalhesParceiro.nomeParceiro"
+          [title]="'instagram ' + detalhesParceiro.nomeParceiro"
+          width="24" height="24" />
+      </a>
+    </ng-container>
+
+    <ng-container *ngIf="detalhesParceiro.linkedin as linkedin">
+      <a [href]="linkedin"
+        [title]="'linkedIn ' + detalhesParceiro.nomeParceiro "
+        target="_blank" rel="noreferrer noopener">
+        <img
+          src="/assets/icons/social/linkedin-verde.svg"
+          [alt]="'linkedIn ' + detalhesParceiro.nomeParceiro"
+          [title]="'linkedIn ' + detalhesParceiro.nomeParceiro"
+          width="24" height="24" />
+      </a>
+    </ng-container>
+
+    <ng-container *ngIf="detalhesParceiro.whatsapp as whatsapp">
+      <a [href]="getMensagem(detalhesParceiro.nomeParceiro, undefined, whatsapp)"
+        [title]="'whatsApp ' + detalhesParceiro.nomeParceiro "
+        target="_blank" rel="noreferrer noopener">
+        <img
+          src="/assets/icons/social/whatsapp-verde.svg"
+          [alt]="'whatsApp ' + detalhesParceiro.nomeParceiro"
+          [title]="'whatsApp ' + detalhesParceiro.nomeParceiro"
+          width="24" height="24" />
+      </a>
+    </ng-container>
+  </div>
+</ng-template>

@@ -1,0 +1,57 @@
+@import 'variables';
+@import 'mixins';
+
+$patternPaddingMobile: 34px;
+$patternPaddingDesktop: 24px;
+
+main {
+  @include mainPadding($patternPaddingDesktop, $horizontal-padding-main-content);
+  margin-bottom: 10px;
+
+  @media (max-width: $sm) {
+    @include mainPadding($patternPaddingMobile, $horizontal-padding-main-content-sm);
+    margin-bottom: 0;
+  }
+
+  @media (min-width: $sm) and (max-width: $xl) {
+    @include mainPadding($patternPaddingMobile, $horizontal-padding-main-content-md);
+  }
+
+  &>div {
+    max-width: $max-main-width;
+  }
+}
+
+h2 {
+  color: $secondary-darker;
+
+  font-size: 24px;
+
+  line-height: 24px;
+}
+
+.wrapper-content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  @media (min-width: $lg) {
+    display: grid;
+    grid-template-columns: 67% 31%;
+    gap: 20px;
+  }
+}
+
+.carrinho-vazio {
+  @media (min-width: $xl) {
+    margin-top: 69px;
+    margin-right: 45px;
+  }
+}
+
+.cards-wrapper {
+  display: flex;
+  flex-direction: column;
+
+  gap: 16px;
+}

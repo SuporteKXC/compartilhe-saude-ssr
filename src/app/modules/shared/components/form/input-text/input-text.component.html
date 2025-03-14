@@ -1,0 +1,35 @@
+<span class="flex flex-column">
+  <span>
+    <label *ngIf="label" [htmlFor]="name" [ngClass]="{ 'p-sr-only': labelSrOnly }">{{
+      label
+    }}</label>
+    <ng-container *ngIf="tooltipContent">
+      <app-tooltip class="ml-1" [content]="tooltipContent" verticalAlign="sub" />
+    </ng-container>
+  </span>
+
+  <span class="flex flex-column" [ngClass]="{ 'p-input-icon-right': !!icon }">
+    <input
+      #input
+      pInputText
+      [value]="value"
+      [disabled]="disabled"
+      [attr.formControlName]="formControlName"
+      [id]="name"
+      [name]="name"
+      type="text"
+      [attr.maxlength]="maxlength"
+      [placeholder]="placeholder"
+      (input)="onInputTextChange($event)"
+      (blur)="onTouched()"
+      (focusout)="setValue($event)"
+      [autocomplete]="autocomplete" />
+    <i>
+      <app-icon *ngIf="!!icon" [iconName]="icon" verticalAlign="baseline" />
+    </i>
+  </span>
+
+  <small *ngIf="errorMessage" [ngStyle]="{ 'margin-bottom': errorMarginBottom }">{{
+    errorMessage
+  }}</small>
+</span>

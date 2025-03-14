@@ -1,0 +1,36 @@
+<div *ngIf="group" [formGroup]="group">
+  <label *ngIf="label" [htmlFor]="name" [ngClass]="{ 'p-sr-only': labelSrOnly }">{{ label }}</label>
+
+  <span class="input-container">
+    <p-calendar
+      #calendar
+      [formControl]="control"
+      [selectionMode]="mode"
+      [readonlyInput]="readonlyInput"
+      [placeholder]="placeholder"
+      [inputId]="name"
+      [panelStyleClass]="mode === 'range' ? 'range-mode' : ''"
+      [showClear]="showClear"
+      (onClickOutside)="handleClickOutside()"
+      (onSelect)="handleSelect()"
+      (onBlur)="onTouched()"
+      (onClear)="handleClear()">
+      <ng-template pTemplate="date" let-date>
+        <span
+          class="day-number"
+          [ngClass]="{
+            'limit-day-number': isFirstDayOfRange(date) || isLastDayOfRange(date),
+            'first-limit-day-number':
+              isFirstDayOfRange(date) && bothLimitDaysSelected && !areRangeDaysEqual,
+            'last-limit-day-number':
+              isLastDayOfRange(date) && bothLimitDaysSelected && !areRangeDaysEqual,
+            'day-in-range': isDateInRange(date) && bothLimitDaysSelected && !areRangeDaysEqual
+          }">
+          {{ date.day }}
+        </span>
+      </ng-template>
+    </p-calendar>
+
+    <app-icon iconName="calendar_month" (click)="calendar.toggle()"></app-icon>
+  </span>
+</div>

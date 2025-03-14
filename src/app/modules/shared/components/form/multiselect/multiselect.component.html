@@ -1,0 +1,36 @@
+<div class="flex flex-column" *ngIf="group" [formGroup]="group">
+  <label *ngIf="label" [htmlFor]="name" [ngClass]="{ 'p-sr-only': labelSrOnly }">{{ label }}</label>
+
+  <p-multiSelect
+    #multiselect
+    panelStyleClass="multiselect-panel"
+    optionValue="value"
+    optionLabel="label"
+    [formControl]="control"
+    [name]="name"
+    [inputId]="name"
+    [options]="options"
+    [placeholder]="placeholder"
+    [disabled]="disabled"
+    [className]="getControlStateClasses()"
+    [emptyMessage]="emptyMessage"
+    [emptyFilterMessage]="emptyMessage"
+    [appendTo]="appendTo"
+    [showClear]="showClear"
+    [showHeader]="showHeader"
+    [filter]="showHeader"
+    [filterPlaceHolder]="filterPlaceHolder"
+    [virtualScroll]="virtualScrollConfig.enabled"
+    [virtualScrollItemSize]="virtualScrollConfig.itemSize"
+    [virtualScrollOptions]="{ step: virtualScrollConfig.step }"
+    [lazy]="lazyLoad"
+    (onClick)="handleOnClick($event)"
+    (onChange)="handleChange($event)"
+    (onClear)="handleChange(null)"
+    (onBlur)="onTouched()"
+    (onLazyLoad)="loadNewData.emit()"
+    (onPanelHide)="onResetAll()">
+  </p-multiSelect>
+
+  <small *ngIf="errorMessage">{{ errorMessage }}</small>
+</div>

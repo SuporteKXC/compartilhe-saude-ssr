@@ -1,0 +1,12 @@
+form {
+  > div {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .botao-salvar-container {
+    padding-left: 8px;
+    margin-top: 20px;
+  }
+}

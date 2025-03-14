@@ -1,0 +1,180 @@
+@import 'variables';
+@import 'mixins';
+
+$patternPaddingMobile: 32px;
+$patternPaddingDesktop: 32px;
+
+section {
+  @include mainPadding($patternPaddingDesktop, 90px);
+
+  @media (max-width: $sm) {
+    @include mainPadding($patternPaddingMobile, 24px);
+  }
+
+  @media (min-width: $sm) and (max-width: $lg) {
+    @include mainPadding($patternPaddingMobile, $horizontal-padding-main-content-md);
+  }
+
+  h2 {
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 40px;
+    text-align: center;
+
+    @media (min-width: $lg) {
+      font-size: 50px;
+      font-weight: 600;
+    }
+  }
+
+  h4 {
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: center;
+
+    @media (min-width: $lg) {
+      font-size: 28px;
+      font-weight: 400;
+      line-height: 28px;
+      text-align: center;
+    }
+  }
+
+  .wrapper {
+    &-card {
+      @media (min-width: $md) {
+        max-width: calc(50% - 16px);
+      }
+
+      @media (min-width: $xl) {
+        max-width: 258px;
+      }
+
+      .card-header {
+        height: 40px;
+      }
+
+      h5 {
+        color: $secondary-lighter;
+        font-size: 18px;
+        line-height: 18px;
+        font-weight: 700;
+        text-align: center;
+      }
+    }
+
+    &-recomendado {
+      outline: 1px solid $secondary-darker;
+      background-color: $secondary-darker;
+    }
+  }
+
+  .card {
+    background-color: $background-light;
+    width: 100%;
+    height: calc(100% - 40px);
+
+    &.recomendado {
+      outline: 1px solid $secondary-darker;
+    }
+
+    .wrapper-precos {
+      h5 {
+        color: $primary-darker;
+        font-size: 40px;
+        font-weight: 600;
+        line-height: 54.24px;
+        text-align: center;
+      }
+
+      h6 {
+        line-height: 55px;
+        text-align: center;
+        vertical-align: middle;
+
+        &:not(span) {
+          color: $base-darker;
+          font-size: 40px;
+          font-weight: 700;
+        }
+
+        span {
+          font-size: 24px;
+          font-weight: 400;
+        }
+      }
+
+      p {
+        color: $primary-darker;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 28px;
+        text-align: center;
+      }
+    }
+
+    .wrapper-desconto {
+      height: 28px;
+    }
+
+    .wrapper-beneficios {
+      flex-grow: 1;
+      
+      p {
+        color: $base-dark;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 16px;
+
+        app-icon {
+          background-color: $background-lighter;
+          color: $primary-darker;
+          height: 20px;
+        }
+
+        &:not(.incluso) {
+          color: base-light;
+
+          app-icon {
+            color: $error-dark;
+          }
+        }
+      }
+    }
+  }
+
+  .observacao {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 28px;
+    text-align: center;
+
+    @media (min-width: $lg) {
+      text-align: right;
+    }
+  }
+
+  &>div {
+    width: 100%;
+    max-width: $max-main-width;
+
+    @media (min-width: $lg) {
+      width: fit-content;
+    }
+  }
+}
+
+::ng-deep {
+  .p-divider.p-divider-horizontal:before {
+    border-top-width: 1px;
+    border-top-color: $primary-darker;
+  }
+
+  .wrapper-icon {
+    background-color: $background-light;
+    display: block;
+    width: 20px;
+    height: 20px;
+  }
+}

@@ -1,0 +1,42 @@
+<div class="flex flex-column align-items-center gap-4">
+  <div class="wrapper-valor">
+    <div class="flex flex-column gap-3 h-full px-3 py-4">
+      <ng-container 
+        *ngIf="formaPagamento === FormaPagamento.CARTAO_CREDITO && qtdParcelas > 1; else pix">
+        <ng-container *ngIf="carrinhoValorTotal$ | async as total">
+          <p class="flex justify-content-between">
+            <span class="font-semibold line-through">Subtotal</span>
+            <span class="font-medium">{{ total | currency }}</span>
+          </p>
+
+          <p class="flex justify-content-between">
+            <span class="font-semibold">Taxa de parcelamento</span>
+            <span class="font-medium">{{ getTaxaParcelamento(total) | currency }}</span>
+          </p>
+
+          <p class="total flex justify-content-between">
+            <span class="font-semibold">Total</span>
+            <span class="valor font-semibold">{{
+              total + getTaxaParcelamento(total) | currency
+            }}</span>
+          </p>
+        </ng-container>
+      </ng-container>
+    </div>
+  </div>
+
+  <app-button
+    label="Finalizar compra"
+    size="small"
+    [disabled]="!botaoHabilitado"
+    (handleClick)="finalizarCompra.emit()" />
+</div>
+
+<ng-template #pix>
+  <p class="total flex justify-content-between">
+    <span class="font-semibold">Total</span>
+    <ng-container *ngIf="carrinhoValorTotal$ | async as total">
+      <span class="valor font-semibold">{{ total | currency }}</span>
+    </ng-container>
+  </p>
+</ng-template>

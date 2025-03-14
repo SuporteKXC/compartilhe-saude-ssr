@@ -1,0 +1,48 @@
+<section
+  class="col-12 md:col-6 wrapper-formulario-senha flex flex-column align-items-center justify-content-between">
+  <div class="flex flex-column align-items-center w-full">
+    <a routerLink="">
+      <img 
+      [src]="pathImage + '/assets/Images/logo-compartilhe.png'" 
+      alt="Logo Compartilhe Saúde"
+      title="Compartilhe Saúde" />
+    </a>
+
+    <h3>Escolha uma senha</h3>
+
+    <form [formGroup]="preCadastroFormService.formSenha" (submit)="submitEvent()">
+      <app-input-password
+        name="senha"
+        label="Senha"
+        [labelSrOnly]="true"
+        placeholder="Senha"
+        formControlName="senha"
+        [customErrors]="passwordCustomError"
+        [valid]="isSamePassword()">
+      </app-input-password>
+
+      <div class="flex flex-column">
+        <app-input-password
+          name="confirmar-senha"
+          label="Confirmar Senha"
+          [labelSrOnly]="true"
+          placeholder="Repita a senha"
+          formControlName="confirmarSenha"
+          [customErrors]="passwordCustomError"
+          [valid]="isSamePassword()">
+        </app-input-password>
+
+        <small *ngIf="!isSamePassword()">As senhas não conferem</small>
+      </div>
+      
+      <app-button
+        [disabled]="!preCadastroFormService.formSenha.valid || !isSamePassword()"
+        label="Cadastrar"
+        type="submit"
+        size="small"
+        [expand]="true"
+        [loading]="loading">
+      </app-button>
+    </form>
+  </div>
+</section>

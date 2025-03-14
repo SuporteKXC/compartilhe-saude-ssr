@@ -1,0 +1,87 @@
+@import 'variables';
+
+@mixin mainPadding($patternPadding, $horizontalPadding) {
+  padding: $patternPadding $horizontalPadding;
+}
+
+section {
+  @include mainPadding(0, $horizontal-padding-main-content);
+
+  @media (max-width: $sm) {
+    @include mainPadding(0, $horizontal-padding-main-content-sm);
+  }
+
+  @media (min-width: $sm) and (max-width: $lg) {
+    @include mainPadding(0, $horizontal-padding-main-content-md);
+  }
+
+  display: flex;
+  justify-content: center;
+  
+  div {
+    width: 100%;
+    max-width: $max-main-width;
+  }
+}
+
+.titulo {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 100%;
+
+  @media (min-width: $lg) {
+    font-size: 34px;
+    line-height: 150%;
+  }
+}
+
+::ng-deep #detalhes-checkup {
+  .wrapper {
+    min-height: 434px;
+
+    background-color: $background-lighter;
+    box-shadow: $elevation-effect-3;
+
+    border-radius: 10px;
+
+    padding: 16px 16px 24px 20px;
+
+    @media (min-width: $lg) {
+      padding: 32px 48px 48px 48px;
+    }
+  }
+
+  .subtitulo,
+  .subtitulo>h3 {
+    display: flex;
+    align-items: center;
+
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 150%;
+
+    @media (min-width: $lg) {
+      align-items: start;
+      font-size: 24px;
+    }
+  }
+
+  .texto {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 150%;
+
+    @media (min-width: $lg) {
+      font-size: 24px;
+    }
+  }
+
+  .p-divider-solid.p-divider-vertical:before {
+    border: 1px solid $background-darker;
+    border-radius: 2px;
+  }
+}
+
+.container-perguntas {
+  background-color: $primary-background-light;
+}

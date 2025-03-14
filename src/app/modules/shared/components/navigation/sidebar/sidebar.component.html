@@ -1,0 +1,5 @@
+<p-sidebar [(visible)]="visible" position="top" (onHide)="handleHideEvent($event)">
+  <div class="flex flex-column align-items-center">
+    <ng-container *ngIf="template" [ngTemplateOutlet]="template"></ng-container>
+  </div>
+</p-sidebar>

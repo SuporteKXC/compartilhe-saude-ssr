@@ -1,0 +1,42 @@
+@import 'variables';
+
+:host {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+::ng-deep {
+  .p-dialog[aria-modal=true] {
+    background: transparent;
+    box-shadow: none;
+
+    .p-dialog-header {
+      background: transparent;
+    }
+    
+    .p-dialog-header,
+    .p-dialog-content {
+      padding: 0;
+    }
+  }
+}
+
+.wrapper-video {
+  position: relative;
+  width: 100%;
+  padding-top: 55%;
+  overflow: hidden;
+
+  @media (min-width: $lg) {
+    padding-top: 45%;
+  }
+
+  iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 90%;
+    height: 100%;
+  }
+}

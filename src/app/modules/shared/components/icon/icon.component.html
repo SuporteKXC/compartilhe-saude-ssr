@@ -1,0 +1,31 @@
+<ng-container *ngIf="isMobile; else desktop">
+  <span
+    aria-hidden="true"
+    class="material-symbols-outlined"
+    [ngStyle]="{
+      'font-size': iconSize ?? null,
+      'width': iconSize ?? null,
+      'height': iconSize ?? null,
+      'vertical-align': verticalAlign,
+      'overflow': 'hidden',
+      'display': display ?? 'inline-block'
+    }">
+    {{ iconName }}
+  </span>
+</ng-container>
+
+<ng-template #desktop>
+  <span
+    aria-hidden="true"
+    class="material-symbols-outlined"
+    [ngStyle]="{
+      'font-size': iconSizeDesktop ?? iconSize,
+      'width': iconSizeDesktop ?? iconSize,
+      'height': iconSizeDesktop ?? iconSize,
+      'vertical-align': verticalAlign,
+      'overflow': 'hidden',
+      'display': display ?? 'inline-block'
+    }">
+    {{ iconName }}
+  </span>
+</ng-template>

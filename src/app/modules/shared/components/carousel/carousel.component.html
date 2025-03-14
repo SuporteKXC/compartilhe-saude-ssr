@@ -1,0 +1,32 @@
+<ng-container *ngIf="isBrowser">
+  <p-carousel
+    [value]="items"
+    [numVisible]="numVisible"
+    [numScroll]="numScroll"
+    [responsiveOptions]="responsiveOptions"
+    [circular]="circular"
+    [showIndicators]="slider"
+    [showNavigators]="showNavigators"
+    [autoplayInterval]="autoplayInterval"
+    [styleClass]="
+      'carousel'
+      + (showNavigators ? ' navigators-shown' : '')
+      + (!overflow ? ' dont-overflow' : '')
+      + (slider ? ' slider' : '')
+    ">
+    <ng-template let-item pTemplate="item">
+      <ng-container
+        [ngTemplateOutlet]="itemTemplate"
+        [ngTemplateOutletContext]="{ $implicit: item }">
+      </ng-container>
+    </ng-template>
+
+    <ng-template pTemplate="previousicon">
+      <app-icon iconName="arrow_circle_left" title="voltar"></app-icon>
+    </ng-template>
+    <ng-template pTemplate="nexticon">
+      <app-icon iconName="arrow_circle_right" title="avançar"></app-icon>
+    </ng-template>
+  </p-carousel>
+</ng-container>
+

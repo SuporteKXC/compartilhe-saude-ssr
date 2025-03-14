@@ -1,0 +1,57 @@
+<section class="wrapper">
+  <app-grid-list
+    [items]="produtos"
+    [size]="size"
+    [mobileSize]="mobileSize"
+    [(page)]="queryParams.page"
+    [total]="totalRecords"
+    [loading]="isLoading"
+    [error]="isError"
+    [cardTemplate]="cardTemplate"
+    [searchTemplate]="searchTemplate"
+    [skeletonTemplate]="skeletonTemplate"
+    [noItemsTemplate]="noItemsTemplate"
+    [errorTemplate]="errorTemplate"
+    (handleNextPage)="getProdutos()" />
+</section>
+
+<ng-template #cardTemplate let-item let-position="index">
+  <app-card-produtos [data]="item" class="w-full" />
+</ng-template>
+
+<ng-template #skeletonTemplate>
+  <app-skeleton-card-produtos class="w-full" />
+</ng-template>
+
+<ng-template #noItemsTemplate>
+  <app-error-list-message
+    iconName="local_mall"
+    message="No momento não temos produtos disponíveis para o termo informado." >
+  </app-error-list-message>
+</ng-template>
+
+<ng-template #errorTemplate>
+  <app-error-list-message
+    header="Desculpe, algo deu errado."
+    message="Não conseguimos carregar os dados corretamente. Por favor,
+      verifique sua conexão com a internet e tente novamente. Se o problema persistir,
+      pode ser um problema temporário do nosso site. Estamos trabalhando para resolvê-lo
+      o mais rápido possível.">
+  </app-error-list-message>
+</ng-template>
+
+<ng-template #searchTemplate>
+  <div [formGroup]="formFiltro" class="flex flex-column lg:flex-row w-full">
+    <h1 class="col-3 flex-auto py-0 pl-0 mb-3 lg:mb-0">{{ tituloSecao }}</h1>
+    <app-input-text-search
+      class="lg:col-9 lg:p-0 lg:pl-1"
+      formControlName="nome"
+      name="nome"
+      autocomplete="off"
+      [label]="searchLabel"
+      [placeholder]="searchLabel"
+      [labelSrOnly]="labelSrOnly"
+      (search)="searchProdutos()">
+    </app-input-text-search>
+  </div>
+</ng-template>

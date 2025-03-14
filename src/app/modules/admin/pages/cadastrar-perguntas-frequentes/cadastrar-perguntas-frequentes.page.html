@@ -1,0 +1,59 @@
+<p-toast id="cadastro-toast">
+  <ng-template let-message pTemplate="message">
+    <app-toast-content [message]="message"></app-toast-content>
+  </ng-template>
+</p-toast>
+
+<app-page-title
+  titulo="Nova pergunta"
+  [returnPath]="['/', 'admin', 'dashboard', 'perguntas-frequentes']"
+  [breadcrumbData]="breadcrumb" >
+</app-page-title>
+
+<section class="w-full mt-3" id="form-estabelecimento">
+  <form (submit)="pathId ? onSubmitAlterar($event) : onSubmitCadastrar($event)">
+    <div 
+      class="flex flex-column gap-4 mb-5" 
+      [formGroup]="formService.formPerguntasFrequentes">
+
+      <app-form-fieldset titulo="Categoria" [required]="true">
+        <app-checkbox-group 
+          class="block mt-3"
+          name="categorias"
+          formControlName="categorias" 
+          [data]="checkboxOptions">
+        </app-checkbox-group>
+      </app-form-fieldset>
+
+      <app-form-fieldset titulo="Pergunta" [required]="true">
+        <app-input-textarea
+          label="Descrição"
+          placeholder="Pergunta - 200 caracteres."
+          name="pergunta"
+          formControlName="pergunta"
+          class="required col-12 lg:col-6 flex-auto p-0"
+          [labelSrOnly]="true">
+        </app-input-textarea>
+      </app-form-fieldset>
+  
+      <app-form-fieldset titulo="Resposta" [required]="true">
+        <app-input-textarea
+          label="Descrição"
+          placeholder="Resposta - 600 caracteres."
+          name="resposta"
+          formControlName="resposta"
+          class="required col-12 lg:col-6 flex-auto p-0"
+          [labelSrOnly]="true">
+        </app-input-textarea>
+      </app-form-fieldset>
+    </div>
+
+    <app-button
+      label="Salvar"
+      type="submit"
+      size="small"
+      [loading]="isLoading"
+      [disabled]="formService.isValid">
+    </app-button>
+  </form>
+</section>

@@ -1,0 +1,36 @@
+@import 'variables';
+
+section {
+  padding-bottom: 13px;
+
+  .background {
+    background-color: $secondaryLighterColor;
+
+    z-index: -10;
+    top: 0;
+    left: calc(-1 * $horizontal-padding-main-content);
+
+    @media (max-width: $md) {
+      left: calc(-1 * $horizontal-padding-main-content-sm);
+    }
+
+    @media (min-width: $sm) and (max-width: $lg) {
+      left: calc(-1 * $horizontal-padding-main-content-md)
+    }
+  }
+
+  h2 {
+    line-height: 28px;
+    margin-bottom: 28px;
+  }
+}
+
+:host ::ng-deep {
+  #carousel-products {
+    .p-carousel-item {
+      @media (max-width: $md) {
+      }
+    }
+  }
+}
+

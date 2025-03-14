@@ -1,0 +1,69 @@
+@import 'variables';
+
+label {
+  margin-left: 8px;
+
+  font-family: Darker Grotesque;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+::ng-deep .p-inputswitch {
+  display: block;
+
+  .p-inputswitch-slider {
+    left: 50%;
+    top: 50%;
+    transform: translateY(-50%) translateX(-50%);
+
+    width: 40px;
+    height: 16px;
+
+    border-radius: 16px;
+
+    background: $background-darker;
+
+    &::before {
+      left: 0;
+      margin-top: 0;
+
+      width: 24px;
+      height: 24px;
+
+      box-shadow: 0px 1px 3px 1px #00000026, 0px 1px 2px 0px #00000026;
+
+      translate: 0 -50%;
+    }
+  }
+
+  &.p-inputswitch-checked .p-inputswitch-slider {
+    &::before {
+      background: $primary-dark;
+    }
+  }
+
+  &.p-focus.p-inputswitch-checked .p-inputswitch-slider {
+    &::before {
+      outline: 2px solid $primary-darker;
+    }
+  }
+
+  &.p-focus {
+    .p-inputswitch-slider {
+      outline: none;
+      box-shadow: none;
+
+      &::before {
+        outline: 2px solid $primary-lighter;
+      }
+    }
+  }
+}
+
+::ng-deep .p-disabled {
+   .p-inputswitch-slider {
+    &::before {
+      background-color: #BDBDBD;
+    }
+  }
+}

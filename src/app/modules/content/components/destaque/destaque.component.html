@@ -1,0 +1,30 @@
+<section class="w-full flex justify-content-center">
+  <div
+    [ngClass]="
+      isConnectSaude
+        ? 'wrapper-connect-saude-destaque overflow-visible'
+        : 'wrapper-destaque overflow-hidden'
+    "
+    class="wrapper-destaque w-full xl:overflow-x-hidden flex lg:flex-row justify-content-center lg:align-items-center">
+    <div
+      class="flex flex-column lg:flex-row justify-content-between lg:align-items-center h-full w-full">
+      <div class="p-0 conteudo align-items-start">
+        <div class="flex flex-column gap-4 w-full">
+          <h3 *ngIf="!isConnectSaude" class="connect-saude-title">Profissionais de Saúde</h3>
+          <h2>{{ titulo }}</h2>
+          <h4>{{ subtitulo }}</h4>
+        </div>
+        <ng-content></ng-content>
+      </div>
+      <div class="banner h-full relative">
+        <div class="circulo"></div>
+        <img
+          [ngSrc]="'/IMAGEM+1+CONNECT+SAUDE.png'"
+          alt="Profissional de saúde feliz usando o Connect Saúde para crescer digitalmente"
+          width="438"
+          height="200"
+          class="align-self-end" />
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,49 @@
+<app-form-fieldset titulo="Informações de atendimento" [formGroup]="formGroup">
+  <div class="flex flex-column gap-3">
+    <app-multiselect
+      class="w-full"
+      label="Tipo de estabelecimento"
+      placeholder="Selecione"
+      name="tipo-estabelecimento"
+      formControlName="tiposEstabelecimento"
+      [options]="tiposEstabelecimentoOptions"
+      [showHeader]="true"
+      [ngClass]="{ 'required': required }">
+    </app-multiselect>
+
+    <app-form-servicos-oferecidos
+      [formGroup]="formGroup"
+      [required]="required" >
+    </app-form-servicos-oferecidos>
+
+    <app-input-textarea
+      label="Sobre"
+      placeholder="Descreva sobre o estabelecimento"
+      name="sobre"
+      formControlName="sobre"
+      class="w-full p-0"
+      [ngClass]="{ 'required': required }">
+    </app-input-textarea>
+
+    <app-multiselect
+      class="w-full"
+      name="formasPagamento"
+      label="Forma de pagamento"
+      placeholder="Selecione"
+      [options]="formasPagamento"
+      [showHeader]="true"
+      formControlName="formasPagamento"
+      [ngClass]="{ 'required': required }" >
+    </app-multiselect>
+
+    <app-multiselect
+      name="convenios"
+      label="Convênios"
+      placeholder="Selecione"
+      [options]="convenios"
+      [showHeader]="true"
+      formControlName="convenios"
+      [ngClass]="{ 'required': required }" >
+    </app-multiselect>
+  </div>
+</app-form-fieldset>

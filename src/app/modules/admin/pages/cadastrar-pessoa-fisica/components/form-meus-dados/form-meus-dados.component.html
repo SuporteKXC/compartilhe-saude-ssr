@@ -1,0 +1,91 @@
+<app-form-fieldset titulo="Meus dados">
+  <div class="flex flex-column gap-2" [formGroup]="formGroup">
+    <div class="flex gap-4">
+      <app-input-text
+        class="w-full required"
+        label="Nome"
+        name="nome"
+        formControlName="nome"
+        placeholder="Nome"
+        autocomplete="off" />
+
+      <app-input-text
+        class="w-full required"
+        label="CPF"
+        name="cpf"
+        formControlName="cpf"
+        placeholder="CPF"
+        autocomplete="off"
+        mask="999.999.999-99"
+        [customErrors]="cpfCustomErrors"
+        [disabled]="hasId" />
+    </div>
+    
+    <div class="flex gap-4">
+      <app-input-text
+        class="w-full required"
+        label="Data de nascimento"
+        name="data-nascimento"
+        formControlName="dataNascimento" 
+        placeholder="Data de nascimento"
+        mask="99/99/9999"
+        [customErrors]="dataNascimentoCustomErrors" />
+
+        <app-select
+          class="w-full"
+          label="Sexo biológico"
+          name="sexoBiologico"
+          formControlName="sexoBiologico"
+          placeholder="Selecione"
+          [options]="sexoBiologicoOptions" />
+    </div>
+    
+    <div class="flex gap-4">
+      <app-select
+        class="w-full"
+        label="Estado civil"
+        name="estadoCivil"
+        formControlName="estadoCivil"
+        placeholder="Selecione"
+        [options]="estadoCivilOptions" />
+
+      <app-input-text
+        class="w-full"
+        label="Profissão"
+        name="profissao"
+        formControlName="profissao"
+        placeholder="Profissão"
+        autocomplete="off" />
+    </div>
+
+    <div class="flex gap-4">
+      <app-input-text
+        class="w-full required"
+        label="Telefone"
+        name="contatoWhatsapp"
+        formControlName="contatoWhatsapp"
+        placeholder="Telefone"
+        autocomplete="off"
+        [mask]="['(99) 9999-9999', '(99) 99999-9999']"
+        [customErrors]="telefoneCustomErrors" />
+
+      <app-input-text
+        class="w-full required"
+        label="E-mail"
+        name="email"
+        formControlName="email"
+        placeholder="E-mail"
+        autocomplete="off" />
+    </div>
+
+    <div class="flex gap-4">
+      <app-select
+        class="col-6 py-0 pl-0 input-pd-fix"
+        label="Renda"
+        name="rendaSalarioMinimo"
+        formControlName="rendaSalarioMinimo"
+        placeholder="Selecione"
+        [options]="rendaOptions" />
+    </div>
+  </div>
+</app-form-fieldset>

@@ -1,0 +1,36 @@
+<app-page-title 
+  titulo="Cadastro Rede Compartilhe" 
+  [returnPath]="['/', 'admin', 'dashboard', 'rede-compartilhe']" />
+
+<section>
+  <h3 class="titulo mb-4">Informe o tipo de parceiro</h3>
+  <form
+    class="flex flex-column gap-3"
+    [formGroup]="formTipoParceiro"
+    (ngSubmit)="onSubmit()">
+    <ng-container *ngFor="let option of options">
+      <app-radio-panel
+        formControlName="tipo"
+        label="tipo parceiro"
+        [name]="'tipo-' + option.value"
+        [option]="option"
+        [template]="content">
+      </app-radio-panel>
+    </ng-container>
+
+    <app-button
+      class="align-self-end mt-3"
+      label="Continuar"
+      type="submit"
+      size="small"
+      id="submit-selecionar-unidade"
+      [disabled]="!formTipoParceiro.valid">
+    </app-button>
+  </form>
+</section>
+
+<ng-template #content let-option>
+  <div class="flex flex-column">
+    <p class="texto font-medium">{{ option.label }}</p>
+  </div>
+</ng-template>

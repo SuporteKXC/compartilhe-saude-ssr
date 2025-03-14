@@ -1,0 +1,68 @@
+<form class="grid" [formGroup]="formDadosPessoais" (submit)="salvarDadosPessoais()">
+  <div class="col-12 md:col-6">
+    <app-input-text
+      name="nome"
+      label="Nome"
+      formControlName="nome"
+      [disabled]="true"></app-input-text>
+
+    <app-input-text
+      name="cpf"
+      label="CPF"
+      mask="999.999.999-99"
+      formControlName="cpf"
+      [disabled]="true"></app-input-text>
+
+    <app-input-text
+      name="data-nascimento"
+      label="Data de nascimento"
+      mask="99/99/9999"
+      formControlName="dataNascimento"
+      [disabled]="true"></app-input-text>
+
+    <app-input-text
+      name="telefone"
+      label="Telefone"
+      [customErrors]="contatoWhatsappCustomErrors"
+      [mask]="['(99) 9999-9999', '(99) 99999-9999']"
+      formControlName="contatoWhatsapp"></app-input-text>
+
+    <app-input-text
+      name="email"
+      label="E-mail"
+      formControlName="email"
+      [disabled]="true"></app-input-text>
+  </div>
+  <div class="col-12 md:col-6">
+    <app-radio-button
+      label="Sexo biológico"
+      name="sexo-biologico"
+      formControlName="sexoBiologico"
+      [options]="sexoBiologicoOptions"></app-radio-button>
+
+    <app-select
+      label="Estado civil"
+      placeholder="Selecione"
+      name="estado-civil"
+      formControlName="estadoCivil"
+      [options]="estadoCivilOptions"></app-select>
+
+    <app-input-text name="profissao" label="Profissão" formControlName="profissao"></app-input-text>
+
+    <app-select
+      label="Renda"
+      placeholder="Selecione"
+      name="renda"
+      formControlName="rendaSalarioMinimo"
+      [options]="rendaOptions"></app-select>
+  </div>
+
+  <div class="botao-salvar-container mx-auto xl:mx-0">
+    <app-button
+      label="Salvar"
+      type="submit"
+      size="small"
+      [loading]="formLoading"
+      [disabled]="!formDadosPessoais.valid"></app-button>
+  </div>
+</form>

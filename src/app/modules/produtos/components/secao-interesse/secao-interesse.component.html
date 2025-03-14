@@ -1,0 +1,36 @@
+<ng-container *ngIf="data && data.produtosInteresse">
+  <section class="interesses">
+    <ng-container *ngIf="data.produtosInteresse.length > 0">
+      <h2 class="titulo">Você também pode se interessar por</h2>
+    </ng-container>
+  
+    <ng-container *ngIf="data; else carouselSkelton">
+      <app-carousel
+        id="carousel-interesses"
+        [items]="data.produtosInteresse"
+        [itemTemplate]="templateCarrossel"
+        [responsiveOptions]="responsiveOptions"
+        [showScroll]="isShowScroll"
+        [slider]="true"
+        [overflow]="false">
+      </app-carousel>
+  
+    </ng-container>
+  
+    <ng-template #templateCarrossel let-data>
+      <app-card-interesses [data]="data" (navigated)="resetData()" />
+    </ng-template>
+  </section>
+  
+  <ng-template #carouselSkelton>
+    <app-carousel 
+      id="carousel-interesses" 
+      [items]="skeletonArray" 
+      [itemTemplate]="templateSkeleton">
+    </app-carousel>
+  
+    <ng-template #templateSkeleton let-data>
+      <app-skeleton-interesses />
+    </ng-template>
+  </ng-template>
+</ng-container>

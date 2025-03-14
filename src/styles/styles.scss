@@ -1,0 +1,70 @@
+@import '../assets/themes/compartilhe-saude-theme/theme.scss';
+
+* {
+  margin: 0;
+}
+
+html {
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+
+  font-family: 'Darker Grotesque', sans-serif;
+  font-weight: 400;
+  font-size: 24px;
+
+  overflow-x: hidden;
+
+  min-height: 100svh;
+}
+
+button {
+  font-family: 'Darker Grotesque', sans-serif;
+}
+
+h1 {
+  font-size: 50px;
+}
+
+h2 {
+  font-size: 36px;
+}
+
+h3 {
+  font-size: 28px;
+}
+
+h4 {
+  font-size: 20px;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-weight: 600;
+  color: $secondary-darker;
+
+  &.required::after {
+    content: '*';
+    margin-left: 6px;
+  }
+}
+
+a:not(.p-button) {
+  color: $base-darker;
+}
+
+p {
+  color: $secondary-darker;
+}
+
+.material-symbols-outlined {
+  font-size: $icon-size;
+}
+
+.grecaptcha-badge {
+  visibility: hidden !important;
+}

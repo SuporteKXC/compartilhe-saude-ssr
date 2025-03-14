@@ -1,0 +1,50 @@
+@import './variables';
+
+section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &>div {
+    width: 100%;
+    max-width: $max-main-width;
+  }
+
+  &.home {
+    background-color: $background-light;
+    padding: 24px $horizontal-padding-main-content-sm;
+
+    @media (min-width: $md) {
+      padding: 24px $horizontal-padding-main-content-md;
+    }
+
+    @media (min-width: $lg) {
+      padding: 24px $horizontal-padding-main-content;
+    }
+
+    ::ng-deep {
+      app-error-list-message .container-error {
+        background-color: $background-lighter;
+      }
+    }
+  }
+}
+
+.search-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 15px;
+
+  @media (min-width: $sm) {
+    margin-top: 20px;
+  }
+
+  .flex-1 {
+    flex: 1 1 35%;
+  }
+
+  .col-12 {
+    flex: 1 1 25%;
+  }
+}

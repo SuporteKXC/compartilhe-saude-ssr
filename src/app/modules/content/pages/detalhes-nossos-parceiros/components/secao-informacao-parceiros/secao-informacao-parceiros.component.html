@@ -1,0 +1,31 @@
+<section id="informacao-parceiro">
+  <p-accordion [multiple]="true" [activeIndex]="activeIndex">
+    <ng-container *ngIf="detalhesParceiro?.sobre">
+      <p-accordionTab header="Sobre">
+        <p>{{ detalhesParceiro.sobre }}</p>
+      </p-accordionTab>
+    </ng-container>
+
+    <ng-container *ngIf="detalhesParceiro?.experiencia">
+      <p-accordionTab header="Experiência">
+        <p>{{ detalhesParceiro.experiencia }}</p>
+      </p-accordionTab>
+    </ng-container>
+
+    <ng-container *ngIf="detalhesParceiro?.formasPagamento">
+      <ng-container *ngIf="detalhesParceiro.formasPagamento.length > 0">
+        <p-accordionTab header="Formas de pagamento">
+          <p>{{ detalhesParceiro.formasPagamento | joinString }}</p>
+        </p-accordionTab>
+      </ng-container>
+    </ng-container>
+
+    <ng-container *ngIf="detalhesParceiro?.convenios">
+      <ng-container *ngIf="detalhesParceiro.convenios.length > 0">
+        <p-accordionTab header="Convênios">
+          <p>{{ detalhesParceiro.convenios | joinString }}</p>
+        </p-accordionTab>
+      </ng-container>
+    </ng-container>
+  </p-accordion>
+</section>

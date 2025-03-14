@@ -1,0 +1,49 @@
+<form class="grid" role="search" [formGroup]="formFiltro">
+  <div class="col-12 xl:col-4">
+    <app-input-text-search
+      formControlName="nome"
+      name="nome"
+      label="Digite o nome"
+      [labelSrOnly]="true"
+      (search)="shouldSearchAgain.emit()"
+      placeholder="Digite o nome"
+      autocomplete="off" />
+  </div>
+
+  <div class="col-4 xl:col-3">
+    <app-multiselect
+      formControlName="categoria"
+      name="categoria"
+      label="Categoria"
+      [labelSrOnly]="true"
+      placeholder="Categoria"
+      [options]="categoriaOptions"
+      [showClear]="true"
+      (optionSelected)="handleCategoriaFilter()" />
+  </div>
+
+  <div class="col-4 xl:col-3">
+    <app-multiselect
+      formControlName="descricaoSubcategoria"
+      name="descricaoSubcategoria"
+      label="Subcategoria"
+      [labelSrOnly]="true"
+      placeholder="Subcategoria"
+      [options]="subcategoriaOptions"
+      [showClear]="true"
+      [showHeader]="true"
+      (optionSelected)="shouldSearchAgain.emit()" />
+  </div>
+
+  <div class="col-4 xl:col-2">
+    <app-select
+      formControlName="ativo"
+      name="situacao"
+      label="Situação"
+      [labelSrOnly]="true"
+      placeholder="Situação"
+      [options]="situacaoOptions"
+      [showClear]="true"
+      (optionSelected)="shouldSearchAgain.emit()" />
+  </div>
+</form>

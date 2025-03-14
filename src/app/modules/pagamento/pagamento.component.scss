@@ -1,0 +1,12 @@
+@import 'variables';
+
+:host ::ng-deep .p-toast {
+  top: calc(20px + $navHeightDesktop);
+
+  @media (max-width: $md) {
+    top: calc(20px + $navHeightMobile);
+
+    width: unset;
+    max-width: 25rem;
+  }
+}

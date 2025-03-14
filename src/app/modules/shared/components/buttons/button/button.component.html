@@ -1,0 +1,25 @@
+<p-button
+  id="button"
+  [text]="text"
+  [type]="type"
+  [ariaLabel]="label"
+  [attr.data-testid]="dataTestid"
+  [severity]="severity"
+  [size]="size"
+  [outlined]="outlined"
+  [disabled]="disabled || loading"
+  [ngClass]="{ full: expand, loading: loading,  }"
+  [styleClass]="elementClass"
+  (onClick)="handleClickEvent()">
+  <span class="content" [ngClass]="contentClass">
+    <app-icon *ngIf="!!icon" [iconName]="icon" [iconSize]="iconSize"></app-icon>
+
+    <span *ngIf="!labelSrOnly" [ngClass]="size">{{ label }}</span>
+  </span>
+
+  <img
+    *ngIf="loading"
+    class="loading-spinner"
+    src="/assets/icons/shared/loading-spinner.svg"
+    alt="Carregando..." />
+</p-button>

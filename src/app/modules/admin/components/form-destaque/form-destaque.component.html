@@ -1,0 +1,10 @@
+<app-form-fieldset titulo="Destaque">
+  <div class="flex flex-column" [formGroup]="formGroup">
+    <app-switch 
+      class="mt-2" 
+      formControlName="destaque" 
+      name="destaque" 
+      label="Sim"
+      [disabled]="disable" />
+  </div>
+</app-form-fieldset>

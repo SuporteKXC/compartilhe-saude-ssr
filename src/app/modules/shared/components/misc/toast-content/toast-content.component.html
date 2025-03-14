@@ -1,0 +1,10 @@
+<div class="toast w-full flex justify-content-between">
+  <div class="flex gap-2 align-items-center">
+    <app-icon *ngIf="message.icon" [iconName]="message.icon" iconSize="18px" />
+    <div class="flex flex-column align-items-start">
+      <div class="titulo">{{ message.summary }}</div>
+      <div class="descricao" *ngIf="message.detail">{{ message.detail }}</div>
+    </div>
+  </div>
+  <app-button label="OK" (handleClick)="messageService.clear()" />
+</div>

@@ -1,0 +1,66 @@
+<app-form-fieldset
+  [titulo]="tableTitulo"
+  [tooltipContent]="tableTooltip">
+  <div class="flex flex-column align-items-end relative">
+    <app-button
+      class="absolute"
+      label="Adicionar"
+      size="small"
+      [outlined]="true"
+      icon="add"
+      (handleClick)="visible = true">
+    </app-button>
+
+    <div class="flex flex-column mt-4 w-full">
+      <app-table
+        #table
+        description="Lista de valores"
+        [data]="tableData"
+        [total]="tableTotal"
+        [loading]="isLoading"
+        [size]="tableTotal"
+        [headerTemplate]="headerTemplate"
+        [bodyTemplate]="bodyTemplate"
+        [loadingTemplate]="loadingTemplate"
+        [actionsTemplate]="actionsTemplate"
+        [emptyTemplate]="emptyTemplate"
+        [tableStyle]="{'min-width': '320px'}"
+        [isContained]="false"
+        [isPaginated]="false"
+        [isAccordion]="isAccordion">
+      </app-table>
+    </div>
+
+    <ng-template #actionsTemplate let-item let-index="index">
+      <div class="flex justify-content-center gap-2">
+        <ng-container *ngIf="editAction">
+          <app-button
+            icon="edit"
+            size="small"
+            [text]="true"
+            (handleClick)="handleEditEvent(item.id, index)" >
+          </app-button>
+        </ng-container>
+        
+        <ng-container *ngIf="deleteAction">
+          <app-button
+            icon="delete"
+            size="small"
+            [text]="true"
+            (handleClick)="handleDeleteEvent(item.id, index)">
+          </app-button>
+        </ng-container>
+      </div>
+    </ng-template>
+    
+    <app-form-modal
+      *ngIf="visible"
+      [formGroup]="formGroup" 
+      [titulo]="modalTitulo"
+      (handleSave)="handleSave.emit()"
+      [(visible)]="visible"
+      [saveAction]="saveAction">
+      <ng-container *ngIf="modalTemplate" [ngTemplateOutlet]="modalTemplate" />
+    </app-form-modal>
+  </div>
+</app-form-fieldset>

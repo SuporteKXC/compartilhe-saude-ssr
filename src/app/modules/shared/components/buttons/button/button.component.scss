@@ -1,0 +1,33 @@
+@import 'variables';
+
+::ng-deep {
+  .full > .p-button {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .loading > .p-button {
+    background-color: $primary-darker;
+  }
+
+  .p-button-outlined.p-button:disabled {
+    color: $base-lighter;
+    background-color: $background-lighter;
+    border-color: $base-lighter;
+  }
+}
+
+.content {
+  display: flex;
+  align-items: center;
+
+  app-icon {
+    padding-right: 5px;
+  }
+}
+
+.loading-spinner {
+  height: 14px;
+  margin-bottom: -3px;
+  margin-left: 5px;
+}

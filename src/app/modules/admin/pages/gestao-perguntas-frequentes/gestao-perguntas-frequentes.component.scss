@@ -1,0 +1,18 @@
+@import 'variables';
+
+
+// ::ng-deep #accordion-faq {
+//   .p-accordion.p-component {
+//     box-shadow: $elevation-effect-lighter;
+//   }
+// }
+
+.action-button {
+  color: $primary-darker;
+  border: none;
+  background-color: transparent;
+}
+
+.action-button:hover {
+  cursor: pointer;
+}

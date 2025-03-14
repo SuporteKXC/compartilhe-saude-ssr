@@ -1,0 +1,65 @@
+@import 'variables';
+
+:host {
+  width: 100%;
+  min-width: 0;
+}
+
+header {
+  display: flex;
+  gap: 8px;
+
+  align-items: center;
+
+  &.option-selected {
+    align-items: flex-start;
+  }
+
+  h4 {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 22px;
+    color: $secondary-darker;
+  }
+}
+
+.brands-container {
+  display: flex;
+  gap: 9px;
+  flex-wrap: wrap;
+
+  margin-bottom: 16px;
+
+  img {
+    width: 43px;
+  }
+}
+
+:host ::ng-deep form {
+  label {
+    font-family: Darker Grotesque;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 22px;
+
+    color: $base-darker;
+
+    margin-bottom: 4px;
+  }
+}
+
+.data-validade-input-container {
+  display: flex;
+  gap: 9px;
+
+  >* {
+    flex-grow: 1;
+    min-width: 0;
+  }
+}
+
+@media (max-width: $lg) {
+  .col-12+.col-12 {
+    padding-top: 0;
+  }
+}

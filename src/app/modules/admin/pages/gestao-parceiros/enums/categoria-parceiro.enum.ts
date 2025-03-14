@@ -1,0 +1,4 @@
+export enum CategoriaParceiroEnum {
+  ESTABELECIMENTO = 'ESTABELECIMENTO',
+  PROFISSIONAL_SAUDE = 'PROFISSIONAL_SAUDE',
+}

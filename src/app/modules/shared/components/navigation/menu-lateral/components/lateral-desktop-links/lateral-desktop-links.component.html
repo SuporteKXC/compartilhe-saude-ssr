@@ -1,0 +1,66 @@
+<div class="flex flex-column gap-4">
+  <ng-container *ngFor="let item of menuItems">
+    <ng-container
+      *ngIf="!isSubrouteItem(item)"
+      [ngTemplateOutlet]="activeRouteItem"
+      [ngTemplateOutletContext]="{ $implicit: item }"></ng-container>
+
+    <ng-container
+      *ngIf="isSubrouteItem(item)"
+      [ngTemplateOutlet]="subrouteItem"
+      [ngTemplateOutletContext]="{ $implicit: item }"></ng-container>
+  </ng-container>
+</div>
+
+<ng-template #activeRouteItem let-item>
+  <a
+    [routerLink]="item.path"
+    class="navbar-item text-left"
+    [ngClass]="{ active: shouldItemBeActive(item, activeRoute) }">
+    <app-icon [iconName]="item.icon" iconSize="14px" verticalAlign="bottom" />
+    {{ item.label }}
+  </a>
+</ng-template>
+
+<ng-template #subrouteItem let-item>
+  <p-panel
+    #submenuPanel
+    [toggleable]="true"
+    [(collapsed)]="menuPerfilCollapsed"
+    [styleClass]="
+      anyItemSubrouteActive(item, activeRoute) ? 'panel-submenu active' : 'panel-submenu'
+    ">
+    <ng-template pTemplate="header">
+      <span
+        class="navbar-item text-left"
+        tabindex="0"
+        [ngClass]="{ active: shouldItemBeActive(item, activeRoute) }"
+        (click)="submenuPanel.toggle($event)"
+        (keydown)="submenuPanel.toggle($any($event))">
+        <app-icon [iconName]="$any(item).icon" iconSize="14px" verticalAlign="bottom" />
+        {{ item.label }}
+      </span>
+    </ng-template>
+
+    <ng-template pTemplate="headericons" let-collapsed>
+      <app-icon
+        [ngStyle]="{ display: collapsed ? 'inline' : 'none' }"
+        [ariaHidden]="collapsed"
+        iconName="keyboard_arrow_down"
+        iconSize="24px"
+        verticalAlign="bottom"></app-icon>
+      <app-icon
+        [ngStyle]="{ display: !collapsed ? 'inline' : 'none' }"
+        [ariaHidden]="collapsed"
+        iconName="keyboard_arrow_up"
+        iconSize="24px"
+        verticalAlign="bottom"></app-icon>
+    </ng-template>
+
+    <p-menu
+      ariaLabel="Submenu Meu Perfil"
+      styleClass="menu-submenu"
+      [model]="item.menuModel"
+      [popup]="false"></p-menu>
+  </p-panel>
+</ng-template>

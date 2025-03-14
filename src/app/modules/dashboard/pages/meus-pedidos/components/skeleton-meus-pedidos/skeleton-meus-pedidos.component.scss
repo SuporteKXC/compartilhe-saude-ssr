@@ -1,0 +1,17 @@
+@import 'variables';
+
+.skeleton-card {
+  padding: 26px 24px;
+  border-radius: 8px;
+  box-shadow: $elevation-effect-2;
+  width: 100%;
+  gap: 1rem;
+  flex-direction: column;
+}
+
+@media (min-width: 768px) {
+  .skeleton-card {
+    padding: 26px 24px;
+    flex-direction: row;
+  }
+}

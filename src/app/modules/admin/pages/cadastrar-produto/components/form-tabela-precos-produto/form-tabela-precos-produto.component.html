@@ -1,0 +1,75 @@
+<app-form-table
+  tableTitulo="Tabela de preços"
+  tableTooltip="A informação de valores é condição para apresentação do
+    produto. Altere a situação para inativo para habilitar o cadastro sem
+    uma tabela de preços associada."
+  [tableData]="formProdutoService.produtoPrecos" 
+  [tableTotal]="formProdutoService.produtoPrecos.length"
+  [formGroup]="formPrecoService.formTabelaValores"
+  [headerTemplate]="headerTemplate"
+  [bodyTemplate]="bodyTemplate"
+  [loadingTemplate]="loadingTemplate"
+  [emptyTemplate]="emptyTemplate"
+  [modalTemplate]="modal"
+  [modalTitulo]="titulo"
+  (handleSave)="formPrecoService.savePreco()"
+  (handleEdit)="formPrecoService.editPreco($event.index)"
+  (handleDelete)="formPrecoService.deletePreco($event.index)">
+</app-form-table>
+
+<ng-template #modal>
+  <app-modal-adicionar-valores [formGroup]="formPrecoService.formTabelaValores" />
+</ng-template>
+
+<ng-template #headerTemplate>
+  <th [style]="{ width: '200px'}">Profissional de Saúde</th>
+  <th [style]="{ width: '160px'}">Forma de Atendimento</th>
+  <th [style]="{ width: '172px'}">Local de Atendimento</th>
+  <th [style]="{ minWidth: '82px'}">Referência</th>
+  <th [style]="{ minWidth: '92px'}">Valor à vista</th>
+  <th [style]="{ minWidth: '80px'}">Repasse</th>
+  <th [style]="{ minWidth: '76px'}">Comissão</th>
+  <th [style]="{ minWidth: '76px'}">Desconto</th>
+</ng-template>
+
+<ng-template #bodyTemplate let-item>
+  <td class="font-semibold">{{ item.parceiroProfissional?.nome ?? "Não informado" }}</td>
+  <td class="font-semibold">{{ item.formaAtendimento?.descricao ?? "Presencial" }}</td>
+  <ng-container [ngSwitch]="item.formaAtendimento.descricao">
+    <td *ngSwitchCase="formaAtendimento.DOMICILIAR" class="font-semibold">
+      Atendimento Domiciliar
+    </td>
+    <td *ngSwitchCase="formaAtendimento.ONLINE" class="font-semibold">
+      Atendimento On-line
+    </td>
+    <td *ngSwitchDefault class="font-semibold">
+      {{ item.localAtendimento?.nome }}
+    </td>
+  </ng-container>
+  <td class="font-semibold">{{ item.valorReferencia | currency }}</td>
+  <td class="font-semibold">{{ item.valorVista | currency }}</td>
+  <td class="font-semibold">{{ item.valorRepasse | currency }}</td>
+  <td class="font-semibold">{{ item.valorComissao | currency }}</td>
+  <td class="font-semibold">{{ item.percentualDesconto }}%</td>
+</ng-template>
+
+<ng-template #loadingTemplate>
+  <td><p-skeleton width="200px" height="16px"></p-skeleton></td>
+  <td><p-skeleton width="160px" height="16px"></p-skeleton></td>
+  <td><p-skeleton width="172px" height="16px"></p-skeleton></td>
+  <td><p-skeleton width="82px" height="16px"></p-skeleton></td>
+  <td><p-skeleton width="92px" height="16px"></p-skeleton></td>
+  <td><p-skeleton width="80px" height="16px"></p-skeleton></td>
+  <td><p-skeleton width="76px" height="16px"></p-skeleton></td>
+  <td><p-skeleton width="76px" height="16px"></p-skeleton></td>
+  <td class="flex gap-1">
+    <p-skeleton shape="circle" width="18px" height="18px" />
+    <p-skeleton shape="circle" width="18px" height="18px" />
+  </td>
+</ng-template>
+
+<ng-template #emptyTemplate>
+  <app-error-no-results
+    header="Ainda não foram cadastrados valores"
+    iconName="receipt_long" />
+</ng-template>

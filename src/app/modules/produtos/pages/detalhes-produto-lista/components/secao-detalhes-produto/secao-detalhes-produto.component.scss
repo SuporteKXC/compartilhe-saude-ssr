@@ -1,0 +1,43 @@
+@import 'variables';
+
+section {
+  margin-top: 24px;
+
+  @media (min-width: $lg) {
+    margin-top: 40px;
+  }
+}
+
+form {
+  gap: 18px;
+}
+
+.search-cidade {
+  flex: 2;
+
+  @media (min-width: $lg) {
+    flex-direction: row;
+  }
+}
+
+.select {
+  &-container {
+    display: flex;
+    flex-direction: column;
+
+    flex: 2;
+    gap: 18px;
+
+    @media (min-width: $lg) {
+      flex-direction: row;
+    }
+  }
+
+  &-parceiro {
+    flex: 1;
+  }
+
+  &-atendimento {
+    flex: 1;
+  }
+}

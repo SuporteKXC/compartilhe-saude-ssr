@@ -1,0 +1,40 @@
+@import 'variables';
+
+.wrapper-radio {
+  background: $background-lighter;
+  
+  box-shadow: $elevation-effect-3;
+
+  border-radius: 10px;
+
+  padding: 14px 16px 15px 16px;
+
+  @media (min-width: $xl) {
+    padding: 22px 26px 21px 26px;
+  }
+}
+
+::ng-deep #radio-panel {
+  .p-radiobutton .p-radiobutton-box {
+    border-width: 1px;
+    border-color: $base-lighter;
+
+    &.p-highlight {
+      border-color: $base-lighter;
+      background: none;
+    }
+
+    &:not(.p-disabled) {
+      &.p-focus {
+        box-shadow: none;
+        border-width: 2px;
+        border-color: $primary-darker;
+        background-color: $primary-lighter;
+      }
+
+      .p-radiobutton-icon {
+        background-color: $primary-darker;
+      }
+    }
+  }
+}

@@ -1,0 +1,39 @@
+<section id="detalhes-checkup">
+  <div class="w-full flex flex-column">
+    <div *ngIf="detalhesProduto && !isLoading; else skeletonTemplate" class="wrapper">
+    <h1 class="titulo align-self-start mb-3">{{ detalhesProduto.nome }}</h1>
+
+    <div class="w-full flex flex-auto flex-column xl:flex-row">
+      <div class="w-full xl:w-7 flex flex-column mb-3 lg:mb-0">
+        <h3 class="subtitulo">Descrição</h3>
+        <p class="texto">{{ detalhesProduto.descricao }}</p>
+
+        <h3 class="subtitulo">Indicação</h3>
+        <p class="texto">{{ detalhesProduto.indicacao }}</p>
+      </div>
+
+      <p-divider layout="vertical" class="hidden xl:block ml-4 mr-4" [style]="{ width: '2px' }" />
+
+      <p-divider
+        layout="horizontal"
+        class="block xl:hidden mt-5 mb-5"
+        [style]="{ width: '100%' }" />
+
+      <ng-container
+        *ngIf="detalhesProduto as item"
+        [ngTemplateOutlet]="formTemplate"
+        [ngTemplateOutletContext]="{ $implicit: item }">
+      </ng-container>
+    </div>
+   </div>
+   <app-secao-interesse [data]="detalhesProduto"></app-secao-interesse>
+  </div>
+</section>
+
+<div class="container-perguntas" *ngIf="perguntas.length > 0">
+  <app-secao-perguntas-frequentes [data]="perguntas"></app-secao-perguntas-frequentes>
+</div>
+
+<ng-template #skeletonTemplate>
+  <app-skeleton-secao-detalhes />
+</ng-template>

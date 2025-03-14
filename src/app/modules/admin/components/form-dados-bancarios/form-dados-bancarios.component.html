@@ -1,0 +1,73 @@
+<app-form-fieldset titulo="Dados bancários">
+  <div class="flex flex-column gap-3" [formGroup]="formGroup">
+    <div class="flex gap-3">
+      <app-select
+        class="w-full lg:align-self-end"
+        name="banco"
+        label="Banco"
+        placeholder="Selecione"
+        formControlName="banco"
+        [filter]="true"
+        [options]="bancoOptions"
+        [showClear]="true"
+        [virtualScrollConfig]="{ enabled: true, itemSize: 20 }">
+      </app-select>
+
+      <app-select
+        class="w-full lg:align-self-end"
+        name="tipoConta"
+        label="Tipo de conta"
+        placeholder="Selecione"
+        formControlName="tipoConta"
+        [options]="tipoContaOptions">
+      </app-select>
+    </div>
+
+    <div class="flex gap-3">
+      <div class="flex gap-3 col-6 p-0 flex-1">
+        <app-input-text
+          label="Agência"
+          placeholder="Agência"
+          name="agencia"
+          formControlName="agencia"
+          class="col-10 p-0 flex-1"
+          autocomplete="off"
+          mask="9999">
+        </app-input-text>
+
+        <app-input-text
+          label="Dígito"
+          placeholder="Dígito"
+          name="agenciaDigito"
+          formControlName="agenciaDigito"
+          class="col-2 p-0 flex-none"
+          autocomplete="off"
+          tooltipContent="Quando não houver dígito, incluir x neste campo."
+          [customErrors]="digitoCustomErrors">
+        </app-input-text>
+      </div>
+      <div class="flex gap-3 col-6 p-0 flex-1">
+        <app-input-text
+          label="Conta"
+          placeholder="Conta"
+          name="conta"
+          formControlName="conta"
+          class="col-10 p-0 flex-1"
+          autocomplete="off"
+          mask="999999999999">
+        </app-input-text>
+
+        <app-input-text
+          label="Dígito"
+          placeholder="Dígito"
+          name="contaDigito"
+          formControlName="contaDigito"
+          class="col-2 p-0 flex-none"
+          autocomplete="off"
+          tooltipContent="Quando não houver dígito, incluir 0 (dígito zero) neste campo."
+          [customErrors]="digitoCustomErrors">
+        </app-input-text>
+      </div>
+    </div>
+  </div>
+</app-form-fieldset>

@@ -1,0 +1,10 @@
+<app-form-fieldset titulo="Situação">
+  <div class="flex flex-column" [formGroup]="formGroup">
+    <app-switch 
+      class="mt-2" 
+      formControlName="ativo" 
+      name="ativo" 
+      label="Ativo" 
+      (handleChange)="changedInputState($event)" />
+  </div>
+</app-form-fieldset>

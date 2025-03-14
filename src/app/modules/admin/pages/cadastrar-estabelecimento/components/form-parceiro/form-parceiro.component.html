@@ -1,0 +1,10 @@
+<app-form-fieldset titulo="Parceiro">
+  <div class="flex flex-column" [formGroup]="formService.formEstabelecimento">
+    <app-switch 
+      class="mt-2" 
+      formControlName="parceiro" 
+      name="parceiro" 
+      label="Sim"
+      (handleChange)="formService.clearRequiredValidator()" />
+  </div>
+</app-form-fieldset>

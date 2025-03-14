@@ -1,0 +1,62 @@
+@import 'variables';
+
+::ng-deep #informacao-parceiro {
+  .p-accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    .p-accordion-header .p-accordion-header-link {
+      background-color: $background-lighter;
+
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: space-between;
+
+      border: none;
+
+      span {
+        font-size: 28px;
+        font-weight: 600;
+        line-height: 36px;
+        text-align: left;
+      }
+    }
+
+    .p-accordion-content {
+      background-color: $background-lighter;
+
+      border: none;
+
+      p {
+        font-size: 24px;
+        font-weight: 400;
+        line-height: 32.54px;
+        text-align: left;
+      }
+    }
+
+    .p-accordion-header-link,
+    div {
+      padding: 0;
+      transition: padding-bottom .5s;
+    }
+
+    p-accordiontab {
+      border-bottom: 1px solid $primaryDimTextColor;
+
+      .p-accordion-tab {
+        padding-bottom: 16px;
+        transition: padding-bottom .5s;
+
+        &-active {
+          padding-bottom: 32px;
+
+          .p-accordion-header-link {
+            padding-bottom: 8px;
+          }
+        }
+      }
+    }
+  }
+}

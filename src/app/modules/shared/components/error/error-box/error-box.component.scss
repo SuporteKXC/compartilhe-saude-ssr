@@ -1,0 +1,28 @@
+@import 'variables';
+
+.wrapper-error {
+  background-color: $error-lighter;
+
+  border: 1px solid $error-dark;
+
+  border-radius: 12px;
+
+  padding: 12px 14px;
+
+  p {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 16px;
+    text-align: left;
+  }
+
+  app-icon {
+    color: $error-dark;
+    height: 18px;
+    margin-top: 2px;
+
+    span {
+      display: block;
+    }
+  }
+}

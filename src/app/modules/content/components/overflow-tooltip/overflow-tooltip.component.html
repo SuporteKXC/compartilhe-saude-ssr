@@ -1,0 +1,23 @@
+<div class="tooltip-container xl:flex align-items-center">
+  <ng-container *ngIf="overflow">
+    <app-tooltip class="hidden xl:block ml-1" [content]="tooltipContent" [size]="size"></app-tooltip>
+
+    <button (click)="toggleVisibility()" *ngIf="!isTooltipVisible || modal" class="block xl:hidden">
+      <app-icon class="block xl:hidden xl:mt-2 xl:ml-2" iconName="info" [iconSize]="size" verticalAlign="bottom"/>
+    </button>
+  </ng-container>
+</div>
+
+<div *ngIf="!modal" class="tooltip xl:hidden gap-2 mt-3" [ngClass]="isTooltipVisible ? 'isVisible' : 'isHidden'">
+  <app-icon class="h-fit" iconName="info" [iconSize]="size" verticalAlign="middle"/>
+  <p>
+    <ng-container *ngIf="tooltipContent">{{ tooltipContent }}</ng-container>
+  </p>
+  <button (click)="toggleVisibility()">
+    <app-icon iconName="close" [iconSize]="size" verticalAlign="middle"/>
+  </button>
+</div>
+
+<ng-template #tooltipContent>
+  {{ content }}
+</ng-template>

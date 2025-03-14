@@ -1,0 +1,85 @@
+<div>
+  <header [ngClass]="{ 'option-selected': isSelected }">
+    <app-icon iconName="credit_card" [verticalAlign]="isSelected ? 'top' : 'sub'"></app-icon>
+    <h4>Cartão de crédito</h4>
+  </header>
+
+  <div *ngIf="isSelected">
+    <app-error-box
+      *ngIf="isError"
+      message="Não foi possível finalizar sua compra. Confira os dados ou escolha uma nova forma de pagamento." />
+
+    <span class="brands-container mt-3">
+      <img
+        *ngFor="let bandeira of bandeiras"
+        [src]="bandeira.imgPath"
+        [alt]="'Bandeira ' + bandeira.nome" />
+    </span>
+
+    <form [formGroup]="cartaoCreditoFormGroup">
+      <div class="grid">
+        <div class="col-12 lg:col-6">
+          <app-input-text
+            label="Número do cartão"
+            formControlName="numero"
+            [mask]="cardNumberMask"
+            [customErrors]="numeroCartaoCustomErrors" />
+
+          <input
+            type="text"
+            aria-hidden="true"
+            [value]="cardNumber"
+            class="bp-sop-cardnumber hidden" />
+        </div>
+        <div class="col-12 lg:col-6">
+          <app-input-text
+            label="Nome do titular do cartão"
+            formControlName="nomeTitular"
+            [customErrors]="titularCartaoCustomErrors" />
+
+          <input
+            type="text"
+            aria-hidden="true"
+            [value]="cardHolderName"
+            class="bp-sop-cardholdername hidden" />
+        </div>
+      </div>
+
+      <div class="grid">
+        <div class="col-12 lg:col-6">
+          <app-input-text
+            label="Data de validade"
+            placeholder="Mês/Ano"
+            formControlName="validade"
+            mask="99/99"
+            [customErrors]="validadeCustomErrors" />
+
+          <input
+            type="text"
+            aria-hidden="true"
+            [value]="cardExpirationDate"
+            class="bp-sop-cardexpirationdate hidden" />
+        </div>
+        <div class="col-12 lg:col-6">
+          <app-input-text
+            label="CVV"
+            formControlName="cvv"
+            [mask]="cvvMask"
+            [customErrors]="cvvCustomErrors" />
+
+          <input type="text" aria-hidden="true" [value]="cardCvv" class="bp-sop-cardcvv hidden" />
+        </div>
+      </div>
+
+      <div class="grid">
+        <div class="col-12 lg:col-6">
+          <app-select
+            label="Parcelamento"
+            formControlName="qtdParcelas"
+            [preventDefaultBehaviorForClick]="true"
+            [options]="parcelamentoOptions"></app-select>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

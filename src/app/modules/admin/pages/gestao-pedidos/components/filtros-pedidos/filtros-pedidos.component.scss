@@ -1,0 +1,11 @@
+@import 'variables';
+
+form {
+  padding-block: 24px;
+}
+
+:host ::ng-deep {
+  .p-inputtext::placeholder {
+    opacity: 1;
+  }
+}

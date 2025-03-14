@@ -1,0 +1,11 @@
+<p-toast key="toastFormSuccessKey" id="toastFormSuccess" #toastFormSuccess>
+    <ng-template let-message pTemplate="message">
+        <app-toast-content [message]="message"></app-toast-content>
+    </ng-template>
+</p-toast>
+
+<app-error-modal></app-error-modal>
+
+<app-badge-environment />
+
+<router-outlet></router-outlet>

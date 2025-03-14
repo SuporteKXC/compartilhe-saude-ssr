@@ -1,0 +1,76 @@
+@import './_variables';
+
+.p-inputtext {
+  padding: 8px 12px;
+
+  border: 1px solid $base-lighter;
+  border-radius: 8px;
+
+  &:not(.p-placeholder) {
+    color: $base-darker;
+  }
+
+  &::placeholder {
+    color: $base-light;
+    opacity: 1;
+  }
+
+  &:focus {
+    border-color: $primary;
+    outline: none;
+    box-shadow: none;
+  }
+
+  &:disabled {
+    color: #888;
+    background-color: $background-dark;
+  }
+}
+
+.p-disabled .p-inputtext:not(.p-dropdown-label) {
+  color: #888;
+  background-color: $background-dark;
+}
+
+app-input-text {
+  input:focus ~ i {
+    color: $secondary-darker;
+  }
+
+  i {
+    color: $base-light;
+  }
+}
+
+app-input-password {
+  input:focus ~ i button {
+    color: $secondary-darker;
+  }
+
+  .invalid input:focus ~ i button {
+    color: $error;
+  }
+}
+
+app-input-text.ng-dirty.ng-invalid,
+app-input-password.ng-dirty.ng-invalid,
+app-input-password .invalid {
+  i {
+    color: $error;
+  }
+
+  button {
+    color: $error;
+  }
+
+  .p-inputtext {
+    border: $error-border-width solid $error;
+  }
+}
+
+.p-input-icon-left > i,
+.p-input-icon-left > .p-icon-wrapper,
+.p-input-icon-right > i,
+.p-input-icon-right > .p-icon-wrapper {
+  margin-top: calc(-1 * $icon-size / 2);
+}

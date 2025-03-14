@@ -1,0 +1,11 @@
+<main class="w-full flex flex-column wrapper">
+  <app-proposito />
+
+  <app-nossa-historia />
+
+  <app-linha-do-tempo />
+
+  <div class="container-perguntas" *ngIf="perguntas.length > 0">
+    <app-accordion-faq [data]="perguntas" />
+  </div>
+</main>

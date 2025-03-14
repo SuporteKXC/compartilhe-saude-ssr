@@ -1,0 +1,266 @@
+@import 'variables';
+
+section {
+  background-color: $primary-background-light;
+  padding-inline: $horizontal-padding-main-content-sm;
+
+  @media (min-width: $md) {
+    padding-inline: $horizontal-padding-main-content-md;
+  }
+
+  @media (min-width: $lg) {
+    padding-inline: $horizontal-padding-main-content;
+  }
+
+  & > div {
+    max-width: $max-main-width;
+  }
+}
+
+.connect-saude-title {
+  align-self: flex-start;
+  font-weight: 700;
+  font-size: 26px;
+
+  & > span {
+    color: $primary-darker;
+  }
+}
+
+.wrapper-destaque {
+  height: 334px;
+  line-height: 40px;
+  position: relative;
+
+  @media (max-width: $lg) {
+    height: 370px;
+    text-align: center;
+    padding: 50px 0 80px;
+    justify-content: unset;
+  }
+
+  @media (max-width: $md) {
+    padding: 30px 0 50px;
+    height: 410px;
+  }
+
+  @media (max-width: $sm) {
+    height: 425px;
+  }
+
+  & > div {
+    max-width: $max-main-width;
+    margin: auto;
+  }
+
+  h2 {
+    font-size: 36px;
+    font-weight: 600;
+    line-height: 40px;
+    text-align: start;
+
+    @media (max-width: $md) {
+      font-size: 32px;
+      line-height: 30px;
+      max-width: 70%;
+    }
+  }
+
+  h4 {
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: start;
+    margin-bottom: 32px;
+
+    @media (min-width: $sm) {
+      max-width: 70%;
+    }
+
+    @media (max-width: $md) {
+      margin-bottom: 32px;
+    }
+
+    @media (min-width: $lg) {
+      font-size: 24px;
+    }
+  }
+
+  .banner {
+    width: 300px;
+    left: -80px;
+
+    @media (min-width: $xl) {
+      left: -40px;
+    }
+
+    @media (max-width: $lg) {
+      position: absolute !important;
+      bottom: 0;
+      right: 20px;
+      width: 265px;
+      left: initial;
+    }
+
+    @media (max-width: $sm) {
+      position: absolute !important;
+      bottom: 0;
+      right: 20px;
+      width: 165px;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      z-index: 1;
+      overflow: visible;
+
+      @media (max-width: $lg) {
+        object-fit: contain;
+        height: auto;
+        bottom: 0;
+        left: 0;
+      }
+    }
+  }
+
+  .circulo {
+    width: 300px;
+    height: 300px;
+    border: 1px solid $primary-darker;
+    border-radius: 100%;
+    position: absolute;
+    z-index: 1;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 1px;
+
+    @media (max-width: $lg) {
+      width: 246px;
+      height: 246px;
+    }
+
+    @media (max-width: $sm) {
+      width: 146px;
+      height: 146px;
+    }
+
+    &::after {
+      content: '';
+      width: 240px;
+      height: 240px;
+      border: 1px solid $primary-darker;
+      border-radius: 100%;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+
+      @media (max-width: $lg) {
+        width: 185px;
+        height: 185px;
+      }
+
+      @media (max-width: $sm) {
+        width: 115px;
+        height: 115px;
+      }
+    }
+  }
+
+  .conteudo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-bottom: 52px;
+
+    @media (max-width: $lg) {
+      align-items: center;
+      padding-left: 0;
+      padding-bottom: 15px;
+    }
+  }
+}
+
+.wrapper-connect-saude-destaque {
+  height: 560px;
+  padding: 30px 0;
+
+  @media (max-width: $md) {
+    height: auto;
+    padding: 30px 5px 50px;
+  }
+
+  h2 {
+    font-size: 50px;
+  }
+
+  h4 {
+    @media (max-width: $md) {
+      margin-bottom: 16px;
+      line-height: 1.4;
+    }
+
+    @media (min-width: $lg) {
+      font-size: 28px;
+    }
+  }
+
+  .banner {
+    width: 479px;
+    bottom: -30px;
+    left: -80px;
+
+    @media (max-width: $lg) {
+      position: absolute !important;
+      bottom: 0px;
+      right: 20px;
+      width: 265px;
+      left: initial;
+    }
+
+    @media (max-width: $md) {
+      position: absolute !important;
+      bottom: 0;
+      right: 20px;
+      width: 165px;
+    }
+  }
+
+    img {
+      width: 100%;
+      height: 100%;
+  }
+
+  .circulo {
+    width: 438px;
+    height: 438px;
+
+    @media (max-width: $lg) {
+      width: 246px;
+      height: 246px;
+    }
+
+    @media (max-width: $md) {
+      width: 146px;
+      height: 146px;
+    }
+
+    &::after {
+      width: 340px;
+      height: 340px;
+
+      @media (max-width: $lg) {
+        width: 185px;
+        height: 185px;
+      }
+
+      @media (max-width: $md) {
+        width: 115px;
+        height: 115px;
+      }
+    }
+  }
+}

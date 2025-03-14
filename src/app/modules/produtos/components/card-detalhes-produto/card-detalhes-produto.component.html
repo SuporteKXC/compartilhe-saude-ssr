@@ -1,0 +1,78 @@
+<div class="wrapper-card w-full h-full flex flex-column justify-content-between">
+  <div class="flex flex-column gap-4">
+    <section class="wrapper-header overflow-hidden flex align-items-center">
+      <p-avatar
+        [image]="getImagem(data)"
+        styleClass="mr-2 block"
+        size="xlarge"
+        shape="circle">
+      </p-avatar>
+
+      <ng-container *ngIf="data.parceiroProfissional; else estabelecimento">
+        <div class="overflow-hidden">
+          <h3>{{ data.parceiroProfissional.nome }}</h3>
+          <p>
+            <ng-container *ngIf="data.parceiroProfissional.registroProfissional">
+              <span>{{ data.parceiroProfissional.registroProfissional }}</span>
+            </ng-container>
+
+            <ng-container *ngIf="data.parceiroProfissional.rqe">
+              <span class="pipe-content">{{ data.parceiroProfissional.rqe }}</span>
+            </ng-container>
+          </p>
+          <ng-container [ngTemplateOutlet]="parceiroDetalhes" />
+        </div>
+      </ng-container>
+      
+      <ng-template #estabelecimento>
+        <ng-container *ngIf="data.parceiroEstabelecimento">
+          <div class="overflow-hidden">
+            <h3>{{ data.parceiroEstabelecimento.nome }}</h3>
+            <p>
+              {{ data.parceiroEstabelecimento.tiposEstabelecimento | joinString : { separator: ' | ', includeAnd: false } }}
+            </p>
+            <ng-container [ngTemplateOutlet]="parceiroDetalhes" />
+          </div>
+        </ng-container>
+      </ng-template>
+    </section>
+
+    <ng-template #parceiroDetalhes>
+      <button 
+        class="link-detalhes-parceiro p-button p-button-text h-fit flex align-items-center gap-2 p-0"
+        (click)="navigateToParceirosDetalhes(data)">
+        <span class="flex">Ver perfil</span>
+        <app-icon class="h-fit flex" iconName="arrow_forward" iconSize="14px" />
+      </button>
+    </ng-template>
+
+    <section class="wrapper-content">
+      <p>
+        <app-icon iconName="attach_money" iconSize="16px" />
+        <span>{{ data.valorVista | currency }}</span>
+      </p>
+      <p class="inline-flex">
+        <app-icon iconName="location_on" iconSize="16px" />
+
+        <ng-container *ngIf="data.cidade; else atendimentoOnline">
+          <span>
+            <ng-container *ngIf="data.parceiroEstabelecimento">
+              <p>{{ data.parceiroEstabelecimento.nome }}</p>
+            </ng-container>
+            <p>{{ data.cidade.nome }} - {{ data.cidade.siglaUf }}</p>
+          </span>
+        </ng-container>
+        <ng-template #atendimentoOnline>
+          <span>Atendimento {{data.formaAtendimento}}</span>
+        </ng-template>
+      </p>
+    </section>
+  </div>
+
+  <app-button
+    class="align-self-center"
+    label="Contratar"
+    size="small"
+    (handleClick)="handleCardProdutoPrecoIdEvent()">
+  </app-button>
+</div>

@@ -1,0 +1,29 @@
+@import 'variables';
+
+@mixin mainPadding($patternPadding, $horizontalPadding) {
+  padding: $patternPadding $horizontalPadding;
+}
+
+.wrapper-button {
+  @include mainPadding(0, $horizontal-padding-main-content);
+
+  @media (max-width: $sm) {
+    @include mainPadding(0, $horizontal-padding-main-content-sm);
+  }
+
+  @media (min-width: $sm) and (max-width: $lg) {
+    @include mainPadding(0, $horizontal-padding-main-content-md);
+  }
+
+  display: flex;
+  justify-content: center;
+  
+  div {
+    width: 100%;
+    max-width: $max-main-width;
+  }
+}
+
+.container-perguntas {
+  background-color: $primary-background-light;
+}

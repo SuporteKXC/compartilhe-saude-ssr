@@ -1,0 +1,18 @@
+<div class="flex flex-column" *ngIf="group" [formGroup]="group" id="select-button">
+  <span>
+    <label 
+      *ngIf="label" 
+      [htmlFor]="name" 
+      [ngClass]="{ 'p-sr-only': labelSrOnly }">
+      {{ label }}
+    </label>
+  </span>
+
+  <p-selectButton 
+    [options]="options" 
+    [formControl]="control"
+    [allowEmpty]="false">
+  </p-selectButton>
+
+  <small *ngIf="errorMessage">{{ errorMessage }}</small>
+</div>

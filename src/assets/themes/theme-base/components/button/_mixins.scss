@@ -1,0 +1,11 @@
+@mixin buttonFontSize($val, $scale) {
+  font-size: $val * $scale;
+}
+
+@mixin buttonLineHeight($fontSize, $scale) {
+  line-height: $fontSize * $scale;
+}
+
+@mixin buttonHeight($val, $scale) {
+  height: $val * $scale;
+}

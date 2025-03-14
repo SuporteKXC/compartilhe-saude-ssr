@@ -1,0 +1,53 @@
+<app-form-fieldset titulo="Dados da empresa">
+    <div class="flex flex-column gap-2" [formGroup]="formGroup">
+      <div class="flex gap-4">
+        <app-input-text
+          class="w-full required"
+          label="Nome"
+          name="nome"
+          formControlName="nome"
+          placeholder="Nome"
+          autocomplete="off" />
+  
+        <app-input-text
+          class="w-full required"
+          label="CNPJ"
+          name="cnpj"
+          formControlName="cnpj"
+          placeholder="CNPJ"
+          autocomplete="off"
+          mask="99.999.999/9999-99"
+          [customErrors]="cnpjCustomErrors" />
+      </div>
+  
+      <div class="flex gap-4">
+        <app-input-text
+          class="w-full required"
+          label="Telefone"
+          name="telefone"
+          formControlName="telefone"
+          placeholder="Telefone"
+          autocomplete="off"
+          [mask]="['(99) 9999-9999', '(99) 99999-9999']"
+          [customErrors]="telefoneCustomErrors" />
+  
+        <app-input-text
+          class="w-full required"
+          label="E-mail"
+          name="email"
+          formControlName="email"
+          placeholder="E-mail"
+          autocomplete="off" />
+      </div>
+  
+      <div class="flex gap-4">
+        <app-input-text
+            class="col-6 py-0 pl-0 required input-pd-fix"
+          label="Pessoa de contato"
+          name="pessoaDeContato"
+          formControlName="pessoaDeContato"
+          placeholder="Pessoa de contato"
+          autocomplete="off" />
+      </div>
+    </div>
+  </app-form-fieldset>

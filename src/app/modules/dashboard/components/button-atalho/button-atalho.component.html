@@ -1,0 +1,23 @@
+<ng-container *ngIf="!href; else link">
+  <button 
+    class="wrapper-botao-atalho w-full flex flex-column justify-content-between align-items-center gap-2 cursor-pointer" 
+    (click)="handleClickEvent()" 
+    [title]="tooltip">
+      <app-icon [iconName]="iconName" iconSize="24px"/>
+      <h5>{{ title }}</h5>
+      <p>{{ description }}</p>
+  </button>
+</ng-container>
+
+
+<ng-template #link>
+  <a 
+    class="wrapper-botao-atalho w-full flex flex-column justify-content-between align-items-center gap-2 no-underline" 
+    [href]="href" 
+    [title]="tooltip"
+    [target]="target">
+      <app-icon [iconName]="iconName" iconSize="24px" verticalAlign="sup"/>
+      <h5>{{ title }}</h5>
+      <p>{{ description }}</p>
+  </a>
+</ng-template>

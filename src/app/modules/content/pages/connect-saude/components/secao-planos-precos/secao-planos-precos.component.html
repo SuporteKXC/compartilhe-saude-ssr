@@ -1,0 +1,94 @@
+<section class="flex justify-content-center">
+  <div class="flex flex-column">
+    <div class="flex flex-column gap-3 lg:gap-5 mb-5">
+      <h2>Nossos planos e preços</h2>
+      <h4>
+        Connect Saúde: simples, prático e focado no que realmente importa: 
+        o sucesso do seu negócio.
+      </h4>
+  
+      <form class="w-fit align-self-center" [formGroup]="formAssinatura">
+        <app-select-button 
+          label="Selecione o periodo da assinatuda"
+          name="assinatura"
+          formControlName="assinatura"
+          [options]="selectOptions"
+          [labelSrOnly]="true">
+        </app-select-button>
+      </form>
+    </div>
+  
+    <div class="flex flex-column justify-content-around lg:justify-content-center flex-wrap lg:flex-nowrap md:flex-row gap-3">
+      <ng-container *ngFor="let plano of planosOptions">
+        <div 
+          class="wrapper-card lg:flex-order-0"
+          [ngClass]="getOrderClass(plano)">
+          <div 
+            class="card-header flex align-items-center justify-content-center border-round-top-2xl"
+            [ngClass]="{'wrapper-recomendado': plano.recomendado}">
+            <ng-container *ngIf="plano.recomendado">
+              <h5>Recomendado</h5>
+            </ng-container>
+          </div>
+          <div 
+          class="card flex flex-column col-3 gap-5 py-5 px-4" 
+          [ngClass]="{ 
+            'recomendado border-round-bottom-2xl': plano.recomendado, 
+            'border-round-2xl': !plano.recomendado, 
+          }">
+            <div class="wrapper-precos">
+              <h5>{{ plano.nome }}</h5>
+              <h6 class="flex justify-content-center align-items-center gap-1">
+                {{ plano.preco | currency: 'BRL': 'symbol': '1.0-0' }}<span>/mês*</span>
+              </h6>
+              <div class="wrapper-desconto">
+                <ng-container *ngIf="plano.descontoAnual">
+                  <p>Desconto de {{ plano.descontoAnual | currency }} no ano</p>
+                </ng-container>
+              </div>
+            </div>
+        
+            <p-divider layout="horizontal" type="dashed" />
+        
+            <div class="wrapper-beneficios flex flex-column gap-3">
+              <ng-container *ngFor="let beneficio of plano.beneficios">
+                <p class="flex align-items-center gap-2" [ngClass]="{'incluso': beneficio.incluso}">
+                  <app-icon 
+                    class="inline-block border-circle" 
+                    [iconName]="beneficio.incluso ? 'check' : 'close'" 
+                    iconSize="20px"
+                    verticalAlign="super" >
+                  </app-icon>
+                  <span class="flex flex-wrap gap-1">
+                    {{ beneficio.nome }}
+                    <app-tooltip *ngIf="beneficio.tooltilp" [content]="beneficio.tooltilp" />
+                  </span>
+                </p>
+              </ng-container>
+            </div>
+            <a
+              [href]="getLink()"
+              title="Quero agendar"
+              class="white-space-nowrap hidden lg:block w-fit align-self-center no-underline p-button p-button-lg" 
+              [ngClass]="{'p-button-outlined': !plano.recomendado}"
+              target="_blank" rel="noreferrer noopener">
+              Assine agora
+            </a>
+  
+            <a
+              [href]="getLink()"
+              title="Quero agendar"
+              class="white-space-nowrap block lg:hidden w-fit align-self-center no-underline p-button"
+              [ngClass]="{'p-button-outlined': !plano.recomendado}" 
+              target="_blank" rel="noreferrer noopener">
+              Assine agora
+            </a>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+    <p class="observacao align-self-center lg:align-self-end lg:mt-2">
+      *Planos anuais são cobrados mensalmente, respeitando contrato mínimo de 12 meses.
+    </p>
+  </div>
+</section>

@@ -1,0 +1,47 @@
+@import './variables';
+
+:host {
+  width: 100%;
+}
+
+.container-error {
+  width: 100%;
+
+  padding: 26px 47px 25px 34px;
+
+  border-radius: 10px;
+
+  background: $background-card;
+
+  gap: 11px;
+
+  @media (max-width: $sm) {
+    padding: 12px;
+
+    gap: 0;
+  }
+
+  h2,
+  p {
+    color: $secondary-darker-text-color;
+    font-size: 24px;
+    font-style: normal;
+    line-height: normal;
+  }
+
+  h2 {
+    font-weight: 700;
+  }
+
+  p {
+    font-weight: 400;
+  }
+}
+
+:host::ng-deep {
+  .material-symbols-outlined {
+    display: block;
+    margin: auto;
+    color: $icon-error-color;
+  }
+}

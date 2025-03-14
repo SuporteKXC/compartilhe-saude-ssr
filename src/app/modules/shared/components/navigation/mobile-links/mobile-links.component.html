@@ -1,0 +1,140 @@
+<p-accordion styleClass="mobile-navbar-accordion" class="w-full">
+  <ng-container *ngIf="userItems">
+    <ng-container *ngIf="!isConnectSaude && isBrowser">
+      <app-button
+        *ngIf="!user"
+        icon="login"
+        label="Fazer Login"
+        size="small"
+        [severity]="isOdontologia ? 'secondary' : 'primary'"
+        (handleClick)="authService.login()">
+      </app-button>
+  
+      <p-accordionTab
+        *ngIf="user"
+        [header]="'Olá, ' + user.given_name"
+        headerStyleClass="mobile-submenu-header"
+        [transitionOptions]="accordionAnimation"
+        [selected]="accordionFix"
+        iconPos="end"
+        contentStyleClass="mobile-submenu-content">
+        <a
+          *ngFor="let item of userItems"
+          [routerLink]="$any(item).path"
+          [fragment]="$any(item).fragment"
+          class="navbar-item p-2"
+          [ngClass]="{ active: shouldItemBeActive(item, activeRoute) }"
+          (click)="linkSelected.emit()">
+          {{ item.label }}
+        </a>
+      </p-accordionTab>
+    </ng-container>
+  </ng-container>
+
+  <ng-container *ngFor="let item of menuItems">
+    <ng-container *ngIf="isSubrouteItem(item); else navbarLink">
+      <p-accordionTab
+        [header]="item.label"
+        [transitionOptions]="accordionAnimation"
+        [selected]="accordionFix"
+        iconPos="end"
+        [headerStyleClass]="
+          anyItemSubrouteActive(item, activeRoute)
+            ? 'mobile-submenu-header active'
+            : 'mobile-submenu-header'
+        "
+        contentStyleClass="mobile-submenu-content">
+        <a
+          *ngFor="let subroute of item.subRoutes"
+          class="p-2"
+          [ngClass]="{ active: activeRoute === subroute.path }"
+          [routerLink]="subroute.path"
+          (click)="linkSelected.emit()"
+          [attr.data-testid]="subroute.datatestid">
+          {{ subroute.label }}
+        </a>
+      </p-accordionTab>
+    </ng-container>
+
+    <ng-template #navbarLink>
+      <ng-container *ngIf="!$any(item).handleClick ">
+        <a
+          *ngIf="!$any(item).href"
+          [routerLink]="$any(item).path"
+          [fragment]="$any(item).fragment"
+          class="navbar-item cursor-pointer no-underline p-2"
+          [ngClass]="{ active: shouldItemBeActive(item, activeRoute) }"
+          (click)="linkSelected.emit()"
+          [attr.data-testid]="item.datatestid"
+          [title]="item.label">
+          {{ item.label }}
+        </a>
+        <a
+          *ngIf="$any(item).href"
+          class="navbar-item cursor-pointer no-underline p-2"
+          target="_blank"
+          rel="noreferrer noopener"
+          [href]="$any(item).href"
+          [title]="item.label"
+          [ngClass]="{ active: shouldItemBeActive(item, activeRoute) }"
+          (click)="linkSelected.emit()"
+          [attr.data-testid]="item.datatestid">
+          {{ item.label }}
+        </a>
+      </ng-container>
+      <button
+        *ngIf="$any(item).handleClick"
+        class="navbar-item w-fit no-underline p-button p-button-text p-2"
+        [ngClass]="{ active: shouldItemBeActive(item, activeRoute) }"
+        (click)="$any(item).handleClick(); linkSelected.emit()"
+        [attr.data-testid]="item.datatestid">
+        {{ item.label }}
+      </button>
+    </ng-template>
+  </ng-container>
+</p-accordion>
+
+<div class="flex flex-column align-items-center gap-3">
+  <ng-container *ngIf="!isConnectSaude">
+    <app-button
+      *ngIf="user"
+      class="button-logout"
+      label="Sair"
+      size="small"
+      [text]="true"
+      (handleClick)="authService.logout()" >
+    </app-button>
+    
+    <app-button
+      *ngIf="!user"
+      label="Cadastre-se"
+      size="small"
+      [outlined]="true"
+      [severity]="isOdontologia ? 'secondary' : 'primary'"
+      (handleClick)="navigateToCadastrar()">
+    </app-button>
+  </ng-container>
+  
+  <a
+    *ngIf="isConnectSaude"
+    [href]="getWhatsappLink()"
+    title="Quero agendar"
+    class="lg:block w-fit no-underline p-button p-button-sm mb-4"
+    target="_blank"
+    rel="noreferrer noopener">
+    Assine agora
+  </a>
+
+  <ng-container *ngIf="!isConnectSaude">
+    <div class="wrapper-banner-connect-saude w-full h-full flex align-items-center flex-column py-3 px-4">
+      <h6>Profissionais de saúde</h6>
+      <p class="mb-3">
+        Amplie sua presença digital, alcance mais pacientes com as soluções exclusivas.
+      </p>
+      <app-button 
+        label="Conheça o Connect Saúde"
+        (handleClick)="navigateToConnectSaude()">
+      </app-button>
+    </div>
+  </ng-container>
+</div>

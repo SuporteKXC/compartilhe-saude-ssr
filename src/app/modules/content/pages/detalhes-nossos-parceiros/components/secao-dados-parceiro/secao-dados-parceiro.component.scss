@@ -1,0 +1,94 @@
+@import 'variables';
+
+.wrapper-dados {
+  border-radius: 10px;
+
+  box-shadow: $elevation-effect-3;
+
+  h1,
+  app-icon {
+    color: $primary-darker;
+  }
+
+  h1 {
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 32px;
+    text-align: left;
+
+    @media (min-width: $xl) {
+      font-size: 34px;
+      font-weight: 700;
+      line-height: 34px;
+      text-align: left;
+    }
+  }
+
+  h2 {
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 36px;
+    text-align: left;
+  }
+
+  p {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 14px;
+
+    @media (min-width: $xl) {
+      font-size: 24px;
+      font-weight: 400;
+      line-height: 20px;
+      text-align: left;
+    }
+  }
+
+  .wrapper {
+    &-identificacao {
+      color: $base-darker;
+    }
+
+    &-localizacao {
+      color: $secondary-darker;
+
+      .card-local-atendimento {
+        background-color: $background-light;
+        min-height: 136px;
+        padding: 16px;
+        border-radius: 8px;
+
+        .titulo {
+          color: $primary-darker;
+          font-size: 18px;
+          font-weight: 600;
+          line-height: 18px;
+          text-align: left;
+        }
+
+        span {
+          font-size: 18px;
+          font-weight: 400;
+          line-height: 18px;
+          text-align: left;
+        }
+      }
+    }
+  }
+}
+
+::ng-deep #detalhes-nossos-parceiros {
+  .p-avatar.p-avatar-xl {
+    width: 64px;
+    height: 64px;
+
+    @media (min-width: $xl) {
+      width: 80px;
+      height: 80px;
+    }
+  }
+}
+
+p .pipe-content::before {
+  content: ' | ';
+}

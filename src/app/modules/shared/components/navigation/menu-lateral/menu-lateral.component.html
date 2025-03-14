@@ -1,0 +1,56 @@
+<aside class="wrapper-menu fixed xl:h-screen">
+  <nav class="flex flex-column justify-content-between xl:h-full">
+    <div class="wrapper-navegacao flex xl:flex-column justify-content-between xl:justify-content-start align-items-center h-full">
+      <button class="button-menu flex align-items-start xl:hidden" (click)="toggleMenu()">
+        <app-icon iconName="menu" verticalAlign="middle" />
+      </button>
+
+      <div class="route-indicator flex justify-content-center align-items-center xl:hidden">
+        <span>
+          <app-icon
+            [iconName]="getPageDetails()?.icon ?? ''"
+            iconSize="14px"
+            verticalAlign="middle" />
+          {{ getPageDetails()?.label | titlecase }}
+        </span>
+      </div>
+
+      <a routerLink="" class="xl:align-self-start">
+        <picture class="flex justify-content-center align-content-center">
+          <source
+            media="(min-width:1200px)"
+            [srcset]="pathImage + '/assets/Images/logo-compartilhe.png'"
+            class="logo-desktop" />
+          <img src="assets/icons/shared/compartilhe-saude-icon.svg" alt="" class="logo-mobile" />
+        </picture>
+      </a>
+
+      <div class="w-full hidden xl:flex flex-column justify-content-start">
+        <app-lateral-desktop-links
+          [menuItems]="menuItems"
+          [activeRoute]="activeRoute">
+        </app-lateral-desktop-links>
+      </div>
+    </div>
+    <app-button
+      id="button-logout"
+      class="align-self-start justify-content-end hidden xl:block"
+      size="small"
+      label="Sair"
+      icon="logout"
+      contentClass="flex-row-reverse gap-3"
+      [text]="true"
+      (handleClick)="logout()" />
+  </nav>
+</aside>
+
+<app-sidebar [visible]="isVisible" [template]="mobileLinks" (hide)="toggleMenu()"> </app-sidebar>
+
+<ng-template #mobileLinks>
+  <app-mobile-links
+    [menuItems]="menuItems"
+    [activeRoute]="activeRoute"
+    [user]="user"
+    (linkSelected)="toggleMenu()">
+  </app-mobile-links>
+</ng-template>

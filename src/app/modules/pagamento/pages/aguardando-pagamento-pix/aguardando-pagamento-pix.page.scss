@@ -1,0 +1,156 @@
+@import 'variables';
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  max-width: 350px;
+
+  margin: auto;
+
+  padding-block: 30px;
+
+  @media (max-width: $lg) {
+    margin-top: 54px;
+  }
+
+  app-error-box {
+    width: 85%;
+
+    @media (min-width: $lg) {
+      margin-bottom: 14px;
+      width: 438px;
+    }
+
+    @media (max-width: $lg) {
+      margin-top: 24px;
+    }
+  }
+
+  header {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    width: 128px;
+    @media (min-width: $lg) {
+      width: 164px;
+    }
+
+    margin-bottom: 8px;
+
+    .msg-pagamento-pendente {
+      width: 100%;
+
+      padding-bottom: 1px;
+
+      background: $warning-dark;
+      border-radius: 5px;
+
+      text-align: center;
+      color: $primaryTextColor;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .logo-pix {
+      width: 100%;
+    }
+  }
+
+  .msg-expiracao {
+    display: flex;
+    align-items: baseline;
+
+    gap: 10px;
+
+    app-icon {
+      color: $primary-darker;
+    }
+
+    div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      text-align: center;
+
+      font-size: 14px;
+
+      small {
+        font-size: 12px;
+
+        color: $secondary-darker;
+      }
+    }
+  }
+
+  app-qr-code {
+    margin-block: 16px;
+  }
+
+  .codigo-qr-code {
+    width: 90%;
+
+    margin-bottom: 16px;
+
+    text-align: center;
+    font-size: 16px;
+    overflow-wrap: break-word;
+  }
+
+  .valor-total {
+    margin-bottom: 24px;
+
+    font-size: 16px;
+
+    color: $secondary-darker;
+
+    strong {
+      color: $primary-darker;
+      font-weight: 600;
+    }
+  }
+
+  footer {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    @media (max-width: $lg) {
+      flex-direction: column;
+    }
+
+    app-button {
+      width: 163px;
+      height: 40px;
+
+      @media (max-width: $lg) {
+        display: flex;
+        justify-content: center;
+      }
+    }
+  }
+}
+
+.btn-meus-pedidos-container {
+  position: absolute;
+  top: calc(30px + $navHeightDesktop);
+  right: 100px;
+
+  @media (max-width: $md) {
+    top: calc(16px + $navHeightMobile);
+    right: 24px;
+  }
+}
+
+:host ::ng-deep {
+  .btn-footer {
+    height: 100%;
+
+    span {
+      text-wrap: nowrap;
+    }
+  }
+}

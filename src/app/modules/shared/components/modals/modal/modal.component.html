@@ -1,0 +1,24 @@
+<p-dialog 
+    id="custom-modal" 
+    [(visible)]="visible"
+    [showHeader]="showHeader()"
+    [closable]="closable"
+    [modal]="true" 
+    [resizable]="false"
+    [draggable]="false" 
+    (onHide)="handleCloseEvent()"
+    (visibleChange)="visibleChangeEvent()">
+    <ng-template pTemplate="header">
+        <ng-container [ngTemplateOutlet]="headerTemplate" />
+    </ng-template>
+
+    <ng-template pTemplate="content" >
+        <ng-container [ngTemplateOutlet]="contentTemplate" />
+        <ng-content *ngIf="!contentTemplate" select="[content]"></ng-content>
+    </ng-template>
+
+    <ng-template pTemplate="footer" >
+        <ng-container [ngTemplateOutlet]="footerTemplate" />
+        <ng-content *ngIf="!footerTemplate" select="[footer]"></ng-content>
+    </ng-template>
+</p-dialog>

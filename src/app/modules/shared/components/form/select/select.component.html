@@ -1,0 +1,39 @@
+<div class="flex flex-column" *ngIf="group" [formGroup]="group">
+  <span>
+    <label *ngIf="label" [htmlFor]="name" [ngClass]="{ 'p-sr-only': labelSrOnly }">{{ label }}</label>
+  </span>
+
+  <!-- TODO
+    esse className (ou styleClass em outros componentes, não me pergunte pq muda o nome)
+    podia ser determinado na classe base, e aí usar ele em todo componente
+    e fazer os estilos de acordo com essas classes ao invés de usar as do primeng que são todas bugadas
+   -->
+  <p-dropdown
+    [formControl]="control"
+    [disabled]="disabled"
+    [className]="getControlStateClasses()"
+    [inputId]="name"
+    [name]="name"
+    [attr.data-testid]="dataTestid"
+    [placeholder]="placeholder"
+    [options]="options"
+    [filter]="filter"
+    optionValue="value"
+    optionLabel="label"
+    appendTo="body"
+    [emptyMessage]="emptyMessage"
+    [emptyFilterMessage]="emptyMessage"
+    [showClear]="showClear"
+    [virtualScroll]="virtualScrollConfig.enabled"
+    [virtualScrollItemSize]="virtualScrollConfig.itemSize"
+    [virtualScrollOptions]="{ step: virtualScrollConfig.step }"
+    [lazy]="lazyLoad"
+    (onClick)="handleOnClick($event)"
+    (onChange)="handleDropdownChange($event)"
+    (onBlur)="onTouched()"
+    (onClear)="handleOnClear($event)"
+    (onLazyLoad)="loadNewData.emit()">
+  </p-dropdown>
+
+  <small *ngIf="errorMessage">{{ errorMessage }}</small>
+</div>

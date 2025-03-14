@@ -1,0 +1,19 @@
+<div class="wrapper-card" *ngIf="data">
+  <div class="titulo mx-2">
+    <p>{{ data.nome }}</p>
+  </div>
+  <div class="card">
+    <div class="image-container">
+      <img [src]="pathImage" [alt]="data.nome" aria-hidden="true">
+    </div>
+    <div class="button-container">
+      <app-button
+        label="Ver detalhes"
+        severity="primary"
+        size="small"
+        [outlined]="true"
+        (handleClick)="navigateToDetalhes(data)">
+      </app-button>
+    </div>
+  </div>
+</div>

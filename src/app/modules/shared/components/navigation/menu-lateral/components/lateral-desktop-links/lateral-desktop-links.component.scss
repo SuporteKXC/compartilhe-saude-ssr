@@ -1,0 +1,126 @@
+@import 'variables';
+
+:host {
+  width: 100%;
+}
+
+.navbar-item {
+  cursor: pointer;
+
+  width: fit-content;
+
+  color: $secondary-light;
+
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 15px;
+
+  text-decoration: none;
+
+  &:hover {
+    color: $secondary;
+  }
+
+  &.active {
+    color: $primary-darker;
+    cursor: default;
+
+    &:hover {
+      color: $primary-darker;
+    }
+  }
+}
+
+:host ::ng-deep .panel-submenu {
+  .navbar-item {
+    cursor: pointer;
+  }
+
+  &.active .p-panel-header {
+    .p-panel-icons button {
+      color: $primary-darker;
+
+      &:hover {
+        color: $primary-darker;
+      }
+    }
+  }
+
+  &:not(.active) .p-panel-header:hover {
+    .navbar-item:not(.active) {
+      color: $secondary;
+    }
+
+    .p-panel-icons button {
+      color: $secondary;
+    }
+  }
+
+  .p-panel-header,
+  .p-panel-content {
+    padding: 0;
+    border: none;
+
+    width: fit-content;
+  }
+
+  .p-panel-header {
+    background-color: $background-lighter;
+
+    .p-panel-icons {
+      height: 15px;
+
+      button {
+        height: 15px;
+
+        color: $secondary-light;
+
+        transition: all 0s;
+
+        &:hover {
+          background-color: unset;
+        }
+      }
+    }
+  }
+
+  .menu-submenu {
+    width: fit-content;
+
+    padding: 0;
+    padding-top: 5px;
+
+    border: none;
+
+    .p-menuitem {
+      .p-menuitem-content {
+        background-color: $background-lighter;
+
+        .p-menuitem-link {
+          font-size: 18px;
+          font-weight: 600;
+          line-height: 15px;
+
+          padding: 4px 1rem;
+
+          .p-menuitem-text {
+            color: $secondary-light;
+
+            &:hover {
+              color: $secondary;
+            }
+          }
+
+          &-active .p-menuitem-text {
+            color: $primary-darker;
+            cursor: default;
+
+            &:hover {
+              color: $primary-darker;
+            }
+          }
+        }
+      }
+    }
+  }
+}

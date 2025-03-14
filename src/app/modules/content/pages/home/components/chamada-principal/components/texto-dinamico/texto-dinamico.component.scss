@@ -1,0 +1,18 @@
+@import 'variables';
+
+.titulo-dinamico {
+  display: inline-block;
+  text-wrap: nowrap;
+  color: $primary-darker;
+  overflow: hidden; 
+  vertical-align: bottom;
+}
+
+span {
+  font-size: 36px;
+  font-weight: 600;
+
+  @media (min-width: $lg) {
+    font-size: 56px;
+  }
+}

@@ -1,0 +1,17 @@
+<section class="depoimentos">
+  <div>
+    <h2>Depoimentos</h2>
+  
+    <app-carousel
+      [items]="depoimentos"
+      [itemTemplate]="item"
+      [responsiveOptions]="responsiveOptions"
+      [slider]="true"
+      [overflow]="false">
+    </app-carousel>
+  
+    <ng-template #item let-depoimento>
+      <app-card-depoimentos [depoimento]="depoimento" class="block" />
+    </ng-template>
+  </div>
+</section>

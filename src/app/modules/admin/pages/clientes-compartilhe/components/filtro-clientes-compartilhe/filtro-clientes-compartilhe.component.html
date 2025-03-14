@@ -1,0 +1,101 @@
+<form [formGroup]="formService.filtro" class="flex flex-column gap-3">
+  <div class="grid justify-content-between grid-nogutter gap-3">
+    <app-select
+      class="w-2"
+      label="Tipo de cliente"
+      name="tipoCliente"
+      formControlName="tipoCliente"
+      placeholder="Tipo de cliente"
+      [labelSrOnly]="true"
+      [options]="tipoClienteOptions" />
+    
+    <app-input-text-search
+      class="col-4"
+      name="texto"
+      formControlName="texto"
+      autocomplete="off" 
+      [label]="textoPlaceholder"
+      [placeholder]="textoPlaceholder"
+      [labelSrOnly]="true"
+      [disabled]="!formService.hasTipoCliente" />
+  
+    <app-select
+      class="col-3"
+      label="Selecione o Estado"
+      name="estado"
+      formControlName="estado"
+      placeholder="Selecione o estado"
+      [labelSrOnly]="true"
+      [options]="estadoOptions"
+      [disabled]="!formService.hasTipoCliente"
+      [showClear]="true" />
+  
+    <app-search-cidade
+      class="col-4 flex-1"  
+      formControlName="cidade"
+      [showEstado]="false"
+      [disabled]="!formService.hasTipoCliente" />
+  </div>
+
+  <div class="grid justify-content-between grid-nogutter">
+    <app-select
+      class="col-2"
+      label="Sexo Biológico"
+      name="sexoBiologico"
+      formControlName="sexoBiologico"
+      placeholder="Sexo biológico"
+      [labelSrOnly]="true"
+      [options]="sexoBiologicoOptions"
+      [disabled]="formService.isPessoaJuridica || !formService.hasTipoCliente"
+      [showClear]="true" />
+  
+    <app-select
+      class="col-2"
+      label="Estado civil"
+      name="estadoCivil"
+      formControlName="estadoCivil"
+      placeholder="Estado civil"
+      [labelSrOnly]="true"
+      [options]="estadoCivilOptions"
+      [disabled]="formService.isPessoaJuridica || !formService.hasTipoCliente"
+      [showClear]="true" />
+  
+    <app-select
+      class="col-2"
+      label="Faixa etária"
+      name="faixaEtaria"
+      formControlName="faixaEtaria"
+      placeholder="Faixa etária"
+      [labelSrOnly]="true"
+      [options]="faixaEtariaOptions"
+      [disabled]="formService.isPessoaJuridica || !formService.hasTipoCliente"
+      [showClear]="true" />
+  
+    <app-input-text    
+      class="col-2"
+      name="telefone"
+      label="Telefone"
+      placeholder="Telefone"
+      formControlName="telefone"
+      autocomplete="off"
+      [labelSrOnly]="true"
+      [mask]="['(99) 9999-9999', '(99) 99999-9999']"
+      [disabled]="!formService.hasTipoCliente" />
+  
+    <app-select
+      class="col-2"
+      label="Modalidade"
+      name="modalidade"
+      formControlName="modalidade"
+      placeholder="Modalidade"
+      [labelSrOnly]="true"
+      [options]="modalidadeOptions"
+      [disabled]="!formService.hasTipoCliente"
+      [showClear]="true" />
+
+    <app-button
+      label="Buscar"
+      (handleClick)="shouldSearchAgain.emit()"
+      [disabled]="!formService.hasTipoCliente" />
+  </div>
+</form>

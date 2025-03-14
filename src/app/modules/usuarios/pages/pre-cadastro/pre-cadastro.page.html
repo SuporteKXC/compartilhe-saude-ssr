@@ -1,0 +1,16 @@
+<section class="wrapper flex justify-content-center align-content-center">
+  <div class="grid grid-nogutter align-items-center justify-content-around">
+    <aside class="md:col-6 apresentacao">
+      <h1>
+        <strong>
+          Tenha acesso aos benefícios da rede compartilhe
+        </strong>
+      </h1>
+      <h2>Preencha o formulário ao lado e comece a utilizar nossos serviços.</h2>
+    </aside>
+  
+    <app-formulario-usuarios (handleSubmit)="nextForm()" [loading]="isLoading" *ngIf="!isPasswordForm" />
+  
+    <app-formulario-senha (handleSubmit)="onSubmit()" [loading]="isLoading" *ngIf="isPasswordForm" />
+  </div>
+</section>

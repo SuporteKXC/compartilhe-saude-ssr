@@ -1,0 +1,5 @@
+export enum StatusPedido {
+  AGUARDA_PAGAMENTO = 'AGUARDA_PAGAMENTO',
+  PAGO = 'PAGO',
+  EXPIRADO = 'EXPIRADO',
+}

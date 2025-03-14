@@ -1,0 +1,16 @@
+<app-form-fieldset 
+  titulo="ID Seller" 
+  tooltipContent="O ID Seller deve ser obtido no cadastro do seller na Braspag">
+  <div class="flex flex-column" [formGroup]="formGroup">
+    <div class="flex flex-column lg:flex-row gap-3">
+      <app-input-text
+        placeholder="Informe o ID do Seller"
+        name="sellerId"
+        formControlName="sellerId"
+        class="w-full"
+        autocomplete="off"
+        [customErrors]="sellerIdCustomErrors">
+      </app-input-text>
+    </div>
+  </div>
+</app-form-fieldset>

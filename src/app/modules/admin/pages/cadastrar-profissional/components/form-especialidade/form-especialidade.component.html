@@ -1,0 +1,14 @@
+<app-form-fieldset>
+  <div
+    class="flex flex-column lg:flex-row w-full gap-2 lg:gap-4 mb-2"
+    [formGroup]="formCadastrarProfissionalService.formProfissional">
+    <app-multiselect
+      class="w-full required"
+      name="especialidades"
+      label="Especialidade"
+      placeholder="Selecione"
+      [options]="especialidadeOptions"
+      [showHeader]="true"
+      formControlName="especialidades" />
+  </div>
+</app-form-fieldset>

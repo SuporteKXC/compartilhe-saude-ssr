@@ -1,0 +1,23 @@
+<section class="wrapper-atalhos w-full">
+  <h2 class="mb-5">Meus Atalhos</h2>
+  <div class="atalhos w-full xl:w-fit flex">
+      <app-button-atalho
+        iconName="badge"
+        title="Meu ID"
+        tooltip="Meu ID"
+        description="Acesse a sua identificação Compartilhe Saúde"
+        (handleClick)="toggleCard()"
+      ></app-button-atalho>
+
+      <app-button-atalho
+        iconName="group_add"
+        title="Indique"
+        tooltip="Indique"
+        description="Indique amigos para fazerem parte da Compartilhe"
+        [href]="getShareLink()"
+        target="_blank"
+      ></app-button-atalho>
+  </div>
+</section>
+
+<app-card-id-virtual [visible]="isVisible" [userData]="$userData" (handleClose)="toggleCard()"/>

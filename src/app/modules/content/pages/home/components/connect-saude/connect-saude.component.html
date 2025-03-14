@@ -1,0 +1,19 @@
+<div class="wrapper-connect-saude">
+  <app-destaque
+    [isConnectSaude]="false"
+    titulo="Leve seu negócio de saúde a outro nível!"
+    subtitulo="Amplie sua presença digital, alcance mais pacientes e transforme sua atuação com as soluções exclusivas do Connect Saúde.">
+    <app-button
+      class="block lg:hidden"
+      label="Assine agora"
+      (handleClick)="navigateToConnectSaude()">
+    </app-button>
+
+    <app-button
+      class="hidden lg:block"
+      label="Assine agora"
+      size="large"
+      (handleClick)="navigateToConnectSaude()">
+    </app-button>
+  </app-destaque>
+</div>

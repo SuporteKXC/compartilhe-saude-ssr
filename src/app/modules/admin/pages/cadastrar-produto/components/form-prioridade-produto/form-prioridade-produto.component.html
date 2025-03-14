@@ -1,0 +1,12 @@
+<app-form-fieldset
+  titulo="Defina o grau de prioridade do produto" [required]="true"
+  tooltipContent="Utilize esse marcador para definir o grupo de prioridade do produto na exibição da página do site.">
+  <div class="flex flex-column mt-1" [formGroup]="formCadastrarProdutoService.formProduto">
+    <app-inline-box-radio
+      [options]="options"
+      name="ordem"
+      label="Grau de prioridade do produto"
+      [labelSrOnly]="true"
+      formControlName="ordem" />
+  </div>
+</app-form-fieldset>

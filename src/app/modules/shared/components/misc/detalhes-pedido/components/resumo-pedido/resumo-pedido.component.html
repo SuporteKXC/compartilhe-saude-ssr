@@ -1,0 +1,100 @@
+<div class="flex flex-column gap-2">
+  <ng-container *ngIf="!isAdmin()">
+    <h3>Seu pedido foi realizado com sucesso!</h3>
+    <h4>Número do pedido {{ data.id }}</h4>
+  </ng-container>
+
+  <ng-container *ngIf="isAdmin()">
+    <h3>Número do pedido {{ data.id }}</h3>
+  </ng-container>
+
+  <p class="data">Realizado em {{ data.dataHoraInclusao | date : "dd/MM/yyyy 'às' HH:mm" }}</p>
+
+  <ng-container *ngIf="data.formaPagamento === 'CARTAO_CREDITO'; else pix">
+    <ng-container *ngIf="data.qtdParcelas <= 1; else cartaoCredito">
+      <div class="texto flex align-items-center">
+        <span class="white-space-nowrap">Forma de pagamento:</span>
+        <app-icon iconName="credit_card" iconSize="15px" class="mx-1"></app-icon>
+        <p class="white-space-nowrap">Cartão de crédito</p>
+      </div>
+      <p class="texto">
+        Valor total <span class="valor font-semibold">{{ data.valorTotal | currency }}</span> à
+        vista
+      </p>
+    </ng-container>
+  </ng-container>
+
+  <ng-container *ngIf="!isAdmin()">
+    <p class="texto">
+      Obrigado pela sua compra. Confira os detalhes e orientações para realização dos seus
+      atendimentos:
+    </p>
+  </ng-container>
+
+  <ng-container *ngIf="isAdmin()">
+    <ng-container [ngSwitch]="data.status">
+      <p *ngSwitchCase="StatusPedido.PAGO" class="texto">
+        Status: <span class="valor font-semibold">Pago</span>
+      </p>
+      <p *ngSwitchCase="StatusPedido.AGUARDA_PAGAMENTO" class="texto">
+        Status: <span class="valor font-semibold">Aguardando Pagamento</span>
+      </p>
+      <p *ngSwitchDefault class="texto">
+        Status: <span class="valor font-semibold">Expirado</span>
+      </p>
+    </ng-container>
+    <p class="texto">Nome: {{ data.nome }}</p>
+    <p class="texto mb-3">CPF: {{ data.cpf | mask : '999.999.999-99' }}</p>
+  </ng-container>
+
+  <ng-container *ngIf="!isAdmin()">
+    <div class="aviso py-2 px-3 my-4">
+      <p class="texto">
+        <strong>Atenção: </strong>para realizar o agendamento dos exames, consultas, pacotes de check-up ou
+        outros produtos contratados, entre em contato com nosso time de atendimento pelo whatsapp.
+      </p>
+
+      <div class="mt-2 flex flex-column align-items-center xl:flex-row gap-2">
+        <p class="contato texto font-semibold my-3 xl:my-0">
+          Tire suas dúvidas pelo nosso WhatsApp!
+        </p>
+        <a
+          class="no-underline"
+          rel="noreferrer noopener"
+          [href]="getLink()"
+          target="_blank">
+          <figure class="contato-banner flex align-items-center">
+            <img src="assets/icons/pagamento/whatsapp-icon.svg" alt="WhatsApp" />
+            <p>(27) 3600-2121</p>
+          </figure>  
+        </a>
+      </div>
+    </div>
+  </ng-container>
+</div>
+
+<ng-template #pix>
+  <div class="texto flex">
+    <span class="white-space-nowrap">Forma de pagamento:</span>
+    <figure class="flex align-items-center p-0 m-o">
+      <img src="assets/icons/pagamento/logo-pix-without-text.svg" alt="Logotipo do PIX" aria-hidden="true"
+        class="pix-logo mx-1" />
+      <p>PIX</p>
+    </figure>
+  </div>
+  <p class="texto">
+    Valor total <span class="valor font-semibold">{{ data.valorTotal | currency }}</span> à vista
+  </p>
+</ng-template>
+
+<ng-template #cartaoCredito>
+  <div class="texto flex align-items-center">
+    <span class="white-space-nowrap">Forma de pagamento:</span>
+    <app-icon iconName="credit_card" iconSize="15px" class="mx-1"></app-icon>
+    <p class="white-space-nowrap">Cartão de crédito</p>
+  </div>
+  <p class="texto">
+    Valor total <span class="valor font-semibold">{{ data.valorTotal | currency }}</span>
+    {{ data.qtdParcelas }}x {{ data.valorParcela.toLocaleString() }}
+  </p>
+</ng-template>

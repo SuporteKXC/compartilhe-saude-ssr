@@ -1,0 +1,83 @@
+@import 'variables';
+
+.principal-container {
+  width: 100%;
+  gap: 32px;
+
+  @media (max-width: $md) {
+    gap: 24px;
+  }
+
+  figure {
+    aspect-ratio: 16 / 10;
+
+    max-width: 510px;
+    max-height: 320px;
+
+    width: 47.53%;
+    height: auto;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+    margin-top: 10px;
+  }
+}
+
+.text-container {
+  width: 49.48%;
+
+  h2 {
+    line-height: 40px;
+  }
+
+  p {
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 25px;
+    margin: 14px 0 20px 0;
+  }
+
+  h2,
+  p {
+    color: $secondary-darker;
+    font-style: normal;
+  }
+}
+
+@media (max-width: $md) {
+  .principal-container {
+    width: 100%;
+    flex-wrap: wrap;
+
+    figure {
+      max-width: unset;
+      max-height: unset;
+
+      width: 100%;
+      height: auto;
+    }
+
+    img {
+      margin-top: 0;
+    }
+  }
+
+  .text-container {
+    width: 100%;
+
+    h2 {
+      font-size: 32px;
+      line-height: 30px;
+    }
+
+    p {
+      font-size: 20px;
+      line-height: 18px;
+      margin: 14px 0 18px 0;
+    }
+  }
+}

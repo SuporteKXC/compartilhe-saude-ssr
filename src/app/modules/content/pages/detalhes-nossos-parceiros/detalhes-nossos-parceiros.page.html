@@ -1,0 +1,34 @@
+<main>
+  <div class="flex flex-column gap-5">
+    <section class="flex flex-column gap-4">
+      <app-button
+        label="Voltar para lista"
+        icon="arrow_back"
+        severity="primary"
+        [outlined]="true"
+        size="small"
+        (handleClick)="navigateToParceiros()">
+      </app-button>
+
+      <app-secao-dados-parceiro
+        [formaAtendimento]="atendimento"
+        [detalhesParceiro]="detalhesParceiro">
+      </app-secao-dados-parceiro>
+    </section>
+
+    <section>
+      <app-secao-produtos-parceiro
+        [idParceiro]="idParceiro"
+        [idCidade]="idCidade"
+        [formaAtendimento]="atendimento"
+        [detalhesParceiro]="detalhesParceiro">
+      </app-secao-produtos-parceiro>
+    </section>
+
+    <app-secao-informacao-parceiros [detalhesParceiro]="detalhesParceiro" />
+  </div>
+</main>
+
+<div class="container-perguntas" *ngIf="perguntas.length > 0">
+  <app-accordion-faq [data]="perguntas"></app-accordion-faq>
+</div>

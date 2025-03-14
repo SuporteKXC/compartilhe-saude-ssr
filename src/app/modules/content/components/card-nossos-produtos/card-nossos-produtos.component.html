@@ -1,0 +1,55 @@
+<ng-container *ngIf="!isOdontologia">
+  <a
+    *ngIf="!data.categoria"
+    class="card-produto flex flex-column justify-content-between no-underline p-3"
+    rel="noreferrer noopener"
+    [href]="getLinkWhatsapp(data.label)"
+    [target]="data.categoria ? '' : '_blank'">
+    <ng-container [ngTemplateOutlet]="linkContent" />   
+  </a>
+
+  <a
+    *ngIf="data.categoria"
+    class="card-produto flex flex-column justify-content-between no-underline p-3"
+    [routerLink]="getLink(data.categoria!)">
+    <ng-container [ngTemplateOutlet]="linkContent" />   
+  </a>
+
+  <ng-template #linkContent>
+    <div class="flex flex-column justify-content-between gap-3">
+      <app-icon *ngIf="data.icon" [iconName]="data.icon" iconSize="36px" />
+      <p class="font-semibold">{{ data.label }}</p>
+    </div>
+  </ng-template>
+</ng-container>
+
+<div
+  *ngIf="isOdontologia"
+  class="card-produto-odontologia"
+  [ngClass]="{ 'compartilhe-sorrisos': isOdontologia }"
+  [ngStyle]="{ height: height }">
+  <div class="card-content">
+    <div class="icon">
+      <img
+        *ngIf="dataOdonto.imgName"
+        [src]="getIconPath(dataOdonto.imgName)"
+        [alt]="dataOdonto.titulo"
+        [title]="dataOdonto.icon"
+        aria-hidden="true" />
+    </div>
+
+    <h3>{{ dataOdonto.titulo }}</h3>
+    <p>{{ dataOdonto.texto }}</p>
+  </div>
+
+  <a
+    *ngIf="isOdontologia"
+    [href]="dataOdonto.link ? dataOdonto.link : getLinkWhatsapp(dataOdonto.titulo)"
+    [target]="dataOdonto.link ? '_top' : '_blank'"
+    title="Saiba Mais"
+    rel="noreferrer noopener">
+    Saiba Mais
+    <app-icon iconName="arrow_forward" iconSize="14px"></app-icon>
+  </a>
+</div>
+

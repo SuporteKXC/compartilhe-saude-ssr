@@ -1,0 +1,61 @@
+<p-toast id="cadastro-toast">
+  <ng-template let-message pTemplate="message">
+    <app-toast-content [message]="message"></app-toast-content>
+  </ng-template>
+</p-toast>
+
+<app-page-title
+  titulo="Cadastro de Produtos"
+  [returnPath]="['/', 'admin', 'dashboard', 'produtos-compartilhe']"
+  [breadcrumbData]="breadcrumb">
+</app-page-title>
+
+<section class="w-full" id="form-produtos">
+  <form
+    class="flex flex-column gap-3"
+    (submit)="pathId ? onSubmitAlterar($event) : onSubmitCadastrar($event)"
+    appNoSubmitWithEnter>
+    <div class="flex gap-5">
+      <app-form-situacao
+        [formGroup]="formProduto"
+        (changed)="formService.togglePrecosRequireValidation($event)" />
+
+      <app-form-destaque [formGroup]="formProduto" />
+    </div>
+
+    <app-form-prioridade-produto />
+
+    <p-tabView
+      styleClass="tabview-dados-gerais h-full flex flex-column mb-5 gap-3"
+      id="form-pessoas">
+      <p-tabPanel header="Dados gerais">
+        <div class="flex flex-column gap-3">
+          <app-form-dados-produto [titulo]="formTitulo" />
+
+          <app-form-produtos-relacionados
+            [idProduto]="pathId"
+            [produtosInteresse]="produtosInteresse"
+            (changeForm)="formService.save()">
+          </app-form-produtos-relacionados>
+
+          <app-form-tabela-precos-produto />
+        </div>
+      </p-tabPanel>
+
+      <p-tabPanel header="Conteúdo">
+        <ng-template pTemplate="content">
+          <app-form-conteudo></app-form-conteudo>
+        </ng-template>
+      </p-tabPanel>
+    </p-tabView>
+
+    <app-button
+      class="mt-4"
+      label="Salvar"
+      size="small"
+      type="submit"
+      [loading]="isLoading"
+      [disabled]="formService.isDisableSubmit">
+    </app-button>
+  </form>
+</section>

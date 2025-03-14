@@ -1,0 +1,10 @@
+<div class="container-error flex flex-column xl:flex-row align-items-center">
+  <app-icon [iconName]="iconName"></app-icon>
+  <div class="flex flex-column">
+    <div>
+      <h2 *ngIf="header" class="text-center md:text-left">{{ header }}</h2>
+      <p *ngIf="message" class="text-center md:text-left">{{ message }}</p>
+    </div>
+    <ng-container [ngTemplateOutlet]="actionButtonTemplate" />
+  </div>
+</div>

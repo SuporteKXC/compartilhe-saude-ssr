@@ -1,0 +1,19 @@
+@import 'variables';
+@import 'mixins';
+
+$patternPaddingMobile: 24px;
+$patternPaddingDesktop: 24px;
+
+main {
+  @include mainPadding($patternPaddingDesktop, $horizontal-padding-main-content);
+  margin-bottom: 51px;
+
+  @media (max-width: $sm) {
+    @include mainPadding($patternPaddingMobile, $horizontal-padding-main-content-sm);
+    margin-bottom: 20px;
+  }
+
+  @media (min-width: $sm) and (max-width: $xl) {
+    @include mainPadding($patternPaddingMobile, $horizontal-padding-main-content-md);
+  }
+}

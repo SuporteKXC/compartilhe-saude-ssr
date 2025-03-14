@@ -1,0 +1,19 @@
+<section>
+  <div>
+    <h2 class="mb-3">Nossos Produtos</h2>
+  
+    <app-carousel
+      id="carousel-products"
+      [items]="products"
+      [slider]="true"
+      [showScroll]="isShowScroll"
+      [responsiveOptions]="carouselBreakPoints"
+      [itemTemplate]="cardNossosProdutos"
+      [overflow]="false">
+    </app-carousel>
+  
+    <ng-template #cardNossosProdutos let-produto>
+      <app-card-nossos-produtos [data]="produto" class="block" height="130px" />
+    </ng-template>
+  </div>
+</section>

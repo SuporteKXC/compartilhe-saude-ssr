@@ -1,0 +1,71 @@
+<form
+  class="flex flex-column justify-content-center gap-3"
+  [formGroup]="formEndereco"
+  (submit)="salvarDadosEndereco()">
+  <div class="flex flex-column xl:flex-row">
+    <app-input-text
+      name="cep"
+      label="CEP"
+      formControlName="cep"
+      [customErrors]="cepCustomErrors"
+      mask="99999-999"
+      class="w-full">
+    </app-input-text>
+
+    <app-input-text
+      name="logradouro"
+      label="Logradouro"
+      formControlName="logradouro"
+      class="w-full">
+    </app-input-text>
+  </div>
+
+  <div class="flex flex-column xl:flex-row">
+    <div class="flex flex-column xl:flex-row gap-3 w-full">
+      <app-input-text name="numero" label="Número" formControlName="numero"> </app-input-text>
+
+      <app-input-text
+        class="w-full"
+        name="complemento"
+        label="Complemento"
+        formControlName="complemento">
+      </app-input-text>
+    </div>
+
+    <app-input-text name="bairro" label="Bairro" formControlName="bairro" class="w-full">
+    </app-input-text>
+  </div>
+
+  <div class="flex flex-column xl:flex-row">
+    <app-select
+      label="Estado"
+      placeholder="Selecione"
+      name="siglaUf"
+      formControlName="siglaUf"
+      [options]="ufOptions"
+      class="w-full">
+    </app-select>
+
+    <app-autocomplete
+      #autoCompleteCidade
+      label="Cidade"
+      formControlName="idCidade"
+      [suggestions]="cidades"
+      (completeMethod)="searchCidades($event)"
+      [forceSelection]="true"
+      [emptyMessage]="emptyMessage"
+      placeholder="Digite sua cidade"
+      [disabled]="!siglaUf"
+      class="w-full">
+    </app-autocomplete>
+  </div>
+
+  <div class="botao-salvar-container mx-auto xl:mx-0">
+    <app-button
+      label="Salvar"
+      size="small"
+      type="submit"
+      [loading]="formLoading"
+      [disabled]="!formEndereco.valid"></app-button>
+  </div>
+</form>

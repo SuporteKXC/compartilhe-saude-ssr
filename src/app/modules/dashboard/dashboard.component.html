@@ -1,0 +1,14 @@
+<p-toast>
+  <!-- toast com service nativo do PrimeNG não funcionavam corretamente se componentizados -->
+  <ng-template let-message pTemplate="message">
+    <app-toast-content [message]="message"></app-toast-content>
+  </ng-template>
+</p-toast>
+
+<app-dashboard-wrapper>
+  <app-menu-lateral [menuItems]="items" menu />
+  <div class="content w-full min-h-full xl:h-full" content>
+    <router-outlet />
+  </div>
+  <app-rodape-dashboard footer />
+</app-dashboard-wrapper>

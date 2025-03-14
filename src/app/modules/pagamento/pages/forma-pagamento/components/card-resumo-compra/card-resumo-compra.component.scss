@@ -1,0 +1,92 @@
+@import 'variables';
+
+.wrapper-resumo {
+  width: 100%;
+
+  box-shadow: $elevation-effect-2;
+
+  border-radius: 10px;
+
+  padding: 16px 12px;
+
+  @media (min-width: $xl) {
+    padding: 16px;
+  }
+
+  img {
+    width: 52px;
+    height: 48px;
+
+    border-radius: 10px;
+
+    background-color: $background-darker;
+
+    text-overflow: ellipsis;
+    overflow: hidden;
+
+    object-fit: cover;
+
+    @media (min-width: $xl) {
+      width: 80px;
+      height: 61px;
+    }
+  }
+
+  .descricao {
+    h4 {
+      font-size: 16px;
+      font-weight: 700;
+
+      line-height: 18px;
+    }
+
+    p {
+      font-size: 14px;
+      font-weight: 400;
+
+      line-height: 14px;
+    }
+  }
+
+  .valores {
+    h4 {
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 21px;
+    }
+
+    span {
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 21px;
+    }
+  }
+
+  .localidade {
+    h4 {
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 21px;
+    }
+
+    h6 {
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 18px;
+    }
+
+    p {
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 12px;
+    }
+
+    app-icon {
+      color: $primary-darker;
+    }
+  }
+
+  .before-content::before {
+    content: " - ";
+  }
+}

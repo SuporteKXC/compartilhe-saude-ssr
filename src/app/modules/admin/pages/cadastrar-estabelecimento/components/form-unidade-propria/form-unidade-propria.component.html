@@ -1,0 +1,10 @@
+<app-form-fieldset titulo="Unidade própria">
+  <div class="flex flex-column" [formGroup]="formGroup">
+    <app-switch
+      class="mt-2"
+      formControlName="unidadePropria"
+      name="unidadePropria"
+      label="Sim"
+      [disabled]="disable" />
+  </div>
+</app-form-fieldset>

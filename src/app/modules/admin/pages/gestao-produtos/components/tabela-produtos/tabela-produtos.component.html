@@ -1,0 +1,63 @@
+<app-table
+  #table
+  description="Lista de produtos"
+  [data]="produtos"
+  [total]="totalProdutos"
+  [(page)]="page"
+  [size]="pageSize"
+  [loading]="isLoading"
+  [headerTemplate]="headerTemplate"
+  [bodyTemplate]="bodyTemplate"
+  [loadingTemplate]="loadingTemplate"
+  [actionsTemplate]="actionsTemplate"
+  [emptyTemplate]="emptyTemplate"
+  [tableStyle]="{'min-width': '320px'}"
+  (nextPage)="getProdutos()">
+</app-table>
+
+<ng-template #headerTemplate>
+  <th [style]="{ maxWidth: '89px' }">ID</th>
+  <th [style]="{ maxWidth: '220px' }">Nome</th>
+  <th [style]="{ maxWidth: '151px' }">Categoria</th>
+  <th [style]="{ maxWidth: '257px' }">Subcategoria</th>
+  <th [style]="{ maxWidth: '79px' }">Situação</th>
+</ng-template>
+
+<ng-template #bodyTemplate let-item let-position="index">
+  <td [style]="{ maxWidth: '89px' }">{{ item.id }}</td>
+  <td [style]="{ maxWidth: '220px' }">
+    <span>{{ item.nome }}</span>
+  </td>
+  <td [style]="{ maxWidth: '151px' }">{{ getCategoria(item.categoria) }}</td>
+  <td [style]="{ maxWidth: '257px' }">{{ getSubcategoria(item) }}</td>
+  <ng-container>
+    <td [style]="{ maxWidth: '79px' }">{{ item.ativo ? 'Ativo' : 'Inativo' }}</td>
+  </ng-container>
+</ng-template>
+
+<ng-template #loadingTemplate>
+  <td><p-skeleton width="41px" height="15px"/></td>
+  <td><p-skeleton width="132px" height="15px"/></td>
+  <td><p-skeleton width="132px" height="15px"/></td>
+  <td><p-skeleton width="59px" height="15px"/></td>
+  <td><p-skeleton width="59px" height="15px"/></td>
+  <td class="flex justify-content-center gap-2">
+    <p-skeleton shape="circle" width="18px" height="18px" styleClass="mx-auto" />
+    <p-skeleton shape="circle" width="18px" height="18px" styleClass="mx-auto" />
+  </td>
+</ng-template>
+
+<ng-template #actionsTemplate let-item let-position="index">
+  <app-button
+    icon="edit"
+    size="small"
+    [text]="true"
+    (handleClick)="navigateToEdicaoParceiro(item.id, item.categoria)" />
+</ng-template>
+
+<ng-template #emptyTemplate>
+  <app-error-no-results
+    header="Não localizamos produtos para serem exibidos."
+    description="Verifique os filtros informados."
+    iconName="receipt_long" />
+</ng-template>

@@ -1,0 +1,115 @@
+@import 'variables';
+
+.wrapper-content {
+  box-shadow: $elevation-effect-2;
+
+  border-radius: 10px;
+}
+
+.wrapper-paginator {
+  margin-top: 45px;
+
+  span {
+    color: $base-light;
+
+    font-family: Poppins, sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 15px;
+
+    text-align: right;
+  }
+
+  button {
+    background-color: transparent;
+
+    border: none;
+    border-radius: 50%;
+
+    padding: 0.5rem;
+
+    cursor: pointer;
+
+    &:hover {
+      background-color: $base-lighter;
+    }
+
+    &:active {
+      background-color: $base-light;
+    }
+
+    &:disabled {
+      color: $base-lighter;
+
+      &:hover {
+        background-color: $background-darker;
+      }
+    }
+  }
+}
+
+:host ::ng-deep #table {
+  @media (max-width: $sm) {
+    max-width: 92vw;
+  }
+
+  .p-datatable {
+    .p-datatable-thead>tr {
+      &>th {
+        background-color: transparent;
+        border: none;
+        padding: 12px 8px;
+        text-wrap: nowrap;
+
+        color: $primary-darker;
+
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 24px;
+
+        text-align: left;
+
+        &:first-child {
+          width: 150px;
+        }
+      }
+
+      &>td {
+        padding: 12px 8px;
+      }
+    }
+
+    .p-datatable-tbody>tr>td {
+      border: none;
+      padding: 9px 8px;
+    }
+
+    .p-paginator {
+      display: none;
+    }
+  }
+
+  .p-button.p-button-sm {
+    padding: 0;
+  }
+
+  .wrapper {
+    &-paginator {
+      color: $base-light;
+
+      .material-symbols-outlined {
+        display: block;
+      }
+
+      button app-icon {
+        color: $base-light;
+      }
+    }
+
+    &-actions {
+      .content app-icon {
+        padding: 0;
+      }
+    }
+  }
+}

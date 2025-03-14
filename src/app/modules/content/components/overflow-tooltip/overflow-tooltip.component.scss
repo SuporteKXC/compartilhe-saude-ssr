@@ -1,0 +1,62 @@
+@import 'variables';
+
+.tooltip-container {
+  display: flex;
+  align-items: center;
+}
+
+.tooltip {
+  box-shadow: $elevation-effect-2;
+  padding: 16px 8px;
+
+  &.isVisible {
+    opacity: 1;
+    height: fit-content;
+    display: flex;
+    animation: isVisible 0.2s;
+  }
+
+  &.isHidden {
+    opacity: 0;
+    height: 0;
+    display: none;
+    animation: isHidden 0.2s;
+  }
+
+  app-icon {
+    height: fit-content;
+    display: block;
+
+    &> ::ng-deep span {
+      display: block;
+    }
+  }
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+}
+
+@keyframes isVisible {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+    height: fit-content;
+  }
+}
+
+@keyframes isHidden {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    height: 0;
+    display: none;
+  }
+}

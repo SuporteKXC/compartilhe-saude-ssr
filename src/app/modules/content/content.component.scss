@@ -1,0 +1,117 @@
+@import 'variables';
+
+:host ::ng-deep .compartilhe-sorrisos {
+  .carousel {
+
+    .p-carousel-prev,
+    .p-carousel-next {
+      color: $secondaryDarkerColor;
+
+      &:enabled:hover {
+        background-color: $primary-sorrisos;
+        color: $primary-darker-sorrisos;
+      }
+    }
+  }
+
+  .navbar-item {
+    &:hover {
+      color: $primary-sorrisos;
+    }
+
+    &.active {
+      color: $primary-darker-sorrisos;
+
+      &:hover {
+        color: $primary-darker-sorrisos;
+      }
+    }
+
+    &-login {
+      background-color: $primary-darker-sorrisos;
+
+      &:hover {
+        background-color: $primary-sorrisos;
+      }
+    }
+  }
+
+  .p-menu .p-menuitem-content:hover {
+    background-color: $primary-lighter-sorrisos;
+  }
+
+  .p-menu {
+    .p-menuitem-text {
+      color: $secondary-darker;
+    }
+
+    .p-menuitem-link {
+      &:hover .p-menuitem-text {
+        color: $primary-darker-sorrisos;
+      }
+
+      &.active .p-menuitem-text {
+        color: $primary-darker-sorrisos;
+
+        &:hover .p-menuitem-text {
+          color: $primary-darker-sorrisos;
+        }
+      }
+    }
+  }
+
+  .footer {
+    background-color: $secondary-sorrisos;
+  }
+
+  .mobile-navbar-accordion {
+    .mobile-submenu-header {
+      line-height: 11px;
+
+      .p-accordion-header-text:hover {
+        color: $primary-sorrisos;
+      }
+
+      &.active {
+        .p-accordion-header-text {
+          color: $primary-darker-sorrisos;
+
+          &:hover {
+            color: $primary-darker-sorrisos;
+          }
+        }
+      }
+    }
+
+    .p-highlight {
+      .mobile-submenu-header {
+        background-color: $primary-lighter-sorrisos;
+        color: $primary-darker-sorrisos;
+  
+        .p-accordion-header-text {
+          color: $primary-darker-sorrisos;
+  
+          &:hover {
+            color: $primary-darker-sorrisos;
+          }
+        }
+      }
+    }
+
+    .mobile-submenu-content {
+      a {
+        &:hover {
+          color: $primary-sorrisos;
+        }
+
+        &.active {
+          color: $primary-darker-sorrisos;
+
+          &:hover {
+            color: $primary-darker-sorrisos;
+          }
+        }
+      }
+    }
+  }
+}

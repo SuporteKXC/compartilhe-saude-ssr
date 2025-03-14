@@ -1,0 +1,22 @@
+@import 'variables';
+
+.titulo {
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 36px;
+    text-align: left;
+    margin-top: 30px;
+  }
+  
+  .texto {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    text-align: left;
+  }
+  
+  @media (min-width: $xl) {
+    section {
+      margin-right: 184px;
+    }
+  }

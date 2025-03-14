@@ -1,0 +1,103 @@
+@import 'variables';
+
+.wrapper-menu {
+  width: 100%;
+  
+  z-index: 1103;
+
+  picture {
+    height: 32px;
+  }
+
+  img {
+    width: 32px;
+  }
+
+  nav {
+    background-color: $background-lighter;
+
+    width: 100%;
+    height: 57px;
+
+    padding: 8px 24px;
+
+    box-shadow: $elevation-effect-3;
+  }
+}
+
+.button {
+  &-menu {
+    background-color: inherit;
+
+    width: 24px;
+    height: 24px;
+
+    padding: 0;
+
+    cursor: pointer;
+
+    border: none;
+  }
+}
+
+.route-indicator {
+  margin-bottom: 2px;
+
+  color: $primary-darker;
+
+  span {
+    font-size: 18px;
+    font-weight: 600;
+  }
+}
+
+@media (min-width: $xl) {
+  .wrapper-menu {
+    width: 260px;
+    
+    z-index: 10;
+
+    picture {
+      height: 35px;
+    }
+
+    img {
+      width: 156px;
+    }
+
+    .wrapper-navegacao {
+      gap: 56px;
+    }
+
+    nav {
+      padding: 40px 40px 96px 40px;
+    }
+  }
+}
+
+:host ::ng-deep {
+  .p-sidebar-content {
+    background-color: $background-light;
+  }
+
+  #button-logout {
+    .p-button {
+      color: $secondary-darker;
+
+      font-size: 18px;
+      font-weight: 600;
+
+      padding: 0;
+
+      &:hover {
+        color: $primary-darker;
+      }
+    }
+  }
+}
+
+app-sidebar {
+  @media (min-width: $xl) {
+    display: none !important;
+  }
+}

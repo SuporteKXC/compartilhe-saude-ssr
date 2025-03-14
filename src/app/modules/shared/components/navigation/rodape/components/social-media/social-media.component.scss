@@ -1,0 +1,9 @@
+@import 'variables';
+
+div {
+  border-top: 2px solid $secondary-light;
+
+  @media (min-width: $lg) {
+    border: none;
+  }
+}

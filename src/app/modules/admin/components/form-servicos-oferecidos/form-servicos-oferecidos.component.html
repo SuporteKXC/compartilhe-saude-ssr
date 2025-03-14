@@ -1,0 +1,13 @@
+<div [formGroup]="formGroup">
+  <app-multiselect
+    class="w-full"
+    [ngClass]="{'required' : required}"
+    name="servicos"
+    label="Serviços oferecidos"
+    placeholder="Selecione"
+    [required]="required"
+    [customErrors]="servicosOferecidosCustomErrors"
+    [options]="servicosOptions"
+    [showHeader]="true"
+    formControlName="servicos" />
+</div>

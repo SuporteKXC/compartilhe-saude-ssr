@@ -1,0 +1,68 @@
+@import 'variables';
+@import 'mixins';
+
+$patternPaddingMobile: 8px;
+$patternPaddingDesktop: 10px;
+
+nav {
+  top: 0;
+  z-index: 1103;
+
+  height: 57px;
+
+  background-color: $background-lighter;
+  box-shadow: $elevation-effect-1;
+
+  @media (min-width: $xl) {
+    height: 73px;
+  }
+
+  @include mainPadding($patternPaddingDesktop, $horizontal-padding-main-content);
+
+  @media (max-width: $sm) {
+    @include mainPadding($patternPaddingMobile, $horizontal-padding-main-content-sm);
+  }
+
+  @media (min-width: $sm) and (max-width: $lg) {
+    @include mainPadding($patternPaddingMobile, $horizontal-padding-main-content-md);
+  }
+
+  a {
+    display: flex;
+
+    @media (min-width: $xl) {
+      width: fit-content;
+      height: 53px;
+    }
+
+    &.p-button {
+      height: 36px;
+    }
+  }
+
+  &>div {
+    max-width: $max-main-width;
+    margin: auto;
+  }
+}
+
+::ng-deep {
+  .p-sidebar-content {
+    background-color: $background-light;
+    max-height: 90svh;
+    overflow-y: scroll;
+  }
+
+  #barra-navegacao-image .p-image {
+    display: inline-block;
+    height: fit-content;
+    img {
+      vertical-align: middle;
+    }
+
+    button {
+      position: absolute;
+      display: none;
+    }
+  }
+}

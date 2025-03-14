@@ -1,0 +1,46 @@
+<div
+  class="wrapper-card flex flex-column justify-content-between xl:flex-row xl:align-items-center">
+  <div class="flex flex-column align-items-baseline gap-2 xl:flex-row xl:gap-3">
+    <p class="flex flex-row xl:flex-column gap-1">
+      <span class="font-semibold">Número do pedido:</span>
+      <span class="codigo font-bold">{{ data.id }}</span>
+    </p>
+
+    <p class="status flex flex-row justify-content-between xl:flex-column gap-1">
+      <span class="font-semibold">Status:</span>
+
+      <ng-container [ngSwitch]="data.status">
+        <span *ngSwitchCase="'PAGO'" class="font-medium pago">Pago</span>
+        <span *ngSwitchCase="'AGUARDA_PAGAMENTO'" class="font-medium aguardando"
+          >Aguardando Pagamento</span
+        >
+        <span *ngSwitchDefault class="font-medium expirado">Expirado</span>
+      </ng-container>
+    </p>
+
+    <p class="flex flex-row xl:flex-column gap-1">
+      <span class="font-semibold">Data do pedido:</span>
+      <span class="font-medium">{{ data.dataHoraInclusao | date : 'dd/MM/yyyy' }}</span>
+    </p>
+
+    <p class="flex flex-row xl:flex-column gap-1">
+      <span class="font-semibold">Valor total:</span>
+      <span class="font-medium">{{ data.valorTotal | currency }}</span>
+    </p>
+  </div>
+
+  <div [ngSwitch]="data.status" class="mx-auto mt-4 xl:mx-0 xl:mt-0">
+    <app-button
+      *ngSwitchCase="StatusPedido.PAGO"
+      label="Ver detalhes"
+      size="small"
+      [outlined]="true"
+      (handleClick)="navigateToDetalhes(data.id)" />
+
+    <app-button
+      *ngSwitchCase="StatusPedido.AGUARDA_PAGAMENTO"
+      label="Pagar com pix"
+      size="small"
+      (handleClick)="navigateToQrCodePix(data.id)" />
+  </div>
+</div>

@@ -1,0 +1,10 @@
+@import 'variables';
+
+.wrapper-card {
+  width: 100%;
+  min-height: 260px;
+  box-shadow: $elevation-effect-3;
+  border-radius: 5px;
+  padding: 24px 8px 16px 8px;
+  margin: 2px;
+}

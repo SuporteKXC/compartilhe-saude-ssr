@@ -1,0 +1,65 @@
+<div class="mt-5" [ngClass]="{'hidden': !clientes}">
+  <app-table
+    #table
+    description="Lista de pedidos"
+    [data]="clientes"
+    [total]="totalClientes"
+    [size]="pageSize"
+    [(page)]="page"
+    [loading]="isLoading"
+    [error]="isError"
+    [headerTemplate]="headerTemplate"
+    [bodyTemplate]="bodyTemplate"
+    [loadingTemplate]="loadingTemplate"
+    [emptyTemplate]="emptyTemplate"
+    [actionsTemplate]="actionsTemplate"
+    [tableStyle]="{'min-width': '320px'}"
+    (nextPage)="getClientes()">
+  </app-table>
+</div>
+
+<ng-template #headerTemplate>
+  <th [style]="{ width: '128px'}">ID Virtual</th>
+  <th [style]="{ minWidth: '256px'}">Nome</th>
+  <th *ngIf="!isPessoaJuridica" [style]="{ minWidth: '152px'}">CPF</th>
+  <th *ngIf="isPessoaJuridica" [style]="{ minWidth: '152px'}">CNPJ</th>
+  <th *ngIf="!isPessoaJuridica" [style]="{ minWidth: '88px'}">Nascimento</th>
+  <th *ngIf="isPessoaJuridica" [style]="{ minWidth: '132px'}">Cidade/Estado</th>
+  <th [style]="{ width: '200px'}">Modalidade</th>
+</ng-template>
+
+<ng-template #bodyTemplate let-cliente let-position="index">
+  <td>{{ cliente.idVirtual }}</td>
+  <td>{{ cliente.nome }}</td>
+  <td *ngIf="!isPessoaJuridica">{{ cliente.cpf | mask : '999.999.999-99' }}</td>
+  <td *ngIf="isPessoaJuridica">{{ cliente.cnpj | mask : '99.999.999/9999-99' }}</td>
+  <td *ngIf="!isPessoaJuridica">{{ cliente.dataNascimento | date : 'dd/MM/yyyy' }}</td>
+  <td *ngIf="isPessoaJuridica">{{ getEndereco(cliente.enderecos[0]) }}</td>
+  <td>{{ getModalidade(cliente.modalidade) }}</td>
+</ng-template>
+
+<ng-template #loadingTemplate>
+  <td><p-skeleton width="104px" height="15px"></p-skeleton></td>
+  <td><p-skeleton width="256px" height="15px"></p-skeleton></td>
+  <td><p-skeleton width="132px" height="15px"></p-skeleton></td>
+  <td><p-skeleton width="88px" height="15px"></p-skeleton></td>
+  <td><p-skeleton width="100%" height="15px"></p-skeleton></td>
+  <td><p-skeleton shape="circle" width="18px" height="18px" styleClass="mx-auto" /></td>
+  <td><p-skeleton shape="circle" width="18px" height="18px" styleClass="mx-auto" /></td>
+  <td><p-skeleton shape="circle" width="18px" height="18px" styleClass="mx-auto" /></td>
+</ng-template>
+
+<ng-template #actionsTemplate let-item let-position="index">
+  <app-button
+    icon="edit"
+    size="small"
+    [text]="true"
+    (handleClick)="navigateToEdicaoCliente(item.id)" />
+</ng-template>
+
+<ng-template #emptyTemplate>
+  <app-error-no-results
+    header="Não encontramos resultados para sua busca."
+    description="Verifique os filtros informados."
+    iconName="receipt_long" />
+</ng-template>

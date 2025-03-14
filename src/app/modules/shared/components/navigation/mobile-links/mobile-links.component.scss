@@ -1,0 +1,157 @@
+@import 'variables';
+
+:host {
+  width: 100%;
+}
+
+.navbar-item {
+  color: $secondary-darker;
+
+  font-size: 18px;
+  font-weight: 700;
+
+  &:hover {
+    color: $primary;
+  }
+
+  &.active {
+    color: $primary-darker;
+    cursor: default;
+
+    &:hover {
+      color: $primary-darker;
+    }
+  }
+}
+
+.wrapper-banner-connect-saude {
+  background-color: $primary-background-light;
+
+  h6 {
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 32px;
+    text-align: center;
+    color: $secondary-darker;
+  }
+
+  p {
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: center;
+    color: $base-darker;
+  }
+}
+
+:host ::ng-deep {
+  .mobile-navbar-accordion {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px 16px 8px 16px;
+
+    >* {
+      width: 100%;
+      text-align: center;
+    }
+
+    .p-highlight {
+      .mobile-submenu-header {
+        background-color: $primary-lighter;
+        border-radius: 8px;
+        color: $primary-darker;
+
+        .p-accordion-header-text {
+          color: $primary-darker;
+
+          &:hover {
+            color: $primary-darker;
+          }
+        }
+      }
+    }
+
+    .mobile-submenu-header {
+      position: relative;
+
+      justify-content: space-between;
+
+      border: none;
+      padding-block: 0.5rem;
+
+      background-color: $background-light;
+
+      .p-icon-wrapper {
+        position: absolute;
+        left: 90%;
+      }
+
+      .p-accordion-header-text {
+        width: 100%;
+
+        color: $secondary-darker;
+        font-size: 18px;
+        font-weight: 700;
+        text-decoration: none;
+
+        &:hover {
+          color: $primary;
+        }
+      }
+
+      &.active {
+        .p-accordion-header-text {
+          color: $primary-darker;
+
+          &:hover {
+            color: $primary-darker;
+          }
+        }
+      }
+    }
+
+    .mobile-submenu-content {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+
+      border: none;
+      border-radius: 5px;
+
+      padding-block: 6px;
+
+      box-shadow: $elevation-effect-2;
+
+      a {
+        color: $secondary-darker;
+        font-size: 18px;
+        font-weight: 700;
+        text-decoration: none;
+
+        &:hover {
+          color: $primary;
+        }
+
+        &.active {
+          color: $primary-darker;
+          cursor: default;
+
+          &:hover {
+            color: $primary-darker;
+          }
+        }
+      }
+    }
+  }
+
+  .button-logout {
+    .p-button {
+      color: $secondary-darker;
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 24.41px;
+      text-align: left;
+    }
+  }
+}

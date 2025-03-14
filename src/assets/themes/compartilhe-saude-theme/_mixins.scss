@@ -1,0 +1,3 @@
+@mixin mainPadding($patternPadding, $horizontalPadding) {
+  padding: $patternPadding $horizontalPadding;
+}

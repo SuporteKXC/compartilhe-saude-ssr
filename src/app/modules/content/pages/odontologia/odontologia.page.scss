@@ -1,0 +1,51 @@
+@import 'variables';
+@import 'mixins';
+
+$patternPaddingMobile: 35px;
+$patternPaddingDesktop: 66px;
+
+main {
+  @include mainPadding($patternPaddingDesktop, $horizontal-padding-main-content);
+
+  @media (max-width: $sm) {
+    @include mainPadding($patternPaddingMobile, $horizontal-padding-main-content-sm);
+  }
+
+  @media (min-width: $sm) and (max-width: $lg) {
+    @include mainPadding($patternPaddingMobile, $horizontal-padding-main-content-md);
+  }
+}
+
+app-odontologia-chamada-principal {
+  margin-bottom: 101px;
+}
+  
+app-nossos-servicos {
+  margin-bottom: 91px;
+}
+
+app-checkup-odontologia {
+  margin-bottom: 53px;
+}
+
+app-odontologia-nossas-unidades {
+  margin-bottom: 48px;
+}
+
+@media (max-width: $sm) {
+  app-odontologia-chamada-principal {
+    margin-bottom: 53px;
+  }
+    
+  app-nossos-servicos {
+    margin-bottom: 24px;
+  }
+  
+  app-checkup-odontologia {
+    margin-bottom: 24px;
+  }
+  
+  app-odontologia-nossas-unidades {
+    margin-bottom: 16px;
+  }
+}

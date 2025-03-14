@@ -1,0 +1,18 @@
+@import 'variables';
+
+.wrapper-dashboard {
+  height: calc(100vh - 60px);
+
+  display: grid;
+  align-items: flex-end;
+  
+  padding-bottom: 60px;
+}
+
+@media (min-width: $xl) {
+  .wrapper-dashboard {
+    height: 100%;
+
+    padding-bottom: 0;
+  }
+}

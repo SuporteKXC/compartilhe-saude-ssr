@@ -1,0 +1,28 @@
+<div class="content flex flex-column gap-2 align-items-center justify-content-center">
+  <ng-container *ngIf="config.data.titulo; else mensagem">
+    <strong class="text-center mensagem">{{ config.data.titulo }}</strong>
+    <p class="text-center mensagem">{{ config.data.mensagem }}</p>
+  </ng-container>
+
+  <ng-template #mensagem>
+    <strong class="text-center mensagem">{{ config.data.mensagem }}</strong>
+  </ng-template>
+  
+  <div class="w-full flex justify-content-between py-4">
+      <app-button 
+        [label]="config.data.botaoCancelar ? config.data.botaoCancelar.label : 'Não'" 
+        [severity]="config.data.botaoCancelar ? config.data.botaoCancelar.severity : 'primary'"
+        [outlined]="config.data.botaoCancelar ? config.data.botaoCancelar.outlined : true"
+        type="button" 
+        (handleClick)="cancelar()">
+      </app-button>
+
+      <app-button 
+        [label]="config.data.botaoConfirmar ? config.data.botaoConfirmar.label : 'Sim'" 
+        [severity]="config.data.botaoConfirmar ? config.data.botaoConfirmar.severity : 'primary'"
+        [outlined]="config.data.botaoConfirmar ? config.data.botaoConfirmar.outlined : false"
+        type="button" 
+        (handleClick)="confirmar()">
+      </app-button>
+  </div>
+</div>

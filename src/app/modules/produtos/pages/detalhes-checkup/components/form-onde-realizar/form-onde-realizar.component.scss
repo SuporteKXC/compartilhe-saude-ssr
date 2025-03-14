@@ -1,0 +1,56 @@
+@import 'variables';
+
+.detalhes {
+  .texto {
+    text-wrap: wrap;
+
+    @media (min-width: $lg) {
+      text-wrap: nowrap;
+    }
+  }
+
+  .subtitulo {
+    letter-spacing: normal;
+
+    app-icon {
+      color: $primary-darker;
+    }
+  }
+
+  .desconto {
+    .valor {
+      color: $primary-darker;
+
+      font-family: Poppins, sans-serif;
+      font-size: 24px;
+      line-height: 24px;
+      font-weight: 700;
+
+      @media (min-width: $lg) {
+        font-size: 40px;
+        line-height: 40px;
+      }
+    }
+
+    .texto {
+      display: flex;
+      flex-direction: column;
+      font-weight: 500;
+      line-height: 18px !important;
+      text-wrap: wrap;
+
+      @media (min-width: $lg) {
+        display: block;
+        line-height: 70% !important;
+      }
+    }
+
+    .valores.texto {
+      font-weight: 500;
+
+      strong {
+        font-size: 20px;
+      }
+    }
+  }
+}

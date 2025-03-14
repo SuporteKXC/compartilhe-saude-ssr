@@ -1,0 +1,84 @@
+@import 'variables';
+
+.content {
+  padding: 16px;
+  min-height: 100vh;
+
+  @media (min-width: $xl) {
+    padding: 32px 24px 48px 24px;
+  }
+}
+
+:host::ng-deep {
+
+  #form-estabelecimento,
+  #form-profissional,
+  #form-produtos,
+  #form-pessoas {
+    label {
+      font-size: 16px;
+      font-weight: 500;
+      text-align: left;
+
+      color: $base-darker;
+    }
+
+    app-select {
+      label {
+        height: 32px;
+        margin: 0;
+      }
+    }
+
+    app-radio-button {
+      label {
+        color: $secondary-darker;
+
+        font-size: 18px;
+        font-weight: 600;
+      }
+    }
+
+    app-autocomplete {
+      span label {
+        height: 24px;
+        line-height: 24px;
+
+        margin-bottom: 0;
+      }
+    }
+
+    .input-pd-fix {
+      padding-right: 0.75rem;
+    }
+
+    .tabview-dados-gerais {
+
+      .p-tabview-panels {
+        padding: 0;
+      }
+
+      .p-tabview-nav {
+        border: none;
+
+        .p-tabview-nav-link {
+          font-size: 18px;
+          font-weight: 600;
+          line-height: 140%;
+
+          @media (max-width: $lg) {
+            padding: 4px;
+          }
+        }
+
+        li.p-highlight .p-tabview-nav-link {
+          color: $primary-darker;
+        }
+      }
+    }
+  }
+
+  #cadastro-toast .p-toast {
+    margin-right: 80px;
+  }
+}

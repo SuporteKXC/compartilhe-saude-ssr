@@ -1,0 +1,35 @@
+@import './variables';
+
+section {
+  padding-top: 60px;
+  padding-bottom: 57px;
+  padding-inline: 20px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  @media (min-width: $sm) {
+    padding-top: 100px;
+    padding-inline: 5.75rem;
+  }
+
+  h1 {
+    color: $primaryTextColor;
+    text-align: center;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 120%;
+
+    @media (min-width: $lg) {
+      color: #fff;
+      font-size: 80px;
+      font-weight: 700;
+      line-height: 130%;
+    }
+  }
+
+  &>div {
+    max-width: $max-main-width;
+    margin: auto;
+  }
+}

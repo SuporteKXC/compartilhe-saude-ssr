@@ -1,0 +1,23 @@
+@import 'variables';
+
+::ng-deep #select-button {
+  .p-selectbutton.p-buttonset.p-component {
+    background-color: $primary-background-light;
+
+    display: flex;
+    gap: 8px;
+    padding: 8px;
+    border-radius: 8px;
+
+    .p-button {
+      padding: 14px 48px;
+      border-radius: 8px;
+      
+      &:last-of-type {
+        border: none;
+      }
+    }
+    .p-ripple .p-element .p-button .p-component {
+    }
+  }
+}

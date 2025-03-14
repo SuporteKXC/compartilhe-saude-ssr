@@ -1,0 +1,34 @@
+<section
+  *ngIf="randomText"
+  class="flex justify-content-center align-items-center">
+  <div class="destaque-container w-full flex justify-content-between align-items-center">
+    <div class="h-fit mr-3 text-container">
+      <h2>{{ randomText.title }}</h2>
+      <p>{{ randomText.subTitle }}</p>
+
+      <app-button
+        class="block lg:hidden"
+        [label]="randomText.buttonLabel"
+        type="button"
+        (handleClick)="navigateToProdutoLista(randomText.categoria)">
+      </app-button>
+
+      <app-button
+        class="hidden lg:block"
+        [label]="randomText.buttonLabel"
+        size="large"
+        (handleClick)="navigateToProdutoLista(randomText.categoria)">
+      </app-button>
+    </div>
+
+    <figure class="flex">
+      <img
+        [ngSrc]="randomText.imgLink"
+        [alt]="randomText.imgDescription"
+        width="100"
+        height="100"
+        data-testid="img-consultora"
+        loading="eager" />
+    </figure>
+  </div>
+</section>

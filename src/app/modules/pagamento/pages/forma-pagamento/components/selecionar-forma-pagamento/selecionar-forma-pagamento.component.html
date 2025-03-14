@@ -1,0 +1,28 @@
+<h3>Forma de pagamento</h3>
+
+<div class="panel-container" [formGroup]="formFormaPagamento">
+  <app-radio-panel
+    *ngFor="let option of options"
+    [label]="option.label"
+    [name]="'localidade-' + option.label.replaceAll(' ', '-')"
+    formControlName="formaPagamento"
+    [option]="option"
+    [template]="radioPanelTemplate"
+    [alignCheckbox]="isOptionSelected(option) ? 'flex-start' : 'center'">
+  </app-radio-panel>
+</div>
+
+<ng-template #radioPanelTemplate let-option>
+  <ng-container *ngIf="option.value === 'PIX'">
+    <app-radio-panel-option-pix
+      [option]="option"
+      [isSelected]="isOptionSelected(option)"></app-radio-panel-option-pix>
+  </ng-container>
+
+  <ng-container *ngIf="option.value === 'CARTAO_CREDITO'">
+    <app-radio-panel-option-cartao-credito
+      [option]="option"
+      [isSelected]="isOptionSelected(option)"
+      [isError]="erroCartaoCredito"></app-radio-panel-option-cartao-credito>
+  </ng-container>
+</ng-template>

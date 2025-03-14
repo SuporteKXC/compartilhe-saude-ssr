@@ -1,0 +1,96 @@
+@import 'variables';
+
+:host ::ng-deep {
+  // .carousel {
+  $navigators-height: 32px;
+  $navigators-width: $navigators-height;
+  $navigators-container-margin-top: 26px;
+  $carousel-item-margin: 8px;
+
+  $navigators-distance-between: 18px;
+
+  $card-distance-between: 12px;
+
+  .p-carousel-prev,
+  .p-carousel-next {
+    display: none;
+    height: $navigators-height;
+    width: $navigators-width;
+
+    &-icon {
+      display: flex;
+      align-items: center;
+    }
+
+    &:disabled {
+      color: $secondary-lighter;
+    }
+
+    &:enabled:hover {
+      background-color: $primary-light;
+      color: $primary-darker;
+    }
+
+    @media (min-width: $lg) {
+      display: block;
+    }
+  }
+
+  .p-carousel-indicators {
+    display: flex;
+    gap: 8px;
+
+    .p-carousel-indicator {
+      button {
+        background-color: $base-lighter;
+        width: .5rem;
+        height: .5rem;
+        border-radius: 50%;
+      }
+
+      &.p-highlight button {
+        background-color: $primary-darker;
+        width: 1.5rem;
+        height: .5rem;
+        border-radius: 20px;
+      }
+    }
+  }
+
+  @media (min-width: $md) {
+
+    .p-carousel-content,
+    .p-carousel-items-content {
+      overflow: visible;
+    }
+  }
+
+  .p-carousel-item>* {
+    margin: 4px;
+    margin-right: $card-distance-between;
+  }
+
+  &.dont-overflow {
+
+    .p-carousel-content,
+    .p-carousel-items-content {
+      overflow: hidden;
+    }
+  }
+
+  &.slider {
+
+    .p-carousel-next,
+    .p-carousel-prev {
+      position: relative;
+      left: initial;
+      bottom: 0;
+
+      transform: none;
+    }
+
+    &.carousel.navigators-shown {
+      padding: 0;
+    }
+  }
+}

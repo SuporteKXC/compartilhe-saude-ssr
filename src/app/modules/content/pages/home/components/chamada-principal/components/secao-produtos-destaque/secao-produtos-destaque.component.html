@@ -1,0 +1,61 @@
+<section>
+  <div>
+    <ng-container *ngIf="!isError">
+      <h2 class="mb-3">Serviços mais procurados</h2>
+    </ng-container>
+  
+    <ng-container *ngIf="isBrowser; else skeleton">
+      <ng-container *ngIf="(produtos$ | async) as produtos; else skeleton">
+        <app-carousel
+          [items]="produtos"
+          [itemTemplate]="cardProdutoDestaque"
+          [numVisible]="5"
+          [numScroll]="5"
+          [overflow]="overflow"
+          [responsiveOptions]="responsiveOptions"
+          [slider]="true">
+        </app-carousel>
+        
+    
+        <ng-template #cardProdutoDestaque let-produto>
+          <div class="wrapper-card flex flex-column justify-content-between">
+            <div class="flex flex-column gap-3">
+              <ng-container *ngIf="getProdutoLabel(produto.categoria) as categoria">
+                <div class="flex gap-2">
+                  <app-icon 
+                    [iconName]="categoria.icon" 
+                    iconSize="24px" 
+                    verticalAlign="middle" />
+                  <p>{{ categoria.label }}</p>
+                </div>
+              </ng-container>
+              <h3>{{ produto.nome }}</h3>
+            </div>
+            <button 
+              class="no-underline p-button p-button-text p-0" 
+              (click)="navigateToProduto(produto)">
+              <span class="pr-2">Ver detalhes</span>
+              <app-icon iconName="arrow_forward" iconSize="14px" />
+            </button>
+          </div>
+        </ng-template>
+      </ng-container>
+    </ng-container>
+
+    <ng-template #skeleton>
+      <ng-container *ngIf="!isError">
+        <div class="skeleton hidden lg:flex gap-3">
+          <p-skeleton class="w-full" width="100%" height="164px"></p-skeleton>
+          <p-skeleton class="w-full" width="100%" height="164px"></p-skeleton>
+          <p-skeleton class="w-full" width="100%" height="164px"></p-skeleton>
+          <p-skeleton class="w-full" width="100%" height="164px"></p-skeleton>
+          <p-skeleton class="w-full" width="100%" height="164px"></p-skeleton>
+        </div>
+  
+        <div class="skeleton flex lg:hidden gap-3">
+          <p-skeleton class="w-full" width="100%" height="164px"></p-skeleton>
+        </div>
+      </ng-container>
+    </ng-template>
+  </div>
+</section>

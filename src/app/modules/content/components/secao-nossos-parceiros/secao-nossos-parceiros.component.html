@@ -1,0 +1,99 @@
+<section
+  [ngClass]="home ? 'home' : 'rede-compartilhe'"
+  class="w-full flex flex-column wrapper"
+  id="home-nossos-parceiros">
+  <div [ngClass]="home ? 'home' : 'rede-compartilhe'">
+    <app-grid-list
+      [header]="header"
+      layout="grid grid-nogutter"
+      [items]="parceiros"
+      [(page)]="queryParams.page"
+      [total]="totalRecords"
+      [size]="listSize"
+      [loading]="isLoading"
+      [error]="isError"
+      [searchTemplate]="search"
+      [cardTemplate]="cardTemplate"
+      [skeletonTemplate]="skeletonTemplate"
+      [errorTemplate]="errorTemplate"
+      [noItemsTemplate]="noItemsTemplate"
+      [buttonTemplate]="buttonTemplate"
+      (handleNextPage)="getParceiros(queryParams)">
+    </app-grid-list>
+  </div>
+</section>
+
+<ng-template #skeletonTemplate>
+  <app-skeleton-nossos-parceiros />
+</ng-template>
+
+<ng-template #cardTemplate let-item let-position="index">
+  <app-card-nossos-parceiros
+    [data]="item"
+    [filtroEspecialidade]="controlEspecialidade?.value?.descricao">
+  </app-card-nossos-parceiros>
+</ng-template>
+
+<ng-template #errorTemplate>
+  <app-error-list-message
+    title="Desculpe, algo deu errado."
+    message="Não conseguimos carregar os dados corretamente. Por favor,
+        verifique sua conexão com a internet e tente novamente. Se o problema persistir,
+        pode ser um problema temporário do nosso site. Estamos trabalhando para resolvê-lo
+        o mais rápido possível.">
+  </app-error-list-message>
+</ng-template>
+
+<ng-template #noItemsTemplate>
+  <app-error-list-message
+    iconName="wrong_location"
+    message="No momento não temos parceiros para sua busca."
+    [actionButtonTemplate]="actionButton">
+    <ng-template #actionButton>
+      <button
+        class="h-fit w-fit no-underline p-button p-button-text p-0"
+        (click)="resetFilter()">
+        <span class="p-0">Pesquisar novamente</span>
+        <app-icon iconName="arrow_forward" iconSize="14px" />
+      </button>
+    </ng-template>
+  </app-error-list-message>
+</ng-template>
+
+<ng-template #search>
+  <div [formGroup]="buscaForm" class="search-container flex flex-column lg:flex-row w-full gap-3">
+
+    <app-select
+      placeholder="Especialidade"
+      class="flex-1 p-0"
+      name="especialidade"
+      formControlName="especialidade"
+      dataTestid="especialidade"
+      [filter]="true"
+      [showClear]="true"
+      [options]="especialidadeOptions"
+      (optionSelected)="searchParceiros()">
+    </app-select>
+
+    <app-select
+      placeholder="Estabelecimento"
+      class="flex-1 p-0"
+      name="tipoEstabelecimento"
+      formControlName="tipoEstabelecimento"
+      dataTestid="tipoEstabelecimento"
+      [filter]="true"
+      [showClear]="true"
+      [options]="estabelecimentoOptions"
+      (optionSelected)="searchParceiros()">
+    </app-select>
+
+
+    <app-search-cidade
+      class="col-12 lg:col-9 p-0"
+      formControlName="cidade"
+      [preSelected]="cidadePreSelected"
+      (handleSearchAndClear)="searchParceiros()">
+    </app-search-cidade>
+  </div>
+</ng-template>
+

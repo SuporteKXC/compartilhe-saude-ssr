@@ -1,0 +1,29 @@
+@import 'variables';
+
+$patternPaddingMobile: 34px;
+$patternPaddingDesktop: 40px;
+
+@mixin mainPadding($patternPadding, $horizontalPadding) {
+  padding: $patternPadding $horizontalPadding;
+}
+
+main {
+  @include mainPadding($patternPaddingDesktop, $horizontal-padding-main-content);
+
+  @media (max-width: $sm) {
+    @include mainPadding($patternPaddingMobile, $horizontal-padding-main-content-sm);
+  }
+
+  @media (min-width: $sm) and (max-width: $lg) {
+    @include mainPadding($patternPaddingMobile, $horizontal-padding-main-content-md);
+  }
+
+  & > div {
+    max-width: $max-main-width;
+    margin: auto;
+  }
+}
+
+.container-perguntas {
+  background-color: $primary-background-light;
+}

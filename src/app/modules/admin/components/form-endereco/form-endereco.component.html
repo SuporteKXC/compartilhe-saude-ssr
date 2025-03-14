@@ -1,0 +1,81 @@
+<app-form-fieldset titulo="Endereço" [tooltipContent]="tooltipContent">
+  <div class="flex flex-column gap-3" [formGroup]="formGroup">
+    <div class="flex flex-column lg:flex-row w-full gap-2 lg:gap-4">
+      <app-input-text
+        class="w-full"
+        name="cep"
+        label="CEP"
+        placeholder="CEP"
+        formControlName="cep"
+        [customErrors]="cepCustomErrors"
+        mask="99999-999"
+        autocomplete="off"
+        [ngClass]="{ 'required': required }" />
+
+      <app-input-text
+        class="w-full"
+        name="logradouro"
+        label="Logradouro"
+        placeholder="Logradouro"
+        formControlName="logradouro"
+        autocomplete="off"
+        [ngClass]="{ 'required': required }" />
+    </div>
+
+    <div class="flex flex-column lg:flex-row w-full gap-2 lg:gap-4">
+      <div class="flex flex-column lg:flex-row w-full gap-2 lg:gap-4">
+        <app-input-text
+          class="w-full"
+          name="numero"
+          label="Número"
+          placeholder="Número"
+          formControlName="numero"
+          autocomplete="off"
+          [ngClass]="{ 'required': required }" />
+
+        <app-input-text
+          class="w-full"
+          name="complemento"
+          label="Complemento"
+          placeholder="Complemento"
+          formControlName="complemento"
+          autocomplete="off" />
+      </div>
+
+      <app-input-text
+        class="w-full"
+        name="bairro"
+        label="Bairro"
+        placeholder="Bairro"
+        formControlName="bairro"
+        autocomplete="off"
+        [ngClass]="{ 'required': required }" />
+    </div>
+
+    <div class="flex flex-column lg:flex-row w-full gap-2 lg:gap-4">
+      <app-select
+        class="w-full"
+        name="estado"
+        label="Estado"
+        placeholder="Selecione"
+        [options]="ufOptions"
+        formControlName="siglaUf"
+        (optionSelected)="clearCidade()"
+        [ngClass]="{ 'required': required }" />
+
+      <app-autocomplete
+        #autoCompleteCidade
+        class="w-full"
+        name="cidade"
+        label="Cidade"
+        placeholder="Cidade"
+        formControlName="cidade"
+        [suggestions]="cidades"
+        (completeMethod)="searchCidades($event)"
+        [emptyMessage]="emptyMessage"
+        [forceSelection]="true"
+        (itemSelected)="handleChangeForm()"
+        [ngClass]="{ 'required': required }" />
+    </div>
+  </div>
+</app-form-fieldset>

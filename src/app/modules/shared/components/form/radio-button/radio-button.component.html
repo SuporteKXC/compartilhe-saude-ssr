@@ -1,0 +1,28 @@
+<div class="wrapper flex flex-column" id="radio-button">
+  <span [ngClass]="{ 'p-sr-only': labelSrOnly }">{{ label }}</span>
+
+  <div class="radio-container" *ngIf="group" [formGroup]="group">
+    <div *ngFor="let option of options" class="radio-item">
+      <p-radioButton
+        *ngIf="!disabled"
+        [formControl]="control"
+        [value]="option.value"
+        [disabled]="disabled"
+        [inputId]="getInputId(option.value)"
+        (onFocus)="onRadioClicked($event)"
+        (onBlur)="onTouched()">
+      </p-radioButton>
+      <p-radioButton
+        *ngIf="disabled"
+        [value]="option.value"
+        [disabled]="disabled">
+      </p-radioButton>
+      <label [for]="getInputId(option.value)">{{ option.label }}</label>
+      <ng-container *ngIf="option.tooltip">
+        <app-tooltip [content]="option.tooltip" verticalAlign="bottom" />
+      </ng-container>
+    </div>
+  </div>
+
+  <small *ngIf="errorMessage">{{ errorMessage }}</small>
+</div>

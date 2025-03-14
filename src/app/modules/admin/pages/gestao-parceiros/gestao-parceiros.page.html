@@ -1,0 +1,18 @@
+<app-page-title 
+  titulo="Rede Compartilhe" 
+  [returnPath]="['/', 'admin', 'dashboard']"
+  [breadcrumbData]="breadcrumb" >
+</app-page-title>
+
+<div class="flex flex-column">
+  <app-button
+    class="xl:align-self-end mt-2"
+    label="Novo"
+    icon="add"
+    size="small"
+    (handleClick)="navigateToCadastrar()" />
+
+  <app-filtros-parceiros (shouldSearchAgain)="shouldSearchAgain$.next()" />
+
+  <app-tabela-parceiros [shouldSearchAgain$]="shouldSearchAgain$" />
+</div>

@@ -1,0 +1,60 @@
+@import 'variables';
+
+.card {
+  border-radius: 10px;
+  background: $background-lighter;
+  box-shadow: $elevation-effect-3;
+}
+
+.texto {
+  gap: 12px;
+
+  .titulo {
+    height: 40px;
+
+    h3 {
+      font-size: 24px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 20px;
+      letter-spacing: -0.38px;
+    }
+  }
+
+  .descricao {
+    height: 72px;
+
+    p {
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 16px;
+      letter-spacing: -0.176px;
+    }
+  }
+}
+
+.wrapper-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: $background-darker;
+  border-radius: 10px;
+
+  min-height: 190px;
+  width: 100%;
+
+  padding-top: 85.88%;
+
+  position: relative;
+
+  img {
+    border-radius: 10px;
+  
+    width: 100%;
+  
+    position: absolute;
+    top: 0;
+  }
+}

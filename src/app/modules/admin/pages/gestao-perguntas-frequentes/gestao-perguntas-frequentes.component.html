@@ -1,0 +1,19 @@
+<p-toast id="delete-toast">
+  <ng-template let-message pTemplate="message">
+    <app-toast-content [message]="message"></app-toast-content>
+  </ng-template>
+</p-toast>
+
+<div
+  class="flex flex-column lg:flex-row justify-content-between align-items-start lg:align-items-end mb-4 gap-3">
+  <app-page-title
+    titulo="Perguntas Frequentes"
+    [returnPath]="['/', 'admin', 'dashboard']"
+    [breadcrumbData]="breadcrumb" />
+
+  <app-button label="Nova Pergunta" icon="add" [outlined]="true" (handleClick)="navigateToCadastrar()"/>
+</div>
+
+<app-filtro-gestao-perguntas-frequentes (shouldSearchAgain)="shouldSearchAgain$.next()"/>
+
+<app-tabela-perguntas [shouldSearchAgain$]="shouldSearchAgain$" />

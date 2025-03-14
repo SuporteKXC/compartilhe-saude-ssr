@@ -1,0 +1,57 @@
+<section>
+  <app-destaque
+    [isConnectSaude]="true"
+    [titulo]="'Enquanto você cuida das pessoas, nós cuidamos do seu crescimento.'"
+    [subtitulo]="'Com o Connect Saúde, você alcança mais pacientes e potencializa sua presença digital.'"
+  >
+    <div class="conteudo">
+      <app-secao-destaque-beneficios class="hidden md:block" />
+      <div class="btn-container">
+        <a
+          [href]="getLink()"
+          title="Quero agendar"
+          class="lg:block w-fit no-underline p-button p-button-lg"
+          target="_blank"
+          rel="noreferrer noopener">
+          Assine agora
+        </a>
+
+        <ng-container [ngTemplateOutlet]="comoFunciona" />
+        
+      </div>
+    </div>
+  </app-destaque>
+  <div class="wrapper-beneficios block md:hidden px-4 py-6">
+    <app-secao-destaque-beneficios />
+  </div>
+</section>
+
+
+<ng-template #comoFunciona>
+  <ng-container *ngIf="videoPath; else whatsappLink">
+    <app-button 
+      label="Como funciona?" 
+      [text]="true" 
+      icon="play_circle" 
+      iconSize="40px"
+      size="large"
+      (handleClick)="openVideoModal()">
+    </app-button>
+  </ng-container>
+
+  <ng-template #whatsappLink>
+    <a
+      [href]="getLink()"
+      title="Como funciona?"
+      class="link-como-funciona"
+      target="_blank"
+      rel="noreferrer noopener">
+      <app-icon
+        class="play_circle"
+        iconName="play_circle"
+        iconSize="40px"
+      ></app-icon>
+      Como funciona?
+    </a>
+  </ng-template>
+</ng-template>

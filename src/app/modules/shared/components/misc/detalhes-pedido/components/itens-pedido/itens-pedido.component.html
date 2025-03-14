@@ -1,0 +1,73 @@
+<h3>Itens do pedido</h3>
+
+<div class="item-container flex flex-column">
+  <ng-container *ngFor="let item of itens">
+    <div class="flex gap-3">
+      <img class="col-3 p-0" [src]="getPathImage(item)" [alt]="item.nome" />
+
+      <div class="col-9 p-0 flex-1">
+        <header>
+          <h4>{{ item.nome }}</h4>
+          <p>{{ item.descricao }}</p>
+        </header>
+
+        <main>
+          <div>
+            <span><b>Quantidade:</b>{{ item.quantidade }}</span>
+          </div>
+
+          <div>
+            <span><b>Valor:</b>{{ item.localProduto.valorVista | currency }}</span>
+          </div>
+
+          <div>
+            <span><b>Valor total:</b>{{ item.valorTotal | currency }}</span>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <footer class="flex flex-column md:flex-row xl:flex-column md:gap-5 xl:gap-0">
+      <div class="wrapper-item-content md:col-6">
+        <h5>Local de atendimento</h5>
+
+        <div>
+          <span class="location-icon">
+            <app-icon iconName="location_on" iconSize="18px" verticalAlign="baseline" />
+          </span>
+
+          <ng-container [ngSwitch]="item.localProduto.formaAtendimento">
+            <div *ngSwitchCase="getFormaAtendimento(formaAtendimento.PRESENCIAL)">
+              <strong>{{ item.localProduto.nomeEstabelecimento }}</strong>
+              <p>{{ item.localProduto.endereco | formatEndereco }}</p>
+            </div>
+
+            <div *ngSwitchCase="getFormaAtendimento(formaAtendimento.ONLINE)">
+              <strong>Atendimento On-line</strong>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+
+      <ng-container *ngIf="item.localProduto.nomeProfissional">
+        <div class="wrapper-item-content md:col-6">
+          <h5>Profissional de atendimento</h5>
+
+          <div>
+            <span class="location-icon">
+              <app-icon iconName="account_circle" iconSize="18px" verticalAlign="baseline" />
+            </span>
+
+            <div>
+              <strong>{{ item.localProduto.nomeProfissional }}</strong>
+              <p>
+                {{ item.localProduto.especialidadesProfissional | joinString }}
+                - {{ item.localProduto.registroProfissional }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </footer>
+  </ng-container>
+</div>

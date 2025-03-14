@@ -1,0 +1,110 @@
+@import 'variables';
+
+#parceiros-destaque {
+  background-color: $primary-background-light;
+  padding: 20px $horizontal-padding-main-content-sm;
+  min-height: 200px;
+
+  @media (min-width: $md) {
+    padding: 30px $horizontal-padding-main-content-md;
+  }
+
+  @media (min-width: $lg) {
+    padding: 40px 50px;
+    min-height: 250px;
+  }
+
+  h2 {
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 15px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .wrapper-card {
+    height: 100%;
+    gap: 8px;
+    padding: 20px 27px 21px 26px;
+    border-radius: 5px;
+    background-color: $background-lighter;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-left: 2px;
+
+    h3 {
+      font-family: Darker Grotesque;
+      font-size: 20px;
+      font-weight: 700;
+      text-align: center;
+      color: #60ae32;
+      margin-top: 5px;
+      margin-bottom: 8px;
+      line-height: 1;
+    }
+
+    p {
+      font-family: Darker Grotesque;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 15px;
+      text-align: center;
+    }
+
+    .button-container {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+  }
+
+  .skeleton {
+    padding-bottom: 40px;
+    display: flex;
+    gap: 0;
+  }
+
+  ::ng-deep {
+    .p-avatar.p-avatar-xl {
+      width: 98px;
+      height: 98px;
+      margin-bottom: 2px;
+    }
+  }
+
+  .registro-profissional {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    font-family: Darker Grotesque;
+    font-size: 16px;
+    font-weight: 400;
+    text-align: center;
+    margin: 10px 0;
+
+    span:nth-child(2) {
+      margin: 0 5px;
+    }
+  }
+
+  .tipo-estabelecimento {
+    margin-top: 5px;
+    margin-bottom: 20px;
+  }
+
+  @media (max-width: $md) {
+    .wrapper-card {
+      max-width: 90%;
+      margin: 0 auto;
+    }
+  }
+
+  &>div {
+    width: 100%;
+    max-width: $max-main-width;
+  }
+}
+

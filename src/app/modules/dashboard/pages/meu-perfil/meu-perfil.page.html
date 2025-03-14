@@ -1,0 +1,19 @@
+<app-page-title titulo="Meu perfil" [returnPath]="['/', 'dashboard']" />
+
+<p-tabView styleClass="tabview-dados-pessoais h-full flex flex-column mb-5">
+  <p-tabPanel header="Dados pessoais">
+    <ng-template pTemplate="content">
+      <app-scroll-panel [desktopOnly]="true">
+        <app-form-dados-pessoais></app-form-dados-pessoais>
+      </app-scroll-panel>
+    </ng-template>
+  </p-tabPanel>
+
+  <p-tabPanel header="Endereço">
+    <ng-template pTemplate="content">
+      <app-scroll-panel [desktopOnly]="true">
+        <app-form-endereco></app-form-endereco>
+      </app-scroll-panel>
+    </ng-template>
+  </p-tabPanel>
+</p-tabView>

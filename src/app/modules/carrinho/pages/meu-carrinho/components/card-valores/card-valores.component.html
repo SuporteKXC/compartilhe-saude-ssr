@@ -1,0 +1,41 @@
+<div class="wrapper-valores w-full">
+  <form class="flex gap-3 xl:mr-4" [formGroup]="form" id="cupom">
+    <app-input-text
+      [labelSrOnly]="true"
+      placeholder="Cupom de desconto"
+      formControlName="cupom"
+      [customErrors]="cupomCustomErrors" />
+    <app-button label="Aplicar" size="small" (handleClick)="handleAplicarCupomClick()" />
+  </form>
+  <div class="subtotal mt-4">
+    <p-divider></p-divider>
+    <p class="grid grid-nogutter align-items-center mx-2 mt-3">
+      <span class="col-7 xl:col-8 font-semibold">Subtotal</span>
+      <span
+        class="col-5 xl:col-4 font-semibold text-right"
+        *ngIf="total$ | async as total; else values">
+        {{ total | currency }}
+      </span>
+    </p>
+  </div>
+  <div class="total flex flex-column mt-3">
+    <p-divider></p-divider>
+    <p class="grid grid-nogutter align-items-center mx-2 mt-3">
+      <span class="col-7 xl:col-8 font-semibold">Total</span>
+      <span
+        class="valor col-5 xl:col-4 font-bold text-right"
+        *ngIf="total$ | async as total; else values">
+        {{ total | currency }}
+      </span>
+    </p>
+  </div>
+
+  <div class="wrapper-buttons flex flex-column align-items-center">
+    <app-button label="Ir para pagamento" size="small" (handleClick)="navigateToPagamentoAfterLogin()" />
+    <a routerLink="" class="font-semibold text-center"> Continuar comprando </a>
+  </div>
+</div>
+
+<ng-template #values>
+  <p-skeleton class="col-5 xl:col-4" width="100px" height="27px" />
+</ng-template>

@@ -1,0 +1,31 @@
+@import './_variables';
+@import './_fonts';
+@import '../theme-base/_components';
+@import './_extensions';
+@import './input-text';
+@import './select';
+@import './multiselect';
+@import './dialog-modal';
+@import './autocomplete';
+@import './_mixins';
+
+.ng-invalid {
+  small {
+    margin-left: $error-border-width;
+
+    font-size: 13px;
+    color: $error;
+  }
+}
+
+.required {
+  label::after,
+  h3::after {
+    content: '*';
+    margin-left: 6px;
+  }
+}
+
+.p-overflow-hidden {
+  padding: 0 !important;
+}

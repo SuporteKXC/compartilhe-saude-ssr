@@ -1,0 +1,25 @@
+<p-dialog [(visible)]="visible" [modal]="true" id="compartilhe-card" [resizable]="false" (onHide)="handleCloseEvent()">
+  <div class="compartilhe-card">
+    <img 
+      src="/assets/images/fundo-card.png" 
+      alt="" 
+      class="background" 
+      aria-hidden="true">
+    <div class="content" >
+      <img [src]="pathImage" alt="Logo da Compartilhe Saúde" class="logo">
+      <div class="wrapper-dados" *ngIf="userData | async as userData; else skeleton">
+        <span><b>ID:</b> <span class="numero"> {{ userData.idVirtual }}</span></span>
+        <span><b>Nome:</b> <span> {{ userData.nome }}</span></span>
+        <span><b>CPF:</b> <span class="numero"> {{ userData.cpf | mask : '999.999.999-99' }}</span></span>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #skeleton>
+      <div class="wrapper-dados">
+        <span class="flex align-items-center gap-2"><b>ID:</b> <p-skeleton width="48px" height="14px" /></span>
+        <span class="flex align-items-center gap-2"><b>Nome:</b> <p-skeleton width="96px" height="14px" /></span>
+        <span class="flex align-items-center gap-2"><b>CPF:</b> <p-skeleton width="56px" height="14px" /></span>
+      </div>
+  </ng-template>
+</p-dialog>
